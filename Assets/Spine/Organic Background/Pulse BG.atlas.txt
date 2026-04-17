@@ -1,0 +1,6 @@
+Pulse BG.png
+size:1924,1084
+filter:Linear,Linear
+pma:true
+Pulsating BG
+bounds:2,2,1920,1080

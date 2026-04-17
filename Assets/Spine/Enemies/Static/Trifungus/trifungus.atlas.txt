@@ -1,0 +1,6 @@
+trifungus.png
+size:62,68
+filter:Linear,Linear
+pma:true
+Tri_Fungus
+bounds:2,2,58,64
