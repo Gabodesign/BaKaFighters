@@ -1,0 +1,14 @@
+Lich.png
+size:122,46
+filter:Linear,Linear
+pma:true
+Lich
+bounds:2,2,100,42
+Palpebre 1
+bounds:104,26,18,16
+offsets:1,2,20,18
+rotate:90
+Palpebre 2
+bounds:104,5,19,15
+offsets:0,1,20,18
+rotate:90

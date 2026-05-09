@@ -35,7 +35,7 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateUI()
     {
-        if (scoreText != null) scoreText.text = score.ToString("N0");
+        if (scoreText != null) scoreText.text = "Score: " + score.ToString("N0");
     }
 
     public void AddPoint(int amount)

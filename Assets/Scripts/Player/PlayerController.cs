@@ -16,22 +16,27 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;             
     private Vector2 moveInput;                   
     public bool isShooting = false;
-
+    public Color colorDamage = new Color(1f, 0f, 0f, 1f);
+    public Color colorHealth = new Color(0f, 1f, 0f, 1f);
     [Header("Component Player Health")]   
     [SerializeField] public float health;    
-    [SerializeField] private float maxHealth; 
+    [SerializeField] public float maxHealth; 
 
     [Header("Component Player Shield")]   
     [SerializeField] public float shield;    
-    [SerializeField] private float maxShield; 
+    [SerializeField] public float maxShield; 
 
     [Header("Component Player Ki")]       
     [SerializeField] public float ki;        
-    [SerializeField] private float maxKi;
+    [SerializeField] public float maxKi;
 
     [Header("Armi")]
     [SerializeField] private WeaponsConfig[] weaponConfigs;
     [SerializeField] private WeaponType startingWeapon = WeaponType.Bullet;
+
+    [Header("Effetto")]
+    [SerializeField] private ParticleSystem particleHeal;
+    [SerializeField] protected HitEffect hitEffect;
 
     private BulletArm bulletArm;
 
@@ -41,11 +46,12 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        hitEffect = GetComponent<HitEffect>();
         controls = new PlayerControls();
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
         controls.Player.Fire.performed += ctx => ShotPressed();  
-        controls.Player.Fire.canceled += ctx => ShotReleased(); 
+        controls.Player.Fire.canceled += ctx => ShotReleased();
     }
 
     void OnEnable()
@@ -71,7 +77,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
         currentAnim = flyAnimations[0];
-
     }
 
     // Update is called once per frame
@@ -95,37 +100,26 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAnimation()
     {
-        
-        if(Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+        string baseAnim = flyAnimations[0];
+        if (moveInput.magnitude > 0.1f)
         {
-            if(moveInput.x < 0)
+            if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
             {
-                SetAnimation(currentAnim = flyAnimations[3], true);
+                baseAnim = moveInput.x > 0 ? flyAnimations[4] : flyAnimations[3];
             }
-            else if(moveInput.x > 0)
+            else
             {
-                SetAnimation(currentAnim = flyAnimations[4], true);
-            }
-        }
-        else
-        {
-            if (moveInput.y < 0)
-            {
-                SetAnimation(currentAnim = flyAnimations[2], true);
-            }
-            else if(moveInput.y > 0)
-            {
-                SetAnimation(currentAnim = flyAnimations[1], true);
+                baseAnim = moveInput.y > 0 ? flyAnimations[1] : flyAnimations[2];
             }
         }
 
         if (isShooting)
         {
-            if (moveInput.x < 0)
+            if (moveInput.x < -0.5f)
             {
                 SetAnimation(currentAnim = shotAnimations[1], true);
             }
-            else if(moveInput.x > 0)
+            else if(moveInput.x > 0.5f)
             {
                 SetAnimation(currentAnim = shotAnimations[2], true);
             }
@@ -136,8 +130,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            SetAnimation(currentAnim, true);
+            SetAnimation(baseAnim, true);
         }
+        
     }
 
 
@@ -161,6 +156,8 @@ public class PlayerController : MonoBehaviour
                 health += difference;
             }
         }
+        particleHeal.Play();
+        hitEffect.FlashOnce(colorHealth, hitEffect.defaultDuration);
     }
 
     public void TakeDamage(float damage)
@@ -169,6 +166,16 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+
+        hitEffect.FlashOnce(colorDamage, hitEffect.defaultDuration);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("BulletEnemy"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<Projectile2D>().damage);
         }
     }
 

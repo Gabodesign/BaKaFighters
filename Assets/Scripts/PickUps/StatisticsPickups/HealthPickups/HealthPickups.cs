@@ -7,7 +7,6 @@ public class HealthPickups : MonoBehaviour
     public float healAmount = 10f;
     private bool consumato;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (consumato) return;
@@ -15,13 +14,12 @@ public class HealthPickups : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Ho colpito " + collision.gameObject.name);
-            var health = collision.gameObject.GetComponent<PlayerController>();
+            var player = collision.gameObject.GetComponent<PlayerController>();
 
-            health.AddHealth(healAmount);
+            player.AddHealth(healAmount);
+            UIController.Instance.UpdateHealthSlider(healAmount, player.maxHealth);
             consumato = true;
             Destroy(gameObject);
         }
-
-        
     }
 }

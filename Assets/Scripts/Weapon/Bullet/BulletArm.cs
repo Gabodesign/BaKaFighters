@@ -26,7 +26,7 @@ public class BulletArm : WeaponsConfig
     void Shoot()
     {
         
-        GameObject proj = Instantiate(projectilePrefab, playerController.firePoint.position, Quaternion.identity);
+        GameObject proj = Instantiate(projectilePrefab, playerController.firePoint.position, playerController.firePoint.rotation);
         var projectile = proj.GetComponent<Projectile2D>();
         if(projectile != null)
         {
