@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponType startingWeapon = WeaponType.Bullet;
 
     [Header("Effetto")]
-    [SerializeField] private ParticleSystem particleHeal;
     [SerializeField] protected HitEffect hitEffect;
 
     private BulletArm bulletArm;
@@ -156,7 +155,6 @@ public class PlayerController : MonoBehaviour
                 health += difference;
             }
         }
-        particleHeal.Play();
         hitEffect.FlashOnce(colorHealth, hitEffect.defaultDuration);
     }
 
