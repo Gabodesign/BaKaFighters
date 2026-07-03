@@ -1,0 +1,147 @@
+Ciao Gabriele!
+
+Ottimo, vedo che hai le idee chiare e la motivazione giusta! Mi fa piacere che la valutazione ti sia stata utile. Adesso ti do qualche indicazione di direzione sui punti che hai sollevato, così hai chiaro dove andare.
+
+RISPOSTA AI TUOI PUNTI:
+
+1. ScriptableObject — La direzione giusta
+
+Perfetto, è esattamente l'approccio professionale. Gli ScriptableObject ti permettono di separare i dati (HP, damage, speed) dalla logica (come si muove, come spara).
+
+Cosa ti serve:
+
+Un EnemyData ScriptableObject con tutti i campi che ora hai in EnemiesConfig (maxHealth, moveSpeed, scoreValue, etc.)
+Un WeaponData ScriptableObject per le armi
+Modificare le tue classi attuali per leggere da questi SO invece di avere i campi direttamente​
+Il bello: Crei 10 varianti di Kozo (debole, normale, forte, elite) semplicemente creando 10 file .asset diversi nell'Inspector, senza mai toccare il codice!
+
+Quando hai fatto la prima implementazione, se hai dubbi o problemi, scrivimi pure. Ma prima prova tu: la documentazione Unity sugli ScriptableObject è ottima.
+
+2. Attivazione nemici a distanza dal player
+
+Ottima idea! Questo si chiama "activation range" ed è fondamentale sia per le performance che per il gameplay (i nemici non dovrebbero sparare se sono lontanissimi o fuori schermo).
+
+Concetto base:
+
+Ogni frame (o ogni X frame per ottimizzare) calcola la distanza tra il nemico e il player
+Se distanza < activationDistance -> il nemico è attivo (si muove, spara, etc.)
+Se distanza > activationDistance -> il nemico è in "sleep mode" (Update fa return subito)
+Dove implementarlo: Nella classe base EnemiesConfig, così tutti i nemici lo ereditano automaticamente.
+
+Ottimizzazione da ricordare: Usa sqrMagnitude invece di Distance per evitare il calcolo della radice quadrata (è più veloce).
+
+3. Sistema Power-up armi — Le tue idee
+
+Entrambe le idee sono valide e si usano in giochi diversi:
+
+IDEA 1: Potenziamenti graduali (Livello 1 -> 2 -> 3)
+
+Tipo Gradius/R-Type: raccogli power-up e la tua arma spara sempre più proiettili o fa più danno.
+
+Cosa ti serve:
+
+Una variabile currentLevel (1, 2, 3)
+Nel metodo Shoot(), in base al livello spawni 1, 2 o 3 proiettili
+Se spawni più proiettili, devi calcolare un offset angolare per distribuirli (spread)
+Suggerimento: Parti con il livello 1 funzionante, poi aggiungi il livello 2 (2 proiettili con un piccolo angolo tra loro), poi il livello 3.
+
+IDEA 2: Armi diverse (weapon swap)
+
+Tipo Mega Man: raccogli un power-up e cambi completamente tipo di arma (da pistola a laser, a missili, etc.).
+
+Cosa ti serve:
+
+Un WeaponManager che gestisce quale arma è attiva
+Disattivare l'arma corrente e attivare quella nuova
+Ogni arma è un componente diverso sul player (BulletArm, LaserArm, MissileArm)
+Il mio consiglio: Inizia con l'IDEA 1 perché è più semplice da implementare e testare. L'IDEA 2 la puoi aggiungere dopo se hai tempo. L'importante è avere UN sistema funzionante prima di complicare.
+
+4. Wave Manager — La struttura base
+
+Il Wave Manager è il sistema che controlla quando e quanti nemici spawnare. È fondamentale per creare un livello che non sia "nemici random" ma abbia una progressione.
+
+Struttura concettuale:
+
+Hai un array di "Wave" (ondate)
+Ogni Wave dice: quali nemici, quanti, dove spawnarli, tempo tra uno spawn e l'altro
+Il manager spawna la Wave 1, aspetta che tutti i nemici muoiano, poi passa alla Wave 2, e così via
+Dopo l'ultima wave, spawna il boss
+Cosa devi risolvere:
+
+Come tenere traccia di quanti nemici sono vivi in questa wave
+Come sapere quando passare alla wave successiva
+Dove posizionare gli spawn point (probabilmente fuori schermo, in alto/in basso)
+Hint: Quando un nemico muore in EnemiesConfig.TakeDamage(), dovrebbe notificare il WaveManager in qualche modo (trova il WaveManager e chiama un metodo tipo OnEnemyDied()).
+
+Se ti blocchi su questo, scrivimi che ti do qualche indicazione in più. Ma prima prova a impostare una struttura base.
+
+5. Movimento Zig-Zag e Kamikaze
+
+Ottimo che avete già delle bozze! Vi do la direzione concettuale:
+
+Zig-Zag:
+
+Movimento base orizzontale (come Kozo attuale)
+oscillazione verticale usando una funzione sinusoidale (Mathf.Sin)
+La formula è tipo: posY = startY + amplitude * Mathf.Sin(Time.time * frequency)
+Gioca con amplitude (quanto va su/giù) e frequency (quanto veloce oscilla) nell'Inspector fino a trovare il movimento che ti piace.
+
+Kamikaze:
+
+Il nemico parte con movimento normale
+Quando il player entra in un certo raggio (es. 15 unità), si "attiva"
+Una volta attivato, calcola la direzione verso il player e va dritto a tutta velocità
+Se tocca il player (o qualsiasi cosa), esplode (fa danno in area e si distrugge)
+Hint per l'esplosione in area: Guarda Physics2D.OverlapCircleAll() per trovare tutti i collider in un raggio.
+
+PRIORITÀ — ORDINE CONSIGLIATO:
+
+Non fare tutto insieme! Segui questo ordine:
+
+PRIMA SETTIMANA (fondamentali):
+
+Fixa i 4 bug critici che ti ho segnalato (EnemyShoot using, Projectile2D direction, Game Over, clamping player)
+ScriptableObject per nemici (anche solo per testare il concetto)
+Sistema attivazione a distanza
+SECONDA SETTIMANA (gameplay):
+
+4. Nemico Zig-Zag funzionante
+
+5. Nemico Kamikaze funzionante
+
+6. Sistema upgrade arma base (almeno Livello 1 -> Livello 2)
+
+TERZA SETTIMANA (struttura livello):
+
+7. Wave Manager con almeno 3 ondate
+
+8. Schermata Game Over funzionante
+
+DOPO (se hai tempo):
+
+9. Boss fight
+
+10. Audio e polish
+
+UN CONSIGLIO METODOLOGICO IMPORTANTE:
+
+Testa ogni cosa SUBITO dopo averla implementata.
+
+Non aggiungere 5 sistemi insieme e poi provare a debuggare tutto. Meglio:
+
+Implementi lo Zig-Zag -> apri Unity -> testi -> funziona -> passa al prossimo
+Implementi il Kamikaze -> apri Unity -> testi -> funziona → passa al prossimo
+Così se qualcosa si rompe, sai esattamente quale sistema ha causato il problema.
+
+CHIEDI AIUTO:
+
+Scrivimi se:
+
+Ti blocchi su un concetto e non capisci l'approccio generale
+Hai provato 3-4 soluzioni diverse e nessuna funziona
+Hai bisogno di un chiarimento su come Unity gestisce qualcosa (es. "Come funziona Physics2D.OverlapCircle?")
+Però l'obiettivo principale del corso è che tu impari a risolvere i problemi da solo, perché quando finirai il corso dovrai essere autonomo. Quindi prima di chiedere, cerca una soluzione. Se non arrivi, chiedi.
+
+Quindi Gabriele, hai tutte le indicazioni per partire! Quando hai fatto i primi fix (bug critici + almeno uno dei nuovi sistemi), fammi sapere come va.
+
+In bocca al lupo!
