@@ -56,7 +56,7 @@ public abstract class EnemiesConfig : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            ScoreManager.Instance.AddPoint(scoreValue);
+            GameManager.Instance.AddPoint(scoreValue);
             Destroy(gameObject);
         }
         hitDamage.FlashOnce(colorDamage, hitDamage.defaultDuration);

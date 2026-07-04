@@ -1,14 +1,37 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 public class GameManager : MonoBehaviour
 {
+
+    public static GameManager Instance { get; private set; }
+
+    [Header("Score")]
+    [SerializeField] private TMP_Text scoreText;
+    private int score = 0;
+    private int highScore = 0;
+
     [Header("Fade")]
     public Image fadeImage;
     public float fadeDuration = 0.3f;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        scoreText.text = "Score: " + score;
         // 1. Congeliamo il tempo all'inizio
         Time.timeScale = 0;
 
@@ -17,6 +40,11 @@ public class GameManager : MonoBehaviour
             // 2. Avviamo la transizione come Coroutine
             StartCoroutine(DoFadeFromBlack());
         }
+    }
+
+    void UpdateUI()
+    {
+        if (scoreText != null) scoreText.text = "Score: " + score.ToString("N0");
     }
 
     // Usiamo una Coroutine per spalmare il calcolo su più frame
@@ -57,6 +85,31 @@ public class GameManager : MonoBehaviour
 
         // 3. Facciamo partire il tempo di gioco
         Time.timeScale = 1;
+    }
+
+    public void AddPoint(int amount)
+    {
+        score += amount;
+        UpdateUI();
+
+        if (score > highScore)
+        {
+            highScore = score;
+        }
+    }
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
     }
 
 }
