@@ -10,6 +10,8 @@ TagManager:
   - Bullet
   - Foreground
   - BulletEnemy
+  - ToogleAudio
+  - ToogleVideo
   layers:
   - Default
   - TransparentFX
