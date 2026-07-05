@@ -28,7 +28,6 @@ public class MenuManager : MonoBehaviour
     private bool isTransitioning = false;
 
     [Header("Scena di gioco")]
-    public string loadingSceneName = "Level";
 
     private bool isGameStarted = false;
     private void Start()
@@ -56,7 +55,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnLevelScene()
     {
-        StartCoroutine(LoadSceneWithFade(loadingSceneName));
+        StartCoroutine(LoadSceneWithFade("TestLevel"));
     }
 
     private void Update()

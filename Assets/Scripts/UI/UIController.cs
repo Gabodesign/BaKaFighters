@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;                                         
 using UnityEngine;
 using UnityEngine.EventSystems;  
@@ -24,21 +25,35 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void UpdateHealthSlider(float current, float max) 
+    public void UpdateHealthSlider(float current, float max)
     {
-        health.maxValue = max;                      
-        health.value =current;    
+        if (health == null) return;
+
+        // Questo ci dirà nella console se la funzione viene chiamata troppe volte o con valori errati
+        Debug.Log($"UI: Cambio vita richiesto. Valore Corrente Slider: {health.value} -> Obiettivo: {current}");
+
+        health.maxValue = max;
+        health.DOKill();
+        health.DOValue(current, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
     }
 
-    public void UpdateShieldSlider(float current, float max) 
+    public void UpdateShieldSlider(float current, float max)
     {
-        shield.maxValue = max;                       
-        shield.value = current;    
+        if (shield == null) return;
+
+        shield.maxValue = max;
+
+        shield.DOKill();
+        shield.DOValue(current, 0.2f).SetEase(Ease.OutQuad);
     }
 
-    public void UpdateKiSlider(float current, float max) 
+    public void UpdateKiSlider(float current, float max)
     {
-        ki.maxValue = max;                           
-        ki.value = current;        
+        if (ki == null) return;
+
+        ki.maxValue = max;
+
+        ki.DOKill();
+        ki.DOValue(current, 0.2f).SetEase(Ease.OutQuad);
     }
 }

@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900392130050535850}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -294,7 +294,6 @@ MonoBehaviour:
   weaponConfigs:
   - {fileID: 5203534659725818926}
   startingWeapon: 0
-  particleHeal: {fileID: 0}
   hitEffect: {fileID: 6579844894698067075}
   firePoint: {fileID: 2223177132453103497}
 --- !u!114 &5203534659725818926
@@ -311,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletArm
   damage: 1
   fireRate: 5
-  projectileSpeed: 1
+  projectileSpeed: 10
   projectilePrefab: {fileID: 1406269182908934030, guid: 97ee27727eab41945bb1857c2c7ecb1b, type: 3}
 --- !u!114 &6579844894698067075
 MonoBehaviour:

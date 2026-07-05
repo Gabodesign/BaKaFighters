@@ -1,5 +1,6 @@
 using Spine.Unity;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using static WeaponsConfig;
 public class PlayerController : MonoBehaviour
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected HitEffect hitEffect;
 
     private BulletArm bulletArm;
-
+    private bool gameover;
     public Transform firePoint;
     private Rigidbody2D rb;
 
@@ -76,6 +77,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
         currentAnim = flyAnimations[0];
+        // Forza la UI ad allinearsi SUBITO alla vera vita del giocatore (100) appena parte il livello
+        if (UIController.Instance != null)
+        {
+            UIController.Instance.UpdateHealthSlider(health, maxHealth);
+        }
     }
 
     // Update is called once per frame
@@ -85,9 +91,6 @@ public class PlayerController : MonoBehaviour
         {
             PlayerAnimation();
         }
-        UIController.Instance.UpdateHealthSlider(health, maxHealth);
-        UIController.Instance.UpdateShieldSlider(shield, maxShield);
-        UIController.Instance.UpdateKiSlider(ki, maxKi);
 
     }
 
@@ -137,33 +140,47 @@ public class PlayerController : MonoBehaviour
 
     void SetAnimation(string anim, bool loop)
     {
+        if (currentAnim == anim) return;
         skeletonAnimation.state.SetAnimation(0, anim, loop);
     }
 
     public void AddHealth(float amount)
     {
-        float difference = maxHealth - health; //100 - 95 = 5
+        // Se la vita è già al massimo, non raccogliere la cura e interrompi il codice
+        if (health >= maxHealth) return;
 
-        if (health < maxHealth)
+        // Aggiungi i 10 punti della cura
+        health += amount;
+
+        // Se la vita supera 100 (es. 95 + 10 = 105), il Clamp la inchioda a 100
+        health = Mathf.Clamp(health, 0f, maxHealth);
+
+        // Invia il valore finale (100) alla UI
+        if (UIController.Instance != null)
         {
-            if (difference > 9)
-            {
-                health += amount;
-            }
-            else
-            {
-                health += difference;
-            }
+            UIController.Instance.UpdateHealthSlider(health, maxHealth);
         }
-        hitEffect.FlashOnce(colorHealth, hitEffect.defaultDuration);
+
+        if (hitEffect != null)
+        {
+            hitEffect.FlashOnce(colorHealth, hitEffect.defaultDuration);
+        }
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage;
+
+        if(UIController.Instance != null)
+        {
+            UIController.Instance.UpdateHealthSlider(health, maxHealth);
+        }
+
         if (health <= 0)
         {
-            Destroy(gameObject);
+            gameover = true;
+            LevelUI.Instance.ShowGameOverPanel();
+            controls.Player.Disable();
         }
 
         hitEffect.FlashOnce(colorDamage, hitEffect.defaultDuration);

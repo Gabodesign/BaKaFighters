@@ -30,7 +30,7 @@ public class BulletArm : WeaponsConfig
         var projectile = proj.GetComponent<Projectile2D>();
         if(projectile != null)
         {
-            projectile.damage = damage;
+            projectile.Launch(playerController.firePoint.right, projectileSpeed, damage);
             Destroy(proj, projectile.maxLifetime);
         }
         else

@@ -1,4 +1,5 @@
 
+EMAIL DI GIORNO 5
 Ciao Gabriele!
 
 Ho scaricato il progetto e sto dando un'occhiata approfondita. Prima di entrare nel dettaglio della valutazione, ti rispondo subito alle domande che mi hai fatto:
@@ -171,15 +172,15 @@ public void Launch(Vector2 dir, float speed, float damage)
     this.currentSpeed = speed;
 }
 
-Poi in BulletArm.Shoot() devi chiamare projectile.Launch(...) passando la direzione corretta (usa playerController.firePoint.right come direzione).
+Poi in BulletArm.Shoot() devi chiamare projectile.Launch(...) passando la direzione corretta (usa playerController.firePoint.right come direzione).FATTO
 
-PlayerController.TakeDamage() — Ancora Destroy(gameObject) alla morte invece di una logica Game Over. Quando il player muore, dovrebbe partire un evento che ferma il gioco, mostra la schermata Game Over e offre "Riprova" / "Torna al menu". Non distruggere semplicemente il GameObject.
+PlayerController.TakeDamage() — Ancora Destroy(gameObject) alla morte invece di una logica Game Over. Quando il player muore, dovrebbe partire un evento che ferma il gioco, mostra la schermata Game Over e offre "Riprova" / "Torna al menu". Non distruggere semplicemente il GameObject. DA FARE
 
-ScoreManager.Update() — Chiama UpdateUI() ogni frame anche se lo score non cambia. È uno spreco. Sposta la chiamata dentro AddPoint() e rimuovila da Update.
+ScoreManager.Update() — Chiama UpdateUI() ogni frame anche se lo score non cambia. È uno spreco. Sposta la chiamata dentro AddPoint() e rimuovila da Update. FATTO MA TOLTO LO SCORE MANAGER
 
-SetAnimation in PlayerController — Non c'è il controllo if (currentAnim == anim) return che ti avevo suggerito. Senza questo controllo, stai chiamando SetAnimation ogni frame anche quando l'animazione è già quella giusta, il che può causare micro-restart dell'animazione.
+SetAnimation in PlayerController — Non c'è il controllo if (currentAnim == anim) return che ti avevo suggerito. Senza questo controllo, stai chiamando SetAnimation ogni frame anche quando l'animazione è già quella giusta, il che può causare micro-restart dell'animazione. FATTO
 
-EnemyShoot.cs riga 4 — using UnityEditor.EditorTools è un import da editor, non deve stare negli script runtime! Rimuovilo o il gioco crasherà in build.
+EnemyShoot.cs riga 4 — using UnityEditor.EditorTools è un import da editor, non deve stare negli script runtime! Rimuovilo o il gioco crasherà in build. FATTO
 
 =============================================================================================================================================
 
@@ -231,23 +232,23 @@ PRIORITÀ PER LE PROSSIME SETTIMANE:
 
 URGENTE (fix bug critici):
 
-Rimuovi using UnityEditor.EditorTools da EnemyShoot.cs
-Fixa Projectile2D.cs per usare il metodo Launch() invece di Vector3.right
-Sostituisci Destroy(gameObject) nel PlayerController con logica Game Over
-Aggiungi clamping player ai bordi dello schermo
-IMPORTANTE (completa il Livello 1):
+Rimuovi using UnityEditor.EditorTools da EnemyShoot.cs FATTO
+Fixa Projectile2D.cs per usare il metodo Launch() invece di Vector3.right FATTO
+Sostituisci Destroy(gameObject) nel PlayerController con logica Game Over UI FATTA / FATTA LOGICA
+Aggiungi clamping player ai bordi dello schermo FATTO
+IMPORTANTE (completa il Livello 1): IN COMPLETAMENTO
 
-Boss fight con fasi e pattern bullet
-Sistema spawn ondate nemici (wave manager)
-Schermata Game Over funzionante (Riprova / Menu)
-Schermata Victory con punteggio finale
-Audio effetti (sparo, hit, esplosione) — hai già i file in Assets/Audio!
+Boss fight con fasi e pattern bullet DA FARE
+Sistema spawn ondate nemici (wave manager) DA FARE
+Schermata Game Over funzionante (Riprova / Menu) FATTA
+Schermata Victory con punteggio finale UI FATTA / DA FARE LOGICA
+Audio effetti (sparo, hit, esplosione) — hai già i file in Assets/Audio! DA FARE
 POLISH (solo se avanza tempo):
 
-Animazioni DOTween sulle barre HP/Shield/Ki
-Screen shake con Cinemachine su hit
-Pickup armi/power-up (hai già BonusEnergy.prefab!)
-Sistema vite/continue
+Animazioni DOTween sulle barre HP/Shield/Ki FATTO
+Screen shake con Cinemachine su hit DA FARE
+Pickup armi/power-up (hai già BonusEnergy.prefab!) DA FARE
+Sistema vite/continue DA FARE
 =============================================================================================================================================
 
 CONCLUSIONE:
@@ -270,7 +271,7 @@ PS: Il tuo progetto comincia a diventare bello grande quindi è probabile (molto
 
 
 
---------------------- MODIFICHE DA FARE -------------------------------
+--------------------- MODIFICHE DA FARE -------------------------------   
 
 Ciao Gabriele!
 
