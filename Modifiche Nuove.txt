@@ -246,7 +246,7 @@ Audio effetti (sparo, hit, esplosione) — hai già i file in Assets/Audio! DA F
 POLISH (solo se avanza tempo):
 
 Animazioni DOTween sulle barre HP/Shield/Ki FATTO
-Screen shake con Cinemachine su hit DA FARE
+Screen shake con Cinemachine su hit FATTO
 Pickup armi/power-up (hai già BonusEnergy.prefab!) DA FARE
 Sistema vite/continue DA FARE
 =============================================================================================================================================

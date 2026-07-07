@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class Projectile2D : MonoBehaviour
@@ -9,6 +10,12 @@ public class Projectile2D : MonoBehaviour
     private Vector2 direction = Vector2.right;
     private float currentSpeed;
 
+    private CinemachineImpulseSource impulseSource;
+
+    private void Awake()
+    {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
     private void Start()
     {
         Destroy(gameObject, maxLifetime);
@@ -20,14 +27,26 @@ public class Projectile2D : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {    
-        
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Foreground") || collision.gameObject.CompareTag("Player"))
+    {
+
+
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Foreground"))
         {
             Destroy(gameObject);
         }
 
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (impulseSource != null)
+            {
+                impulseSource.GenerateImpulse();
+            }
+            Destroy(gameObject);
+        }
+
     }
+
+
     public void Launch(Vector2 dir, float speed, float damage)
     {
         this.damage = damage;
