@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelUI : MonoBehaviour
@@ -17,6 +18,9 @@ public class LevelUI : MonoBehaviour
     [Header("GameOver UI")]
     [SerializeField] private GameObject panelGameover;
 
+    [Header("Timer")]
+    [SerializeField] private TMP_Text timerText;
+    private float timer;
     private void Awake()
     {
         // Impostiamo l'istanza per la scena attuale
@@ -111,5 +115,16 @@ public class LevelUI : MonoBehaviour
 
         // Eseguiamo il caricamento della scena passato come parametro
         onFadeComplete?.Invoke();
+    }
+
+    public void IncreaseTime()
+    {
+        float totalTime = Time.timeSinceLevelLoad;
+
+        int minutes = (int)(totalTime / 60f) % 60;
+        int seconds = (int)(totalTime % 60f);
+        int milliseconds = (int)(totalTime * 1000f) % 1000;
+
+        timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2");
     }
 }

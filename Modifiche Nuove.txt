@@ -420,3 +420,12 @@ Però l'obiettivo principale del corso è che tu impari a risolvere i problemi d
 Quindi Gabriele, hai tutte le indicazioni per partire! Quando hai fatto i primi fix (bug critici + almeno uno dei nuovi sistemi), fammi sapere come va.
 
 In bocca al lupo!
+
+
+
+
+link documentazione per suono sfx sui bottoni https://docs.unity3d.com/2018.3/Documentation/ScriptReference/UI.Selectable.OnSelect.html
+link video Unity settings MUSIC e SFX https://www.youtube.com/watch?v=G-JUp8AMEx0
+
+
+

@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     private int score = 0;
     private int highScore = 0;
-
     private void Awake()
     {
         if (Instance != null)
@@ -20,6 +18,12 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+
+    private void Update()
+    {
+        LevelUI.Instance.IncreaseTime();
     }
 
     public void AddPoint(int amount)
@@ -76,4 +80,6 @@ public class GameManager : MonoBehaviour
 
     public int GetScore() => score;
     public int GetHighScore() => highScore;
+
+    
 }
