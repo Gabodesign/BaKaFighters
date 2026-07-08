@@ -72,7 +72,6 @@ GameObject:
   - component: {fileID: 6579844894698067075}
   - component: {fileID: 452193580149059890}
   - component: {fileID: 7701445483731917806}
-  - component: {fileID: 8084596704876830992}
   m_Layer: 8
   m_Name: Baka
   m_TagString: Player
@@ -355,39 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
   armTransform: {fileID: 3161775371163889642}
-  playerInput: {fileID: 8084596704876830992}
   mouseSmoothSpeed: 15
   gamepadSmoothSpeed: 10
---- !u!114 &8084596704876830992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900392130050535850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: fd97e8747f993354a8f3c63b3645590a, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1553189915110879084
 GameObject:
   m_ObjectHideFlags: 0

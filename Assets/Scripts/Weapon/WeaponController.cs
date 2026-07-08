@@ -1,13 +1,11 @@
 using Spine.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+
 public class WeaponController : MonoBehaviour
 {
-
     [Header("References")]
     public Transform armTransform; // L'osso Arm_A1 in Override
-    public PlayerInput playerInput; // Trascina qui il componente PlayerInput
 
     [Header("Settings")]
     public float mouseSmoothSpeed = 15f;
@@ -17,12 +15,43 @@ public class WeaponController : MonoBehaviour
     private float offset = -167.95f;
     private float currentAngle;
 
+    // Variabile per memorizzare la direzione di puntamento corrente
+    private Vector2 aimInput;
+
+    private void OnEnable()
+    {
+        if (InputManager.Instance != null)
+        {
+            // Ci iscriviamo all'evento del puntamento
+            InputManager.Instance.OnAim += HandleAimInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnAim -= HandleAimInput;
+        }
+    }
+
+    private void HandleAimInput(Vector2 input)
+    {
+        aimInput = input;
+    }
+
     void LateUpdate()
     {
-        Vector2 aimInput = playerInput.actions["Aim"].ReadValue<Vector2>();
+        if (InputManager.Instance == null) return;
+
         float targetAngle = 0f;
 
-        if (playerInput.currentControlScheme == "Gamepad")
+        // Controlliamo lo schema di controllo corrente direttamente dall'InputManager
+        string currentScheme = InputManager.Instance.controls.controlSchemes[0].name;
+        // Nota: Se la stringa sopra ti dà problemi, puoi usare il controllo sulla periferica attiva:
+        bool isGamepad = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
+
+        if (isGamepad)
         {
             if (aimInput.sqrMagnitude > 0.1f)
             {
@@ -36,19 +65,17 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            
+            // Con il mouse, aimInput contiene la posizione dello schermo (Screen Position) XY
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(aimInput.x, aimInput.y, 10f));
             Vector2 direction = mouseWorldPos - armTransform.position;
 
             targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            
             targetAngle = Mathf.Clamp(targetAngle, -40f, 40f);
         }
 
-        
+        // Applichiamo il calcolo dell'angolo e l'interpolazione fluida
         float finalTarget = targetAngle + offset;
-        float lerpSpeed = (playerInput.currentControlScheme == "Gamepad") ? gamepadSmoothSpeed : mouseSmoothSpeed;
+        float lerpSpeed = isGamepad ? gamepadSmoothSpeed : mouseSmoothSpeed;
 
         currentAngle = Mathf.LerpAngle(currentAngle, finalTarget, Time.deltaTime * lerpSpeed);
 

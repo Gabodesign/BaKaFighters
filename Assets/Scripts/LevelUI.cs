@@ -1,8 +1,7 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LevelUI : MonoBehaviour
 {
     // Istanza locale valida solo ed esclusivamente per questa scena corrente
@@ -17,7 +16,8 @@ public class LevelUI : MonoBehaviour
 
     [Header("GameOver UI")]
     [SerializeField] private GameObject panelGameover;
-
+    [Header("Menu Pausa")]
+    [SerializeField] public GameObject panelPausa;
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
     private float timer;
@@ -30,6 +30,7 @@ public class LevelUI : MonoBehaviour
     private void Start()
     {
         if (panelGameover != null) panelGameover.SetActive(false);
+        if (panelPausa != null) panelPausa.SetActive(false);
 
         // Chiediamo al GameManager il punteggio attuale per scriverlo all'avvio
         if (GameManager.Instance != null)
@@ -42,7 +43,23 @@ public class LevelUI : MonoBehaviour
             StartCoroutine(FadeToTransparent());
         }
     }
+    private void OnEnable()
+    {
+        // Il LevelUI controlla se l'InputManager è pronto e si iscrive da solo!
+        if (InputManager.Instance != null && InputManager.Instance.controls != null)
+        {
+            InputManager.Instance.OnPause -= ShowPausa; // Pulizia preventiva
+            InputManager.Instance.OnPause += ShowPausa; // Iscrizione sicura al 100%
+        }
+    }
 
+    private void OnDisable()
+    {
+        if (InputManager.Instance != null && InputManager.Instance.controls != null)
+        {
+            InputManager.Instance.OnPause -= ShowPausa;
+        }
+    }
     public void UpdateScoreUI(int currentScore)
     {
         if (scoreText != null)
@@ -127,4 +144,29 @@ public class LevelUI : MonoBehaviour
 
         timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2");
     }
+
+
+    public void ShowPausa()
+    {
+        if (panelPausa == null) return;
+
+        // Controlliamo se il pannello della pausa è attualmente ATTIVO nella scena
+        bool isPaused = panelPausa.activeSelf;
+
+        if (!isPaused)
+        {
+            // SE NON ERA IN PAUSA: Congeliamo il gioco e attiviamo il menu
+            AudioManager.instance.PlaySFX(AudioManager.instance.pause);
+            Time.timeScale = 0f;
+            panelPausa.SetActive(true);
+        }
+        else
+        {
+            // SE ERA GIÀ IN PAUSA: Facciamo ripartire il tempo e nascondiamo il menu
+            AudioManager.instance.PlaySFX(AudioManager.instance.unpause);
+            Time.timeScale = 1f;
+            panelPausa.SetActive(false);
+        }
+    }
+
 }

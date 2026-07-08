@@ -17,8 +17,12 @@ public class MenuManager : MonoBehaviour
     [Header("Sotto-Pannelli Opzioni (Area 70%)")]
     [SerializeField] private Toggle toggleAudio;
     [SerializeField] private Toggle toggleVideo;
+    [SerializeField] private Toggle toggleComands;
+    [SerializeField] private Toggle toggleResults;
     [SerializeField] private GameObject audioSettingsPanel;
     [SerializeField] private GameObject videoSettingsPanel;
+    [SerializeField] private GameObject comandsSettingsPanel;
+    [SerializeField] private GameObject resultsSettingsPanel;
     [SerializeField] private Button backSettingsPanel;
     private Color selectColor = new Color(1f, 0.6f, 0f, 1f);
 
@@ -90,15 +94,18 @@ public class MenuManager : MonoBehaviour
         panelMainMenu.SetActive(false);
         audioSettingsPanel.SetActive(true);
         videoSettingsPanel.SetActive(false);
+        comandsSettingsPanel.SetActive(false);
+        resultsSettingsPanel.SetActive(false);
 
         // 1. Forza lo stato logico iniziale
         toggleAudio.isOn = true;
         toggleVideo.isOn = false;
+        toggleComands.isOn = false;
+        toggleResults.isOn = false;
 
 
         // 2. LA SOLUZIONE: Forziamo il Toggle ad entrare in Select Mode.
-        // Usiamo una Coroutine per dare a Unity un millisecondo di tempo per attivare il pannello,
-        // altrimenti il comando Select() fallirebbe perché l'oggetto si sta ancora svegliando.
+
         StartCoroutine(SelectDefaultToggle());
     }
 
@@ -119,9 +126,12 @@ public class MenuManager : MonoBehaviour
         panelMainMenu.SetActive(true);
         audioSettingsPanel.SetActive(true);
         videoSettingsPanel.SetActive(false);
+        comandsSettingsPanel.SetActive(false);
+        resultsSettingsPanel.SetActive(false);
         toggleAudio.isOn = true;
         toggleVideo.isOn = false;
-        
+        toggleComands.isOn = false;
+        toggleResults.isOn = false;
     }
 
     public void OpenQuit()
@@ -138,19 +148,7 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowAudioSettings()
-    {
-        if (audioSettingsPanel != null) audioSettingsPanel.SetActive(true);
-        if (videoSettingsPanel != null) videoSettingsPanel.SetActive(false);
-        Debug.Log("Visualizzazione Impostazioni Audio");
-    }
-
-    public void ShowVideoSettings()
-    {
-        if (audioSettingsPanel != null) audioSettingsPanel.SetActive(false);
-        if (videoSettingsPanel != null) videoSettingsPanel.SetActive(true);
-        Debug.Log("Visualizzazione Impostazioni Video");
-    }
+   
     private IEnumerator LoadSceneWithFade(string sceneName)
     {
         isTransitioning = true;                 // Segniamo che è in corso una transizione.

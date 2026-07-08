@@ -4,8 +4,6 @@ using UnityEngine.EventSystems;
 
 public class AudioMenu : MonoBehaviour, ISelectHandler, ISubmitHandler, IPointerClickHandler, IPointerEnterHandler
 {
-
-
     public void OnSelect(BaseEventData eventData)
     {
         if (AudioManager.instance.SFXSource != null && AudioManager.instance.select != null)
@@ -41,12 +39,6 @@ public class AudioMenu : MonoBehaviour, ISelectHandler, ISubmitHandler, IPointer
         }
     }
 
-    private void Awake()
-    {
-        if (AudioManager.instance.SFXSource == null)
-        {
-            Debug.LogError("Manca associazione del AudioSource");
-        }
-    }
+    
 
 }

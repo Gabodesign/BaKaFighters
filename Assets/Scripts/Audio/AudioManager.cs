@@ -35,18 +35,35 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if(SceneManager.GetActiveScene().name == "MainMenu")
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AudioClip musicDaRiprodurre = null;
+
+        if (scene.name == "MainMenu")
         {
-            music = musicMainMenu;
+            musicDaRiprodurre = musicMainMenu;
         }
-        else
+        else if (scene.name == "TestLevel")
         {
-            music = musicLevel;
+            musicDaRiprodurre = musicLevel;
         }
-        musicSource.clip = music;
-        musicSource.Play();
+
+        if (musicDaRiprodurre != null && musicSource.clip != musicDaRiprodurre)
+        {
+            musicSource.Stop();
+            musicSource.clip = musicDaRiprodurre;
+            musicSource.Play();
+        }
     }
 
     public void PlaySFX(AudioClip clip)

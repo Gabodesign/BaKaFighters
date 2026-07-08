@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     private SkeletonAnimation skeletonAnimation;
     [SerializeField] private string[] flyAnimations = new string[5];
     [SerializeField] private string[] shotAnimations = new string[3];
-    private string currentAnim;                  
-    private PlayerControls controls;             
+    private string currentAnim;                    
     private Vector2 moveInput;                   
     public bool isShooting = false;
     public Color colorDamage = new Color(1f, 0f, 0f, 1f);
@@ -47,27 +46,30 @@ public class PlayerController : MonoBehaviour
     {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         hitEffect = GetComponent<HitEffect>();
-        controls = new PlayerControls();
-        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
-        controls.Player.Fire.performed += ctx => ShotPressed();  
-        controls.Player.Fire.canceled += ctx => ShotReleased();
+
+
+        
     }
 
-    void OnEnable()
-    { 
-        if (controls != null)
+    private void OnEnable()
+    {
+        if (InputManager.Instance != null && InputManager.Instance.controls != null)
         {
-            controls.Enable();
+            
+            InputManager.Instance.OnMove += HandleMoveInput;
+            InputManager.Instance.OnFire += ShotPressed;
+            InputManager.Instance.OnFireCanceled += ShotReleased;
         }
     }
-    
-    void OnDisable()
-    {   
-        if (controls != null)
+    private void OnDisable()
+    {
+        if (InputManager.Instance != null && InputManager.Instance.controls != null)
         {
-            controls.Disable();
-        }   
+            
+            InputManager.Instance.OnMove -= HandleMoveInput;
+            InputManager.Instance.OnFire -= ShotPressed;
+            InputManager.Instance.OnFireCanceled -= ShotReleased;
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -180,7 +182,6 @@ public class PlayerController : MonoBehaviour
         {
             gameover = true;
             LevelUI.Instance.ShowGameOverPanel();
-            controls.Player.Disable();
         }
 
         hitEffect.FlashOnce(colorDamage, hitEffect.defaultDuration);
@@ -194,6 +195,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleMoveInput(Vector2 input) => moveInput = input;
+    public bool HasMovementInput() => moveInput != Vector2.zero;
+
     public void ShotPressed()
     {
         isShooting = true;
@@ -202,4 +206,6 @@ public class PlayerController : MonoBehaviour
     {
         isShooting = false;
     }
+
+    
 }

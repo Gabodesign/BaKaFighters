@@ -235,6 +235,7 @@ URGENTE (fix bug critici):
 Rimuovi using UnityEditor.EditorTools da EnemyShoot.cs FATTO
 Fixa Projectile2D.cs per usare il metodo Launch() invece di Vector3.right FATTO
 Sostituisci Destroy(gameObject) nel PlayerController con logica Game Over UI FATTA / FATTA LOGICA
+Logica Pausa FATTA
 Aggiungi clamping player ai bordi dello schermo FATTO
 IMPORTANTE (completa il Livello 1): IN COMPLETAMENTO
 

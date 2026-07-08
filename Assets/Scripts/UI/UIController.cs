@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider ki;
     [SerializeField] private TextMeshProUGUI scoreText;
 
+
+
     private void Awake()                             
     {
         if (Instance != null)
@@ -23,6 +25,11 @@ public class UIController : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void UpdateHealthSlider(float current, float max)
