@@ -30,6 +30,7 @@ public class BulletArm : WeaponsConfig
         var projectile = proj.GetComponent<Projectile2D>();
         if(projectile != null)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.bullet);
             projectile.Launch(playerController.firePoint.right, projectileSpeed, damage);
             Destroy(proj, projectile.maxLifetime);
         }

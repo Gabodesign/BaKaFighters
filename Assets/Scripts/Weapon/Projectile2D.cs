@@ -32,11 +32,13 @@ public class Projectile2D : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Foreground"))
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.hit);
             Destroy(gameObject);
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.hit);
             if (impulseSource != null)
             {
                 impulseSource.GenerateImpulse();

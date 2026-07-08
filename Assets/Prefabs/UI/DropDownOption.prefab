@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 1417933607212091713}
   - component: {fileID: 3534133971695273098}
   - component: {fileID: 2036593170643079546}
+  - component: {fileID: 2965588274274251636}
   m_Layer: 5
   m_Name: DropDownOption
   m_TagString: Untagged
@@ -717,6 +718,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2965588274274251636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898841685748725123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5932436732df98a4a8a4359eb76f8c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioMenu
+  audioSource: {fileID: 0}
+  navigateClip: {fileID: 8300000, guid: a31ba5a65d5ada2448d84d3959c4ca94, type: 3}
+  submitClip: {fileID: 8300000, guid: 8cb85f06138705d40b2e92ae78f27449, type: 3}
 --- !u!1 &4149498839899570058
 GameObject:
   m_ObjectHideFlags: 0

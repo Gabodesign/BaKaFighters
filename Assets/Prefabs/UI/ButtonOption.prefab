@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 5415135931636499590}
   - component: {fileID: 3100504086299074859}
   - component: {fileID: 3406506089663501365}
+  - component: {fileID: 2408774496335951313}
   m_Layer: 5
   m_Name: ButtonOption
   m_TagString: Untagged
@@ -292,6 +293,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2408774496335951313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545543809811213660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5932436732df98a4a8a4359eb76f8c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioMenu
+  audioSource: {fileID: 0}
+  navigateClip: {fileID: 8300000, guid: a31ba5a65d5ada2448d84d3959c4ca94, type: 3}
+  submitClip: {fileID: 8300000, guid: 8cb85f06138705d40b2e92ae78f27449, type: 3}
 --- !u!1 &8703245139526178976
 GameObject:
   m_ObjectHideFlags: 0

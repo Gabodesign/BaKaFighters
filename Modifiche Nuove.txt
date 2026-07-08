@@ -242,7 +242,7 @@ Boss fight con fasi e pattern bullet DA FARE
 Sistema spawn ondate nemici (wave manager) DA FARE
 Schermata Game Over funzionante (Riprova / Menu) FATTA
 Schermata Victory con punteggio finale UI FATTA / DA FARE LOGICA
-Audio effetti (sparo, hit, esplosione) — hai già i file in Assets/Audio! DA FARE
+Audio effetti (sparo, hit, esplosione) — hai già i file in Assets/Audio! FATTO DA COLMARE CERTI ASPETTI
 POLISH (solo se avanza tempo):
 
 Animazioni DOTween sulle barre HP/Shield/Ki FATTO

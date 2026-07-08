@@ -88,6 +88,7 @@ public class EnemyShoot : MonoBehaviour
             var proj = projectileEnemy.GetComponent<Projectile2D>();                     // Script Projectile2D
             if (proj != null)
             {
+                AudioManager.instance.PlaySFX(AudioManager.instance.bullet);
                 proj.Launch(dir, projSpeed, projDamage);             // Lancia il proiettile
                 Destroy(projectileEnemy, proj.maxLifetime);
             }
