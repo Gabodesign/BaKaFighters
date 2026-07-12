@@ -249,7 +249,7 @@ POLISH (solo se avanza tempo):
 Animazioni DOTween sulle barre HP/Shield/Ki FATTO
 Screen shake con Cinemachine su hit FATTO
 Pickup armi/power-up (hai già BonusEnergy.prefab!) DA FARE
-Sistema vite/continue DA FARE
+Sistema vite/continue FATTO(forse rivedere o da sistemare meglio)
 =============================================================================================================================================
 
 CONCLUSIONE:
@@ -286,8 +286,8 @@ Perfetto, è esattamente l'approccio professionale. Gli ScriptableObject ti perm
 
 Cosa ti serve:
 
-Un EnemyData ScriptableObject con tutti i campi che ora hai in EnemiesConfig (maxHealth, moveSpeed, scoreValue, etc.)
-Un WeaponData ScriptableObject per le armi
+Un EnemyData ScriptableObject con tutti i campi che ora hai in EnemiesConfig (maxHealth, moveSpeed, scoreValue, etc.) FATTO
+Un WeaponData ScriptableObject per le armi FATTO
 Modificare le tue classi attuali per leggere da questi SO invece di avere i campi direttamente​
 Il bello: Crei 10 varianti di Kozo (debole, normale, forte, elite) semplicemente creando 10 file .asset diversi nell'Inspector, senza mai toccare il codice!
 
@@ -376,9 +376,9 @@ Non fare tutto insieme! Segui questo ordine:
 
 PRIMA SETTIMANA (fondamentali):
 
-Fixa i 4 bug critici che ti ho segnalato (EnemyShoot using, Projectile2D direction, Game Over, clamping player)
-ScriptableObject per nemici (anche solo per testare il concetto)
-Sistema attivazione a distanza
+Fixa i 4 bug critici che ti ho segnalato (EnemyShoot using, Projectile2D direction, Game Over, clamping player)FATTO!
+ScriptableObject per nemici (anche solo per testare il concetto) FATTO!
+Sistema attivazione a distanza QUASI FATTO
 SECONDA SETTIMANA (gameplay):
 
 4. Nemico Zig-Zag funzionante
@@ -391,13 +391,13 @@ TERZA SETTIMANA (struttura livello):
 
 7. Wave Manager con almeno 3 ondate
 
-8. Schermata Game Over funzionante
+8. Schermata Game Over funzionante FATTO
 
 DOPO (se hai tempo):
 
 9. Boss fight
 
-10. Audio e polish
+10. Audio e polish FATTO!
 
 UN CONSIGLIO METODOLOGICO IMPORTANTE:
 

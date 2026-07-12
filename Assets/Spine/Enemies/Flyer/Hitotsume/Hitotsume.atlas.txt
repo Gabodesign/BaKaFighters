@@ -1,0 +1,37 @@
+Hitotsume.png
+size:61,103
+filter:Linear,Linear
+pma:true
+Hitotsume_Braccio
+bounds:38,58,20,21
+rotate:90
+Hitotsume_Corpo
+bounds:2,44,23,29
+rotate:90
+Hitotsume_Gamba
+bounds:27,24,12,21
+rotate:90
+Hitotsume_Iride
+bounds:49,3,6,12
+Hitotsume_Maniglia
+bounds:50,17,9,19
+Hitotsume_Occhio
+bounds:38,80,21,21
+Hitotsume_Palpebra 1
+bounds:27,2,20,20
+offsets:0,0,20,21
+Hitotsume_Palpebra 2
+bounds:2,2,19,20
+offsets:1,0,20,21
+rotate:90
+Hitotsume_Palpebra 3
+bounds:2,23,19,23
+offsets:1,0,20,23
+rotate:90
+Hitotsume_Palpebra 4
+bounds:33,38,18,26
+offsets:2,1,20,27
+rotate:90
+Hitotsume_lanterna
+bounds:2,69,32,34
+rotate:90

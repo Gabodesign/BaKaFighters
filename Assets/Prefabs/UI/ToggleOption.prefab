@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio
+  m_text: Video
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ead6e9384041f84ba9dfeba01638e74, type: 2}
   m_sharedMaterial: {fileID: -7959647575106999419, guid: 4ead6e9384041f84ba9dfeba01638e74, type: 2}
@@ -337,7 +337,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.990566, g: 0.7468824, b: 0.3224012, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 1, g: 0.63512623, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 0.63529414, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -385,6 +385,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5932436732df98a4a8a4359eb76f8c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioMenu
-  audioSource: {fileID: 0}
-  navigateClip: {fileID: 8300000, guid: a31ba5a65d5ada2448d84d3959c4ca94, type: 3}
-  submitClip: {fileID: 8300000, guid: 8cb85f06138705d40b2e92ae78f27449, type: 3}

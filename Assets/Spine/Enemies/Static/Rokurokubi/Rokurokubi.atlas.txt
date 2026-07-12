@@ -1,0 +1,26 @@
+Rokurokubi.png
+size:97,139
+filter:Linear,Linear
+pma:true
+Rokurokubi_Corpo
+bounds:2,76,61,52
+rotate:90
+Rokurokubi_Fiamella
+bounds:39,12,9,23
+Rokurokubi_Riflesso_fiammella
+bounds:2,37,56,37
+Rokurokubi_testa_Attack
+bounds:60,40,35,35
+Rokurokubi_testa_idle
+bounds:2,2,33,35
+rotate:90
+Rokurokubi_testa_wakeup
+bounds:60,4,34,35
+rotate:90
+VCiuffo 1
+bounds:56,77,21,22
+rotate:90
+capelli
+bounds:56,100,37,39
+offsets:0,1,37,40
+rotate:90

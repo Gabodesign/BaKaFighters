@@ -1,0 +1,64 @@
+Ghost2.png
+size:440,142
+filter:Linear,Linear
+pma:true
+Avambraccio
+bounds:96,67,9,17
+rotate:90
+Braccio
+bounds:71,65,11,23
+offsets:0,0,12,23
+rotate:90
+Corpo
+bounds:411,98,42,22
+offsets:0,0,43,22
+rotate:90
+Faccia
+bounds:408,14,28,30
+offsets:0,0,28,31
+rotate:90
+Faccia 2
+bounds:408,44,28,35
+offsets:0,0,28,36
+Flame 1
+bounds:350,81,59,59
+Flame 10
+bounds:153,65,75,63
+offsets:0,0,75,64
+rotate:90
+Flame 11
+bounds:218,74,66,66
+Flame 12
+bounds:2,63,77,67
+rotate:90
+Flame 2
+bounds:346,8,66,60
+rotate:90
+Flame 3
+bounds:286,76,64,62
+rotate:90
+Flame 4
+bounds:2,2,66,59
+offsets:0,0,67,59
+Flame 5
+bounds:70,2,64,59
+Flame 6
+bounds:214,3,68,60
+Flame 7
+bounds:284,4,68,60
+rotate:90
+Flame 8
+bounds:136,2,76,61
+Flame 9
+bounds:71,78,80,62
+Perno
+bounds:139,66,10,8
+offsets:1,1,11,9
+rotate:90
+mano 1
+bounds:115,64,12,11
+rotate:90
+mano 2
+bounds:128,65,11,9
+offsets:0,1,12,10
+rotate:90

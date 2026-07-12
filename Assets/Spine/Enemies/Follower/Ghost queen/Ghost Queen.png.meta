@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: e9a0a0787902a2b42a5770ca70878cf1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8654908230842763976
+    second: Ghost Queen_0
+  - first:
+      213: 7527120960211267466
+    second: Ghost Queen_1
+  - first:
+      213: -4392655588074133119
+    second: Ghost Queen_2
+  - first:
+      213: -732943154676868482
+    second: Ghost Queen_3
+  - first:
+      213: 2855363673648777201
+    second: Ghost Queen_4
+  - first:
+      213: 4779420539635443979
+    second: Ghost Queen_5
+  - first:
+      213: -8982329951734287390
+    second: Ghost Queen_6
+  - first:
+      213: -3399479181477349463
+    second: Ghost Queen_7
+  - first:
+      213: 4360468757230922296
+    second: Ghost Queen_8
+  - first:
+      213: -346457512957789902
+    second: Ghost Queen_9
+  - first:
+      213: 3465641350470728085
+    second: Ghost Queen_10
+  - first:
+      213: 3702395812430269611
+    second: Ghost Queen_11
+  - first:
+      213: -5446745604784137126
+    second: Ghost Queen_12
+  - first:
+      213: 5965780613218160329
+    second: Ghost Queen_13
+  - first:
+      213: 591220473033598205
+    second: Ghost Queen_14
+  - first:
+      213: -5266793998949728481
+    second: Ghost Queen_15
+  - first:
+      213: -2979182561494082480
+    second: Ghost Queen_16
+  - first:
+      213: -2583439979354456774
+    second: Ghost Queen_17
+  - first:
+      213: -3104186390930255756
+    second: Ghost Queen_18
+  - first:
+      213: 9061940706263470237
+    second: Ghost Queen_19
+  - first:
+      213: 7318799275815332988
+    second: Ghost Queen_20
+  - first:
+      213: -1908809719324412226
+    second: Ghost Queen_21
+  - first:
+      213: -3605914230061384869
+    second: Ghost Queen_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ghost Queen_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 83
+        width: 32
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8353309d1d693e780800000000000000
+      internalID: -8654908230842763976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 83
+        width: 32
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f2ac602a4b57860800000000000000
+      internalID: 7527120960211267466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 80
+        width: 68
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189e43414072a03c0800000000000000
+      internalID: -4392655588074133119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_3
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 80
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a5ee8851014d5f0800000000000000
+      internalID: -732943154676868482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_4
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 78
+        width: 70
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7c360022a40a720800000000000000
+      internalID: 2855363673648777201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_5
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 71
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b092d2988a9e35240800000000000000
+      internalID: 4779420539635443979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_6
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 69
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3b683df7a585380800000000000000
+      internalID: -8982329951734287390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_7
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 109
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a7f4b612bf92d0d0800000000000000
+      internalID: -3399479181477349463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_8
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 125
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a20f06b3f738c30800000000000000
+      internalID: 4360468757230922296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_9
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 106
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239b2624ab2213bf0800000000000000
+      internalID: -346457512957789902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_10
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 62
+        width: 11
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59976bd427e681030800000000000000
+      internalID: 3465641350470728085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_11
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 62
+        width: 24
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bacccc1106d816330800000000000000
+      internalID: 3702395812430269611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_12
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 106
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5cdbe40bb54964b0800000000000000
+      internalID: -5446745604784137126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 61
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cec7c21cd5bac250800000000000000
+      internalID: 5965780613218160329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_14
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 57
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df42b1743ef643800800000000000000
+      internalID: 591220473033598205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_15
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1
+        width: 69
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f317b33c698e6b0800000000000000
+      internalID: -5266793998949728481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_16
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1
+        width: 63
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05c5b15ae31d7a6d0800000000000000
+      internalID: -2979182561494082480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_17
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 65
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3df804c607c52cd0800000000000000
+      internalID: -2583439979354456774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_18
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47010049ce6bbe4d0800000000000000
+      internalID: -3104186390930255756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_19
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1
+        width: 62
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d909c746f0b72cd70800000000000000
+      internalID: 9061940706263470237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_20
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1
+        width: 59
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ceb592a29919560800000000000000
+      internalID: 7318799275815332988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_21
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb6fadf6cab8285e0800000000000000
+      internalID: -1908809719324412226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost Queen_22
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 1
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b3aaadc1835fdc0800000000000000
+      internalID: -3605914230061384869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ghost Queen_0: -8654908230842763976
+      Ghost Queen_1: 7527120960211267466
+      Ghost Queen_10: 3465641350470728085
+      Ghost Queen_11: 3702395812430269611
+      Ghost Queen_12: -5446745604784137126
+      Ghost Queen_13: 5965780613218160329
+      Ghost Queen_14: 591220473033598205
+      Ghost Queen_15: -5266793998949728481
+      Ghost Queen_16: -2979182561494082480
+      Ghost Queen_17: -2583439979354456774
+      Ghost Queen_18: -3104186390930255756
+      Ghost Queen_19: 9061940706263470237
+      Ghost Queen_2: -4392655588074133119
+      Ghost Queen_20: 7318799275815332988
+      Ghost Queen_21: -1908809719324412226
+      Ghost Queen_22: -3605914230061384869
+      Ghost Queen_3: -732943154676868482
+      Ghost Queen_4: 2855363673648777201
+      Ghost Queen_5: 4779420539635443979
+      Ghost Queen_6: -8982329951734287390
+      Ghost Queen_7: -3399479181477349463
+      Ghost Queen_8: 4360468757230922296
+      Ghost Queen_9: -346457512957789902
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

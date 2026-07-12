@@ -1,0 +1,9 @@
+power up enemy.png
+size:110,63
+filter:Linear,Linear
+pma:true
+Face
+bounds:74,15,34,46
+Head
+bounds:2,2,59,70
+rotate:90

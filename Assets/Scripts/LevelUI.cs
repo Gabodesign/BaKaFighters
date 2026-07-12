@@ -20,6 +20,8 @@ public class LevelUI : MonoBehaviour
     [SerializeField] public GameObject panelPausa;
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
+    [Header("Lives")]
+    [SerializeField] private TMP_Text livesText;
     private float timer;
     private void Awake()
     {
@@ -35,6 +37,7 @@ public class LevelUI : MonoBehaviour
         // Chiediamo al GameManager il punteggio attuale per scriverlo all'avvio
         if (GameManager.Instance != null)
         {
+            UpdateLivesUI(GameManager.Instance.playerLives);
             UpdateScoreUI(GameManager.Instance.GetScore());
         }
 
@@ -42,6 +45,8 @@ public class LevelUI : MonoBehaviour
         {
             StartCoroutine(FadeToTransparent());
         }
+
+
     }
     private void OnEnable()
     {
@@ -66,9 +71,15 @@ public class LevelUI : MonoBehaviour
             scoreText.text = "Score: " + currentScore.ToString("N0");
     }
 
+    public void UpdateLivesUI(int currentLives)
+    {
+        if (livesText != null)
+            livesText.text = "Lives: " + currentLives.ToString("N0");
+    }
+
     public void ShowGameOverPanel()
     {
-        Time.timeScale = 0.1f;
+        Time.timeScale = 0f;
         if (panelGameover != null)
             panelGameover.SetActive(true);
     }
@@ -76,16 +87,24 @@ public class LevelUI : MonoBehaviour
     // Gestione dei pulsanti della UI che rimandano al GameManager
     public void OnClickRestart()
     {
-        if (GameManager.Instance != null) GameManager.Instance.RestartLevel();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.playerLives = 3;
+            GameManager.Instance.RestartLevel();
+        }
     }
 
     public void OnClickMainMenu()
     {
-        if (GameManager.Instance != null) GameManager.Instance.ReturnMainMenu();
+        if (GameManager.Instance != null){
+            GameManager.Instance.playerLives = 3;
+            GameManager.Instance.ReturnMainMenu();
+        }
     }
 
     // --- COROUTINE DEL FADE ---
 
+    
     private IEnumerator FadeToTransparent()
     {
         if (canvasGroup == null) yield break;

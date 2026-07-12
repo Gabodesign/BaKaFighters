@@ -1,0 +1,22 @@
+Kabuki Tentacle.png
+size:328,101
+filter:Linear,Linear
+pma:true
+Kabuki head 1
+bounds:2,38,61,77
+offsets:0,0,61,78
+rotate:90
+Kabuki head 2
+bounds:81,38,61,77
+offsets:0,0,61,78
+rotate:90
+Pot
+bounds:193,52,84,47
+Pot2_
+bounds:279,15,84,47
+rotate:90
+Pot3
+bounds:193,3,84,47
+Tentacle_
+bounds:2,2,34,189
+rotate:90

@@ -2,7 +2,6 @@ using Spine.Unity;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
-using static WeaponsConfig;
 public class PlayerController : MonoBehaviour
 {
     
@@ -20,8 +19,7 @@ public class PlayerController : MonoBehaviour
     public Color colorHealth = new Color(0f, 1f, 0f, 1f);
     [Header("Component Player Health")]   
     [SerializeField] public float health;    
-    [SerializeField] public float maxHealth; 
-
+    [SerializeField] public float maxHealth;
     [Header("Component Player Shield")]   
     [SerializeField] public float shield;    
     [SerializeField] public float maxShield; 
@@ -30,25 +28,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float ki;        
     [SerializeField] public float maxKi;
 
-    [Header("Armi")]
-    [SerializeField] private WeaponsConfig[] weaponConfigs;
-    [SerializeField] private WeaponType startingWeapon = WeaponType.Bullet;
+    [Header("Weapon Controller")]
+    [SerializeField] private WeaponController weaponController;
 
     [Header("Effetto")]
     [SerializeField] protected HitEffect hitEffect;
 
     private BulletArm bulletArm;
-    private bool gameover;
-    public Transform firePoint;
     private Rigidbody2D rb;
 
     private void Awake()
     {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         hitEffect = GetComponent<HitEffect>();
-
-
-        
+        weaponController = GetComponent<WeaponController>();
     }
 
     private void OnEnable()
@@ -57,8 +50,8 @@ public class PlayerController : MonoBehaviour
         {
             
             InputManager.Instance.OnMove += HandleMoveInput;
-            InputManager.Instance.OnFire += ShotPressed;
-            InputManager.Instance.OnFireCanceled += ShotReleased;
+            InputManager.Instance.OnFire += weaponController.ShotPressed;
+            InputManager.Instance.OnFireCanceled += weaponController.ShotReleased;
         }
     }
     private void OnDisable()
@@ -67,8 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             
             InputManager.Instance.OnMove -= HandleMoveInput;
-            InputManager.Instance.OnFire -= ShotPressed;
-            InputManager.Instance.OnFireCanceled -= ShotReleased;
+            InputManager.Instance.OnFire -= weaponController.ShotPressed;
+            InputManager.Instance.OnFireCanceled -= weaponController.ShotReleased;
         }
     }
 
@@ -93,6 +86,9 @@ public class PlayerController : MonoBehaviour
         {
             PlayerAnimation();
         }
+        CalculateMovement();
+
+
 
     }
 
@@ -139,10 +135,17 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void CalculateMovement()
+    {
+        //limitazione movimento player
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-5f, 5f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
+    }
+
 
     void SetAnimation(string anim, bool loop)
     {
         if (currentAnim == anim) return;
+
         skeletonAnimation.state.SetAnimation(0, anim, loop);
     }
 
@@ -180,12 +183,14 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
-            gameover = true;
-            LevelUI.Instance.ShowGameOverPanel();
+            GameManager.Instance.ProcessPlayerDeath();
         }
 
         hitEffect.FlashOnce(colorDamage, hitEffect.defaultDuration);
     }
+
+    
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -196,16 +201,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleMoveInput(Vector2 input) => moveInput = input;
-    public bool HasMovementInput() => moveInput != Vector2.zero;
-
-    public void ShotPressed()
-    {
-        isShooting = true;
-    }
-    public void ShotReleased() 
-    {
-        isShooting = false;
-    }
+    
 
     
 }

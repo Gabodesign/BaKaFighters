@@ -200,16 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a60a06e7e93b9458fb6bd101499349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kozo
-  moveSpeed: 3
-  scoreValue: 100
-  useTouchDamage: 1
-  touchDamage: 10
-  maxHealth: 10
-  health: 0
-  canMove: 1
-  hitDamage: {fileID: 0}
-  colorDamage: {r: 1, g: 0, b: 0, a: 1}
-  canShot: 1
+  data: {fileID: 11400000, guid: f6c672eb344b5d041822ca27a6161842, type: 2}
   dir: 0
   isNormalized: 1
 --- !u!114 &3478330711771785477
@@ -224,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74116d998d538f4396f475dbf3e6411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShoot
-  config: {fileID: 1993910874687460344}
+  enemy: {fileID: 1993910874687460344}
   firePoint: {fileID: 6267336893066518030}
   aim: 5
   projectile: {fileID: 1406269182908934030, guid: 0c66748db7b081b4283ce2edc494265f, type: 3}

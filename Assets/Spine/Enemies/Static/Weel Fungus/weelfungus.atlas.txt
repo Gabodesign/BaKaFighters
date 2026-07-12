@@ -1,0 +1,9 @@
+weelfungus.png
+size:121,54
+filter:Linear,Linear
+pma:true
+weel cannon
+bounds:2,4,48,65
+rotate:90
+weel cannon_weel
+bounds:69,2,50,50

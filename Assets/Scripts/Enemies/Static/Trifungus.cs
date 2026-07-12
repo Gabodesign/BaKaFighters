@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Trifungus : EnemiesConfig
+public class Trifungus : Enemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
@@ -12,7 +12,7 @@ public class Trifungus : EnemiesConfig
     // Update is called once per frame
     void Update()
     {
-        if (!canMove) return;
+        if (!data.canMove) return;
 
     }
 }

@@ -1,0 +1,16 @@
+Blu_Tengu Level 1.png
+size:257,43
+filter:Linear,Linear
+pma:true
+Blu Level 1/Blu_Tengu Hair
+bounds:2,2,108,39
+Blu Level 1/Blu_Tengu Jaw
+bounds:202,8,33,20
+Blu Level 1/Blu_Tengu_Mask
+bounds:158,4,42,37
+offsets:1,0,43,37
+Blue/Blu_Tengu Skull
+bounds:112,2,39,44
+rotate:90
+Blue/blu_Tengu_Tongue
+bounds:202,30,53,11

@@ -1,0 +1,61 @@
+Ghost Queen.png
+size:448,142
+filter:Linear,Linear
+pma:true
+Avambraccio
+bounds:415,18,9,17
+Braccio
+bounds:402,9,11,23
+offsets:0,0,12,23
+Corpo
+bounds:413,37,42,22
+offsets:0,0,43,22
+rotate:90
+Faccia
+bounds:34,4,30,54
+Faccia 2
+bounds:2,4,30,54
+Flame 1
+bounds:387,81,59,59
+Flame 10
+bounds:198,65,75,63
+offsets:0,0,75,64
+rotate:90
+Flame 11
+bounds:270,4,66,66
+Flame 12
+bounds:66,63,77,67
+rotate:90
+Flame 2
+bounds:325,74,66,60
+rotate:90
+Flame 3
+bounds:338,8,64,62
+rotate:90
+Flame 4
+bounds:66,2,66,59
+offsets:0,0,67,59
+Flame 5
+bounds:134,2,64,59
+Flame 6
+bounds:200,3,68,60
+Flame 7
+bounds:263,72,68,60
+rotate:90
+Flame 8
+bounds:135,64,76,61
+rotate:90
+Flame 9
+bounds:2,60,80,62
+rotate:90
+Perno
+bounds:426,25,10,8
+offsets:1,1,11,9
+rotate:90
+mano 1
+bounds:415,4,12,11
+rotate:90
+mano 2
+bounds:402,34,45,9
+offsets:0,1,45,10
+rotate:90

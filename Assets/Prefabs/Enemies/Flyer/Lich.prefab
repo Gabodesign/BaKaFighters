@@ -186,15 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f9800386aa0d48a9c538048588579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lich
-  moveSpeed: 2
-  scoreValue: 50
-  useTouchDamage: 1
-  touchDamage: 5
-  maxHealth: 5
-  health: 0
-  canMove: 1
-  hitDamage: {fileID: 7735934758837095825}
-  canShot: 0
+  data: {fileID: 11400000, guid: 0e5c8d425226c7242ad160723720d24d, type: 2}
   dir: 0
   isNormalized: 1
 --- !u!114 &7735934758837095825

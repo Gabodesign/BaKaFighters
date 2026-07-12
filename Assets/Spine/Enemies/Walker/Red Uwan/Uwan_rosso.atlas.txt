@@ -1,0 +1,26 @@
+Uwan_rosso.png
+size:119,142
+filter:Linear,Linear
+pma:true
+Base Carro
+bounds:92,16,73,19
+rotate:90
+Cannone
+bounds:2,40,34,49
+rotate:90
+Gamba
+bounds:68,4,22,85
+Perno cannone
+bounds:92,3,11,11
+Piede
+bounds:2,22,45,16
+Polpaccio
+bounds:53,20,13,54
+offsets:0,0,14,54
+Ruota
+bounds:68,91,49,49
+Uwan Testa
+bounds:2,76,64,64
+supporto cannone
+bounds:2,2,16,49
+rotate:90

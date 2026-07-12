@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 7fe6066f8606aab46a84022bdbc1a0a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6394813003297909055
+    second: Nukekubi_0
+  - first:
+      213: 2580240714670299444
+    second: Nukekubi_1
+  - first:
+      213: -5544721934586801180
+    second: Nukekubi_2
+  - first:
+      213: -1556415639221033657
+    second: Nukekubi_3
+  - first:
+      213: 5626773278949734583
+    second: Nukekubi_4
+  - first:
+      213: -4589104053437905532
+    second: Nukekubi_5
+  - first:
+      213: -1714921220185457252
+    second: Nukekubi_6
+  - first:
+      213: -4562152672123816978
+    second: Nukekubi_7
+  - first:
+      213: 7348455882809051458
+    second: Nukekubi_8
+  - first:
+      213: 2029883306416522353
+    second: Nukekubi_9
+  - first:
+      213: 6934152586035655649
+    second: Nukekubi_10
+  - first:
+      213: 7693863356902079556
+    second: Nukekubi_11
+  - first:
+      213: -521509100764052386
+    second: Nukekubi_12
+  - first:
+      213: 1531079114495919781
+    second: Nukekubi_13
+  - first:
+      213: -7526003910849399092
+    second: Nukekubi_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nukekubi_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 64
+        width: 25
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f39ee9a9b80feb850800000000000000
+      internalID: 6394813003297909055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 54
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4395ce0624bdec320800000000000000
+      internalID: 2580240714670299444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 37
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e313a617c03d03b0800000000000000
+      internalID: -5544721934586801180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_3
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 38
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7452e5de830866ae0800000000000000
+      internalID: -1556415639221033657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_4
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 25
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8757b3c70561e40800000000000000
+      internalID: 5626773278949734583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_5
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 43
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48547817d2a3050c0800000000000000
+      internalID: -4589104053437905532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 17
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9df01d7c306338e0800000000000000
+      internalID: -1714921220185457252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_7
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 23
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3f5f6e05affa0c0800000000000000
+      internalID: -4562152672123816978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_8
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 16
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249867e01b5faf560800000000000000
+      internalID: 7348455882809051458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 19
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 174c376cc189b2c10800000000000000
+      internalID: 2029883306416522353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1
+        width: 12
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e3f20dc90f0b3060800000000000000
+      internalID: 6934152586035655649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_11
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1
+        width: 43
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44cfa8295f716ca60800000000000000
+      internalID: 7693863356902079556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_12
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5443d56c3a33c8f0800000000000000
+      internalID: -521509100764052386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_13
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 9
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a68c86b75c7f3510800000000000000
+      internalID: 1531079114495919781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nukekubi_14
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6fe9b41534e8790800000000000000
+      internalID: -7526003910849399092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Nukekubi_0: 6394813003297909055
+      Nukekubi_1: 2580240714670299444
+      Nukekubi_10: 6934152586035655649
+      Nukekubi_11: 7693863356902079556
+      Nukekubi_12: -521509100764052386
+      Nukekubi_13: 1531079114495919781
+      Nukekubi_14: -7526003910849399092
+      Nukekubi_2: -5544721934586801180
+      Nukekubi_3: -1556415639221033657
+      Nukekubi_4: 5626773278949734583
+      Nukekubi_5: -4589104053437905532
+      Nukekubi_6: -1714921220185457252
+      Nukekubi_7: -4562152672123816978
+      Nukekubi_8: 7348455882809051458
+      Nukekubi_9: 2029883306416522353
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

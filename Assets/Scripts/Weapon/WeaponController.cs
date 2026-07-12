@@ -4,8 +4,15 @@ using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
+    [Header("Armi")]
+    [SerializeField] public WeaponData[] weaponsData;
+    [SerializeField] public WeaponType startingWeapon = WeaponType.Bullet;
+    private WeaponType weaponEquip;
+    public int currentWeaponLevel = 0;
+
     [Header("References")]
     public Transform armTransform; // L'osso Arm_A1 in Override
+
 
     [Header("Settings")]
     public float mouseSmoothSpeed = 15f;
@@ -15,8 +22,16 @@ public class WeaponController : MonoBehaviour
     private float offset = -167.95f;
     private float currentAngle;
 
+    public Transform firePoint;
+    public bool isShooting = false;
+
     // Variabile per memorizzare la direzione di puntamento corrente
     private Vector2 aimInput;
+
+    private void Awake()
+    {
+        weaponEquip = startingWeapon;
+    }
 
     private void OnEnable()
     {
@@ -80,5 +95,28 @@ public class WeaponController : MonoBehaviour
         currentAngle = Mathf.LerpAngle(currentAngle, finalTarget, Time.deltaTime * lerpSpeed);
 
         armTransform.localRotation = Quaternion.Euler(0, 0, currentAngle);
+    }
+
+
+    public void ShotPressed()
+    {
+        isShooting = true;
+    }
+    public void ShotReleased()
+    {
+        isShooting = false;
+    }
+
+    public void UpgradeWeapon()
+    {
+        if (currentWeaponLevel < weaponsData[(int)weaponEquip].levels.Length - 1)
+        {
+            currentWeaponLevel++;
+            Debug.Log($"Weapon upgraded to level {currentWeaponLevel}");
+        }
+        else
+        {
+            Debug.Log("Weapon is already at max level.");
+        }
     }
 }

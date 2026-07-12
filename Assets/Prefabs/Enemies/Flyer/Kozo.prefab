@@ -198,15 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a60a06e7e93b9458fb6bd101499349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kozo
-  moveSpeed: 3
-  scoreValue: 100
-  useTouchDamage: 1
-  touchDamage: 10
-  maxHealth: 10
-  health: 0
-  canMove: 1
-  hitDamage: {fileID: 149740739886276656}
-  canShot: 0
+  data: {fileID: 11400000, guid: 68488625a10b624439c0863de7c7824c, type: 2}
   dir: 0
   isNormalized: 1
 --- !u!114 &149740739886276656

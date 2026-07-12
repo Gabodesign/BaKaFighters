@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb825206db88732419c0aecd551a00ef, type: 3}
+  m_Name: StandardBullet
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  WeaponType: 0
+  weaponName: Standard Bullet
+  icon: {fileID: 5323410166981811208, guid: fa7a039e04c489146bf1f40a69963bd2, type: 3}
+  levels:
+  - damage: 1
+    fireRate: 6
+    projectileSpeed: 10
+    projectilesPerShot: 1
+    spreadAngle: 1
+    maxDistance: 0
+    projectilePrefab: {fileID: 1406269182908934030, guid: 97ee27727eab41945bb1857c2c7ecb1b, type: 3}
+  - damage: 1
+    fireRate: 6
+    projectileSpeed: 10
+    projectilesPerShot: 2
+    spreadAngle: 20
+    maxDistance: 0
+    projectilePrefab: {fileID: 1406269182908934030, guid: 97ee27727eab41945bb1857c2c7ecb1b, type: 3}
+  - damage: 1
+    fireRate: 6
+    projectileSpeed: 10
+    projectilesPerShot: 3
+    spreadAngle: 30
+    maxDistance: 0
+    projectilePrefab: {fileID: 1406269182908934030, guid: 97ee27727eab41945bb1857c2c7ecb1b, type: 3}

@@ -1,0 +1,49 @@
+Ghost1.png
+size:233,265
+filter:Linear,Linear
+pma:true
+Eyes 1
+bounds:221,91,17,9
+offsets:0,0,17,10
+rotate:90
+Eyes 2
+bounds:221,72,17,9
+rotate:90
+Eyes 3
+bounds:197,75,17,9
+Eyes 4
+bounds:197,64,17,9
+Flame 1
+bounds:136,70,59,59
+Flame 10
+bounds:80,131,75,63
+offsets:0,0,75,64
+Flame 11
+bounds:2,70,66,66
+Flame 12
+bounds:84,196,77,67
+Flame 2
+bounds:2,2,66,60
+rotate:90
+Flame 3
+bounds:125,4,64,62
+rotate:90
+Flame 4
+bounds:64,2,66,59
+offsets:0,0,67,59
+rotate:90
+Flame 5
+bounds:70,70,64,59
+Flame 6
+bounds:163,203,68,60
+Flame 7
+bounds:163,141,68,60
+Flame 8
+bounds:2,138,76,61
+Flame 9
+bounds:2,201,80,62
+Ghost 1
+bounds:197,110,29,29
+offsets:0,0,30,29
+Ghost 2
+bounds:197,86,22,22

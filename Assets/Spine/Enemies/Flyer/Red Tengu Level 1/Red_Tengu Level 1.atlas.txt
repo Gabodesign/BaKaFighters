@@ -1,0 +1,17 @@
+Red_Tengu Level 1.png
+size:43,246
+filter:Linear,Linear
+pma:true
+Red Level 1/Blu_Tengu Hair
+bounds:2,136,108,39
+rotate:90
+Red Level 1/Blu_Tengu Jaw
+bounds:2,24,33,20
+Red Level 1/Blu_Tengu_Mask
+bounds:2,46,42,37
+offsets:1,0,43,37
+rotate:90
+Red/R_Tengu Jaw
+bounds:2,2,33,20
+Red/R_Tengu Skull
+bounds:2,90,38,44

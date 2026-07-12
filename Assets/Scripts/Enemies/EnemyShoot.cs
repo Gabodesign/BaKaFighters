@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     
-    [SerializeField] private EnemiesConfig config;
+    [SerializeField] private Enemy enemy;
 
     [Header("Origine colpo")]
     [SerializeField] private Transform firePoint;
@@ -24,7 +24,6 @@ public class EnemyShoot : MonoBehaviour
     }
     [Header("Mira")]
     [SerializeField] private AimMode aim = AimMode.Forward;
-    [SerializeField] private GameObject projectile;
     [SerializeField] private float projSpeed = 10f;
     [SerializeField] private float projDamage = 5f;
     private float nextFireTime = 0f;
@@ -40,6 +39,11 @@ public class EnemyShoot : MonoBehaviour
     private void Awake()
     {
         if (firePoint == null) firePoint = transform;
+        enemy = GetComponent<Enemy>();
+        if(enemy == null)
+        {
+            Debug.LogError($"EnemyShoot su {gameObject.name} richiede uno script");
+        }
     }
 
     private void OnEnable()
@@ -55,11 +59,11 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!config.canShot) return;
+        if (enemy == null || !enemy.CanShoot) return;
 
         if (Time.time < nextFireTime) return;
 
-        if (projectile == null) return;
+        if (enemy.BulletPrefab == null) return;
 
         var dirs = GetAimDirections();                             
         if (dirs == null || dirs.Count == 0) return;
@@ -83,7 +87,7 @@ public class EnemyShoot : MonoBehaviour
             Quaternion rot = Quaternion.Euler(0f, 0f, ang);                 // Rotazione per il proiettile
 
             Vector3 pos = firePoint != null ? firePoint.position : transform.position; // Posizione di spawn
-            GameObject projectileEnemy = Instantiate(projectile, pos, rot);        // Spawna il proiettile
+            GameObject projectileEnemy = Instantiate(enemy.BulletPrefab, pos, rot);        // Spawna il proiettile
 
             var proj = projectileEnemy.GetComponent<Projectile2D>();                     // Script Projectile2D
             if (proj != null)
