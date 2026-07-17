@@ -422,6 +422,69 @@ Quindi Gabriele, hai tutte le indicazioni per partire! Quando hai fatto i primi 
 
 In bocca al lupo!
 
+--------------------------------------------------------------------------------------------
+
+Osservazioni: 
+Ciao Gabriele,
+
+il tuo lavoro è di un livello davvero diverso dal resto della classe. Si vede che stai costruendo un progetto vero, non un esercizio. Ecco i voti.
+
+Menu principale: 9/10
+Controllo audio: 8/10
+HUD: 10/10
+Menu di pausa: 9/10
+Creatività e coerenza: 10/10
+Media: 9.2/10
+
+Partiamo dai complimenti perché te li sei meritati.
+
+L'AudioManager come singleton con DontDestroyOnLoad e OnSceneLoaded che cambia la musica automaticamente in base alla scena è una soluzione da produzione. E VolumeSettings che salva su PlayerPrefs e ricarica all'avvio, nessuno degli altri studenti l'ha fatto. La persistenza delle impostazioni è una di quelle cose che l'utente da' per scontata ma che senza sarebbe una pessima esperienza.
+
+Il popup di conferma per New Game e Quit è un'ottima idea che nessun altro ha implementato. Piccola UX ma fa la differenza.
+
+Nel PauseMenu il pattern event-driven con InputManager.OnPause e la pulizia preventiva delle sottoscrizioni (unsubscribe prima del subscribe) è codice da senior. Anche l'aggiunta di suoni distinti per pausa e unpause è un dettaglio maturo.
+
+Ora rispondiamo alle tue domande.
+
+Sul bug del Toggle "Selezionata" che si spegne quando clicchi lo slider: è un comportamento noto dell'EventSystem di Unity. Quando clicchi lo Slider, il focus si sposta dal Toggle allo Slider e il Toggle perde lo stato Selected (anche se resta logicamente On). Soluzione: nell'OnValueChanged dello slider chiama EventSystem.current.SetSelectedGameObject(toggleAudio.gameObject) per riportare il focus al Toggle dopo l'interazione. In alternativa, puoi gestire visualmente lo stato "attivo" del Toggle con uno script tuo che colora il Label in base a isOn invece di affidarti al SelectMode dell'EventSystem, che è comunque più robusto perché non dipende dal focus.
+
+Sul codice ripetuto con SetActive: hai ragione, e la soluzione elegante è un pattern State Machine. Crea un enum MenuState { Main, NewGamePopup, Options, Quit } e un metodo unico:
+
+void SetState(MenuState state) {
+panelMainMenu.SetActive(state == MenuState.Main);
+newGamePopup.SetActive(state == MenuState.NewGamePopup);
+optionsPanel.SetActive(state == MenuState.Options);
+quitPanel.SetActive(state == MenuState.Quit);
+}
+
+Poi OpenOptions diventa semplicemente SetState(MenuState.Options). Vantaggi: aggiungere un nuovo pannello significa aggiungere un enum e una riga, non riscrivere metodi, e non puoi mai avere due pannelli attivi per errore. Per le sotto-sezioni delle Options puoi fare la stessa cosa con un secondo enum.
+
+Piccola nota sull'audio: ti manca il Toggle per il mute della musica che era esplicitamente richiesto dall'enunciato. Aggiungerlo è banale visto che hai già un AudioMixer configurato, basta un metodo che imposti il parametro a -80 dB quando spento.
+
+L'HUD di gioco è fatto benissimo. Le tre barre di risorse (PV, PS, PK) in alto a sinistra, i tre contatori centrali con LIVES, TIME e SCORE, il timer con i millisecondi. È un HUD da action arcade, leggibile e completo, e supera abbondantemente i requisiti minimi dell'esercizio.
+
+Lo stile visivo è coerente su tutto, dalla Start Screen "PREMI UN TASTO" (bellissima citazione retro) al Main Menu con il tuo H.A.L.F. e il logo Arancina Meccanica, fino al pannello Option e alla pausa. La palette arancio/bianco/nero e la tipografia pixel funzionano perfettamente per il genere.
+
+Una cosa che ho notato nel pannello Option: la voce "VIDEO" appare due volte nel menu di sinistra. Immagino che uno dei quattro Toggle (Audio, Video, Comandi, Risultati) abbia il label sbagliato copiato da Video. 
+
+Continua così. A presto
+
+----------------------------------------------------
+
+Ciao Gabriele,
+
+grazie per l'aggiornamento e sono contento che i consigli ti siano utili. Ti rispondo su un paio di cose.
+
+Sugli ScriptableObject per nemici e arma, hai fatto la scelta giusta a partire dall'arma principale e poi estendere. È il modo corretto di introdurre nuovi sistemi: prima uno funzionante e testato, poi generalizzi. Un consiglio: quando estenderai agli altri tipi di arma, valuta se creare una classe base astratta WeaponData da cui ereditare le varianti specifiche (es. RapidFireWeaponData, ChargedWeaponData). Così puoi avere campi comuni condivisi e comportamenti specifici senza duplicazione.
+
+Sul clamping del player nell'inquadratura, se non l'hai già fatto ti consiglio di calcolare i limiti dinamicamente dalla camera con Camera.main.ViewportToWorldPoint invece di hardcodare i valori. In questo modo se cambi risoluzione o aspect ratio i limiti si adattano da soli.
+
+I pattern di movimento ZIG ZAG e KAMIKAZE sono ottimi punti di partenza. Se vuoi rendere il sistema estensibile senza riempire il codice di if/else, 
+valuta un pattern Strategy: un'interfaccia IEnemyMovement con un metodo Move(), e classi concrete ZigZagMovement, KamikazeMovement, ecc. che il nemico riceve come componente o come riferimento nello ScriptableObject. Così aggiungere un nuovo pattern significa scrivere una nuova classe senza toccare quelle esistenti.
+
+Al momento non ho fatto una nuova revisione del repo aggiornato, ma appena riesco a smaltire un po' di lavoro vado a visionarlo meglio e darti quindi un feedback più approfondito.
+
+A presto
 
 
 

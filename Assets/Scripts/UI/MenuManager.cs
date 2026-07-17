@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 public class MenuManager : MonoBehaviour
 {
+
+    [HideInInspector]
+    public enum MenuState { Main, NewGamePopup, Options, Quit }
+
     [Header("Schermate Principali")]
     [SerializeField] private GameObject panelMainMenu;
     [SerializeField] private GameObject startScreenPanel;
@@ -57,10 +61,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void OnLevelScene()
-    {
-        StartCoroutine(LoadSceneWithFade("TestLevel"));
-    }
+    
 
     private void Update()
     {
@@ -81,22 +82,17 @@ public class MenuManager : MonoBehaviour
 
     public void OpenNewGamePopup()
     {
-        newGamePopup.SetActive(true);
+        SetState(MenuState.NewGamePopup);
     }
     public void CloseNewGamePopup()
     {
-        newGamePopup.SetActive(false);
+        SetState(MenuState.Main);
     }
 
     public void OpenOptions()
     {
-        optionsPanel.SetActive(true);
-        panelMainMenu.SetActive(false);
-        audioSettingsPanel.SetActive(true);
-        videoSettingsPanel.SetActive(false);
-        comandsSettingsPanel.SetActive(false);
-        resultsSettingsPanel.SetActive(false);
-
+        SetState(MenuState.Options);
+    
         // 1. Forza lo stato logico iniziale
         toggleAudio.isOn = true;
         toggleVideo.isOn = false;
@@ -107,6 +103,49 @@ public class MenuManager : MonoBehaviour
         // 2. LA SOLUZIONE: Forziamo il Toggle ad entrare in Select Mode.
 
         StartCoroutine(SelectDefaultToggle());
+    }
+
+
+    public void CloseOptions()
+    {
+        SetState(MenuState.Main);
+        audioSettingsPanel.SetActive(true);
+        videoSettingsPanel.SetActive(false);
+        comandsSettingsPanel.SetActive(false);
+        resultsSettingsPanel.SetActive(false);
+        toggleAudio.isOn = true;
+        toggleVideo.isOn = false;
+        toggleComands.isOn = false;
+        toggleResults.isOn = false;
+    }
+
+    public void OpenQuit()
+    {
+        SetState(MenuState.Quit);
+    }
+    public void CloseQuit()
+    {
+        SetState(MenuState.Main);
+    }
+    public void QuitGame()
+    {
+        Debug.Log("Chiusura del gioco in corso...");
+        Application.Quit();
+    }
+
+
+
+    public void SetState(MenuState state)
+    {
+        panelMainMenu.SetActive(state == MenuState.Main);
+        newGamePopup.SetActive(state == MenuState.NewGamePopup);
+        optionsPanel.SetActive(state == MenuState.Options);
+        quitPanel.SetActive(state == MenuState.Quit);
+    }
+
+    public void OnLevelScene()
+    {
+        StartCoroutine(LoadSceneWithFade("TestLevel"));
     }
 
     private IEnumerator SelectDefaultToggle()
@@ -120,35 +159,6 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void CloseOptions()
-    {
-        optionsPanel.SetActive(false);
-        panelMainMenu.SetActive(true);
-        audioSettingsPanel.SetActive(true);
-        videoSettingsPanel.SetActive(false);
-        comandsSettingsPanel.SetActive(false);
-        resultsSettingsPanel.SetActive(false);
-        toggleAudio.isOn = true;
-        toggleVideo.isOn = false;
-        toggleComands.isOn = false;
-        toggleResults.isOn = false;
-    }
-
-    public void OpenQuit()
-    {
-        quitPanel.SetActive(true);
-    }
-    public void CloseQuit()
-    {
-        quitPanel.SetActive(false);
-    }
-    public void QuitGame()
-    {
-        Debug.Log("Chiusura del gioco in corso...");
-        Application.Quit();
-    }
-
-   
     private IEnumerator LoadSceneWithFade(string sceneName)
     {
         isTransitioning = true;                 // Segniamo che è in corso una transizione.
