@@ -2,14 +2,26 @@ using UnityEngine;
 
 public class ZigZagMovement : MonoBehaviour, IEnemyMovement 
 {
-    public float amplitude = 1f; 
-    public float frequency = 1f; 
+    private Enemy enemy;
+    public float amplitude = 5f; 
+    public float frequency = 10f;
+
+    private void Awake()
+    {
+        enemy = GetComponent<Enemy>();
+    }
 
     public void Move()
     { 
-        float y = Mathf.Sin(Time.time * frequency) * amplitude;
-        transform.position += new Vector3(0, y, 0) * Time.deltaTime;
 
+        float zigZag = Mathf.Sin(Time.time * frequency) * amplitude;
+
+        if (enemy != null)
+        {
+            if(enemy.dir == Enemy.DIRECTION.Forward)
+                transform.position += new Vector3(-1, zigZag * enemy.MoveSpeed, 0) * Time.deltaTime;
+
+        }//Debug.Log("ZigZagMovement: Moving in a zig-zag pattern.");
     }
     
 }

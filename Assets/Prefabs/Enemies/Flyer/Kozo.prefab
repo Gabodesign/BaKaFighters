@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8490032978606202457}
   - component: {fileID: 149740739886276656}
   - component: {fileID: 922976867925680526}
+  - component: {fileID: 9148868236333810841}
+  - component: {fileID: 316758186509864434}
   m_Layer: 9
   m_Name: Kozo
   m_TagString: Enemy
@@ -199,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kozo
   data: {fileID: 11400000, guid: 68488625a10b624439c0863de7c7824c, type: 2}
-  dir: 0
   isNormalized: 1
+  dir: 0
 --- !u!114 &149740739886276656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,3 +244,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &9148868236333810841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782416603516763062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926e92354a84fe846909dbeb56d35f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyActivation
+  target: {fileID: 0}
+  activationDistance: 22
+  controlShooter: 0
+  controlMovement: 1
+  enemy: {fileID: 8490032978606202457}
+  enemyShoot: {fileID: 0}
+--- !u!114 &316758186509864434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782416603516763062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38ecad183c1a8447acd788b5e7d02ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZigZagMovement
+  amplitude: 2
+  frequency: 10

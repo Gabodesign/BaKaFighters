@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     private void CalculateMovement()
     {
         //limitazione movimento player
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-5f, 5f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-15f, 15f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
     }
 
 

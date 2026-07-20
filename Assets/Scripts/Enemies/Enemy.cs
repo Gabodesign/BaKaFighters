@@ -7,6 +7,8 @@ public abstract class Enemy : MonoBehaviour
     // Lo stato del nemico specifico in scena sta qui!
     protected float currentHealth;
     protected HitEffect hitDamage;
+    protected IEnemyMovement movement;
+    [SerializeField] public bool isNormalized = true;
     public bool CanShoot
     {
         get { return data != null && data.canShoot; }
@@ -15,6 +17,11 @@ public abstract class Enemy : MonoBehaviour
     public GameObject BulletPrefab
     {
         get { return data.bulletPrefab; }
+    }
+
+    public float MoveSpeed
+    {
+        get { return data.moveSpeed; }
     }
 
     public enum DIRECTION
@@ -31,6 +38,11 @@ public abstract class Enemy : MonoBehaviour
     {
         // Il componente lo salviamo sul MonoBehaviour, non nel Data
         hitDamage = GetComponent<HitEffect>();
+        if(data != null && data.canMove)
+        {
+            movement = GetComponent<IEnemyMovement>();
+            Debug.Log("Enemy movement component: " + movement);
+        }
     }
 
     public virtual void Start()

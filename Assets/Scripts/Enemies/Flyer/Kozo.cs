@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Kozo : Enemy
 {
-    [SerializeField] private bool isNormalized = true;
+    
     private Vector2 moveDirection;
 
     public override void Start()
@@ -21,6 +21,8 @@ public class Kozo : Enemy
     // Cambiato il tipo dell'argomento da Enum a DIRECTION
     void SelectDirection(DIRECTION direction)
     {
+    
+
         switch (direction)
         {
             case DIRECTION.Forward:
@@ -35,6 +37,9 @@ public class Kozo : Enemy
             case DIRECTION.Bottom:
                 moveDirection = new Vector2(0f, -1f);
                 break;
+            default:
+                moveDirection = Vector2.zero;
+                break;
         }
 
         if (isNormalized)
@@ -42,8 +47,14 @@ public class Kozo : Enemy
             moveDirection = moveDirection.normalized;
         }
 
-        // Accediamo a moveSpeed tramite "data"
-        Vector3 delta = (Vector3)(moveDirection * data.moveSpeed * Time.deltaTime);
-        transform.Translate(delta, Space.World);
+        if (movement != null)
+        {
+            movement.Move();
+        }
+        else
+        {
+            Vector3 delta = (Vector3)(moveDirection * MoveSpeed * Time.deltaTime);
+            transform.Translate(delta, Space.World);
+        }
     }
 }

@@ -285,6 +285,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyActivation
   target: {fileID: 0}
+  activationDistance: 22
+  controlShooter: 1
+  controlMovement: 0
+  enemy: {fileID: 6578470556891618894}
+  enemyShoot: {fileID: 990257195290222651}
 --- !u!1 &6385696222108820081
 GameObject:
   m_ObjectHideFlags: 0

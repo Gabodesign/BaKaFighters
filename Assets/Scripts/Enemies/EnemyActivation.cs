@@ -17,8 +17,9 @@ public class EnemyActivation : MonoBehaviour
     
     private void Awake()
     {
-        if(enemy == null) enemy = GetComponent<Enemy>();
-        if(enemyShoot == null) enemyShoot = GetComponent<EnemyShoot>();
+        if(controlMovement && enemy == null) enemy = GetComponent<Enemy>();
+
+        if(controlShooter && enemyShoot == null) enemyShoot = GetComponent<EnemyShoot>();
     }
 
     // Update is called once per frame
@@ -26,9 +27,10 @@ public class EnemyActivation : MonoBehaviour
     {
         if (target == null) return;
         float distPlayer = Vector3.SqrMagnitude(transform.position - target.position);
-        Debug.Log(distPlayer);
+        //Debug.Log(distPlayer);
         if (distPlayer <= activationDistance)
         {
+            Debug.Log("Enemy activated: " + gameObject.name);
             // Activate enemy behavior
             if (controlMovement) enemy.enabled = true;
             if (controlShooter) enemyShoot.enabled = true;

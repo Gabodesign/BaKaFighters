@@ -457,9 +457,9 @@ optionsPanel.SetActive(state == MenuState.Options);
 quitPanel.SetActive(state == MenuState.Quit);
 }
 
-Poi OpenOptions diventa semplicemente SetState(MenuState.Options). Vantaggi: aggiungere un nuovo pannello significa aggiungere un enum e una riga, non riscrivere metodi, e non puoi mai avere due pannelli attivi per errore. Per le sotto-sezioni delle Options puoi fare la stessa cosa con un secondo enum.
+Poi OpenOptions diventa semplicemente SetState(MenuState.Options). Vantaggi: aggiungere un nuovo pannello significa aggiungere un enum e una riga, non riscrivere metodi, e non puoi mai avere due pannelli attivi per errore. Per le sotto-sezioni delle Options puoi fare la stessa cosa con un secondo enum. FATTO
 
-Piccola nota sull'audio: ti manca il Toggle per il mute della musica che era esplicitamente richiesto dall'enunciato. Aggiungerlo è banale visto che hai già un AudioMixer configurato, basta un metodo che imposti il parametro a -80 dB quando spento.
+Piccola nota sull'audio: ti manca il Toggle per il mute della musica che era esplicitamente richiesto dall'enunciato. Aggiungerlo è banale visto che hai già un AudioMixer configurato, basta un metodo che imposti il parametro a -80 dB quando spento. FATTO
 
 L'HUD di gioco è fatto benissimo. Le tre barre di risorse (PV, PS, PK) in alto a sinistra, i tre contatori centrali con LIVES, TIME e SCORE, il timer con i millisecondi. È un HUD da action arcade, leggibile e completo, e supera abbondantemente i requisiti minimi dell'esercizio.
 

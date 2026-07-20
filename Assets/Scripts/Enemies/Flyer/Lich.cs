@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Lich : Enemy
 {
-    [SerializeField] private bool isNormalized = true;
     private Vector2 moveDirection;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
