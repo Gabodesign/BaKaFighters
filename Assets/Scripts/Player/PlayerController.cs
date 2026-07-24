@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     [Header("Component Player Shield")]   
     [SerializeField] public float shield;    
     [SerializeField] public float maxShield; 
-
     [Header("Component Player Ki")]       
     [SerializeField] public float ki;        
     [SerializeField] public float maxKi;
@@ -77,6 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             UIController.Instance.UpdateHealthSlider(health, maxHealth);
         }
+        GameManager.Instance.SaveGame(GameManager.Instance.currentSlot);
     }
 
     // Update is called once per frame
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     private void CalculateMovement()
     {
         //limitazione movimento player
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-15f, 15f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-3f, 3f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
     }
 
 
