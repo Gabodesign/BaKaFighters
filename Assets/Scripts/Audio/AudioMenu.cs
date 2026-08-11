@@ -17,6 +17,11 @@ public class AudioMenu : MonoBehaviour, ISelectHandler, ISubmitHandler, IPointer
         PlaySubmitSound();
     }
 
+    public void OnCancel(BaseEventData eventData)
+    {
+        PlayCancelSound();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         PlaySubmitSound();
@@ -39,6 +44,13 @@ public class AudioMenu : MonoBehaviour, ISelectHandler, ISubmitHandler, IPointer
         }
     }
 
-    
+    private void PlayCancelSound()
+    {
+        if (AudioManager.instance.SFXSource != null && AudioManager.instance.cancel != null)
+        {
+            AudioManager.instance.PlaySFX(AudioManager.instance.cancel);
+        }
+    }
+
 
 }

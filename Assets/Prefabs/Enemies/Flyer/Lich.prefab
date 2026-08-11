@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6883171586954846622}
   - component: {fileID: 7735934758837095825}
   - component: {fileID: 766523408405770937}
+  - component: {fileID: -4628162390333286396}
   m_Layer: 9
   m_Name: Lich
   m_TagString: Enemy
@@ -91,7 +92,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1079956723
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &795872742617985345
@@ -187,8 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lich
   data: {fileID: 11400000, guid: 0e5c8d425226c7242ad160723720d24d, type: 2}
-  dir: 0
   isNormalized: 1
+  dir: 0
 --- !u!114 &7735934758837095825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,3 +231,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-4628162390333286396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587654235803017888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926e92354a84fe846909dbeb56d35f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyActivation
+  target: {fileID: 0}
+  activationDistance: 800
+  controlShooter: 0
+  controlMovement: 1
+  enemy: {fileID: 6883171586954846622}
+  enemyShoot: {fileID: 0}

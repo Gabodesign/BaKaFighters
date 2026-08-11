@@ -1,11 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveSlotsPanel : MonoBehaviour
 {
-    [SerializeField] private GameObject filledSlotPrefab;
-    [SerializeField] private GameObject emptySlotPrefab;
-    [SerializeField] private Transform container;
-    [SerializeField] private MenuManager menuManager;
+    [SerializeField] public GameObject filledSlotPrefab;
+    [SerializeField] public GameObject emptySlotPrefab;
+    [SerializeField] public Transform container;
+    [SerializeField] public MenuManager menuManager;
 
     public void Populate(MenuManager.MainMenuSlotMode mode)
     {
@@ -13,6 +15,7 @@ public class SaveSlotsPanel : MonoBehaviour
             Destroy(child.gameObject);
 
         SaveData[] saveSlots = GameManager.Instance.saveSlots;
+        List<SaveSlotUI> newSlots = new List<SaveSlotUI>();
 
         for (int i = 0; i < saveSlots.Length; i++)
         {
@@ -22,7 +25,31 @@ public class SaveSlotsPanel : MonoBehaviour
             GameObject prefabToUse = hasData ? filledSlotPrefab : emptySlotPrefab;
             GameObject slotGO = Instantiate(prefabToUse, container);
 
-            slotGO.GetComponent<SaveSlotUI>().Setup(i, data, mode, menuManager);
+            var slotUI = slotGO.GetComponent<SaveSlotUI>();
+            slotUI.Setup(i, data, mode, menuManager);
+            newSlots.Add(slotUI);
         }
+
+        SelectFirstInteractableSlot(newSlots);
+    }
+
+    private void SelectFirstInteractableSlot(List<SaveSlotUI> slots)
+    {
+        foreach (var slotUI in slots)
+        {
+            if (slotUI != null && slotUI.MainButton != null && slotUI.MainButton.interactable)
+            {
+                menuManager.SelectFirstButton(slotUI.MainButton.gameObject);
+                return;
+            }
+        }
+    }
+
+    public Button GetSlotButton(int index)
+    {
+        if (index < 0 || index >= container.childCount) return null;
+
+        var slotUI = container.GetChild(index).GetComponent<SaveSlotUI>();
+        return slotUI != null ? slotUI.MainButton : null;
     }
 }

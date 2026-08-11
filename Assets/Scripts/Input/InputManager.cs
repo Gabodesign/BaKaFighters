@@ -35,7 +35,11 @@ public class InputManager : MonoBehaviour
 
         controls.Player.Pause.performed += ctx => OnPause?.Invoke();
 
-        controls.UI.Cancel.performed += ctx => OnCanceled?.Invoke();
+        //controls.UI.Cancel.performed += ctx => OnCanceled?.Invoke();
+        controls.UI.Cancel.performed += ctx => {
+            Debug.Log("Cancel action fired!");
+            OnCanceled?.Invoke();
+        };
     }
 
     private void OnDisable()

@@ -149,7 +149,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1953149781
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!50 &8770760302985171635
@@ -292,6 +292,7 @@ MonoBehaviour:
   ki: 0
   maxKi: 100
   weaponController: {fileID: 7701445483731917806}
+  playerInput: {fileID: 0}
   hitEffect: {fileID: 6579844894698067075}
 --- !u!114 &5203534659725818926
 MonoBehaviour:
@@ -305,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4c328b35507f64ea279ecb8269a798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletArm
+  minAudioInterval: 0.04
 --- !u!114 &6579844894698067075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,9 +354,12 @@ MonoBehaviour:
   startingWeapon: 0
   currentWeaponLevel: 0
   armTransform: {fileID: 3161775371163889642}
-  mouseSmoothSpeed: 15
-  gamepadSmoothSpeed: 10
   firePoint: {fileID: 2223177132453103497}
+  smoothSpeed: 30
+  offset: -167.95
+  useLimits: 0
+  minAngle: -170
+  maxAngle: 80
   isShooting: 0
 --- !u!1 &1553189915110879084
 GameObject:

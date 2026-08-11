@@ -1,8 +1,11 @@
-using UnityEngine;
-using UnityEngine.UI;                  
-using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;                  
 public class MenuManager : MonoBehaviour
 {
     [HideInInspector]
@@ -10,12 +13,23 @@ public class MenuManager : MonoBehaviour
     public enum MainMenuSlotMode { NewGame, LoadGame }
     private MainMenuSlotMode currentSlotMode;
 
+    [System.Serializable]
+    public class StateFirstSelected
+    {
+        public MenuState state;
+        public GameObject firstSelected;
+    }
+
+    [Header("Navigazione UI")]
+    [SerializeField] private List<StateFirstSelected> firstSelectedPerState;
+    [SerializeField] private EventSystem eventSystem;
 
     [Header("Schermate Principali")]
     [SerializeField] private GameObject panelMainMenu;
     [SerializeField] private GameObject startScreenPanel;
     [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject loadgameButton;
+    [SerializeField] private GameObject newGameButton;
+    [SerializeField] private GameObject loadGameButton;
 
     [Header("Pannelli Secondari")]
     [SerializeField] private GameObject newGamePopup;
@@ -48,7 +62,7 @@ public class MenuManager : MonoBehaviour
     [Header("Fade")]
     public Image fadeImage;                        
     public float fadeDuration = 0.3f;
-    private bool isTransitioning = false;
+    private bool isTransitioning;
 
     [Header("Save Slots Panel")]
     [SerializeField] private SaveSlotsPanel saveSlotsPanel;
@@ -56,6 +70,8 @@ public class MenuManager : MonoBehaviour
     [Header("Scena di gioco")]
     private int selectedSlotIndex = -1; // Memorizza quale slot (0, 1 o 2) è stato cliccato
     private bool isGameStarted = false;
+
+
     private void Start()
     {
         // Setup iniziale della scena per sicurezza
@@ -94,9 +110,11 @@ public class MenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if(InputManager.Instance != null)
+        Debug.Log($"MenuManager OnEnable - InputManager.Instance: {(InputManager.Instance != null ? "OK" : "NULL")}");
+        if (InputManager.Instance != null)
         {
             InputManager.Instance.OnCanceled += CloseSaveLoad;
+            Debug.Log("Sottoscritto a OnCanceled");
         }
     }
 
@@ -116,15 +134,16 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
 
         UpdateLoadButtonVisibility(); // Aggiorna la visibilità del pulsante LoadGame
+        StartCoroutine(SelectNextFrame(newGameButton.gameObject));
     }
 
     //funzione per aggiornare la visibilità del pulsante LoadGame in base alla presenza di salvataggi
     public void UpdateLoadButtonVisibility()
     {
-        if (loadgameButton != null && GameManager.Instance != null)
+        if (loadGameButton != null && GameManager.Instance != null)
         {
             // Se HasAnySaveFile() è false, SetActive riceve false e NASCONDE il pulsante
-            loadgameButton.SetActive(GameManager.Instance.HasAnySaveFile());
+            loadGameButton.SetActive(GameManager.Instance.HasAnySaveFile());
         }
     }
 
@@ -167,6 +186,7 @@ public class MenuManager : MonoBehaviour
                 OpenNewGamePopup();
                 if (confirmNewGamePopup != null) confirmNewGamePopup.SetActive(false);
                 if (overwriteNewGamePopup != null) overwriteNewGamePopup.SetActive(true);
+                SelectFirstButton(overwriteNewGamePopup.gameObject);
             }
             else
             {
@@ -175,6 +195,7 @@ public class MenuManager : MonoBehaviour
                 OpenNewGamePopup();
                 if (confirmNewGamePopup != null) confirmNewGamePopup.SetActive(true);
                 if (overwriteNewGamePopup != null) overwriteNewGamePopup.SetActive(false);
+                SelectFirstButton(confirmNewGamePopup.gameObject);
             }
         }
         else if (currentSlotMode == MainMenuSlotMode.LoadGame)
@@ -238,6 +259,7 @@ public class MenuManager : MonoBehaviour
     {
         SetState(MenuState.SaveLoad);
         currentSlotMode = MainMenuSlotMode.NewGame;
+        ReselectCurrentSlot();
     }
 
 
@@ -263,9 +285,20 @@ public class MenuManager : MonoBehaviour
     {
         SetState(MenuState.SaveLoad);
         currentSlotMode = MainMenuSlotMode.LoadGame;
+        ReselectCurrentSlot();
     }
 
 
+    private void ReselectCurrentSlot()
+    {
+        if (saveSlotsPanel == null || selectedSlotIndex < 0) return;
+
+        Button slotButton = saveSlotsPanel.GetSlotButton(selectedSlotIndex);
+        if (slotButton != null)
+        {
+            SelectFirstButton(slotButton.gameObject);
+        }
+    }
 
     public void OpenOptions()
     {
@@ -323,6 +356,24 @@ public class MenuManager : MonoBehaviour
         loadGamePopup.SetActive(state == MenuState.LoadGamePopup);
         optionsPanel.SetActive(state == MenuState.Options);
         quitPanel.SetActive(state == MenuState.Quit);
+
+        SelectFirstButtonForState(state);
+    }
+
+    private void SelectFirstButtonForState(MenuState state)
+    {
+        var entry = firstSelectedPerState.Find(e => e.state == state);
+        if (entry != null && entry.firstSelected != null)
+        {
+            StartCoroutine(SelectNextFrame(entry.firstSelected));
+        }
+    }
+
+    public void SelectFirstButton(GameObject target)
+    {
+        Debug.Log($"SelectFirstButton chiamato con target: {target?.name}");
+        if (target == null) return;
+        StartCoroutine(SelectNextFrame(target));
     }
 
     public void OnLevelScene()
@@ -368,5 +419,15 @@ public class MenuManager : MonoBehaviour
 
         // Carichiamo la scena (es. "Loading").
         SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerator SelectNextFrame(GameObject target)
+    {
+        yield return null;
+        if (target == null) yield break; // il target è stato distrutto nel frattempo, esci senza errori
+
+        if (eventSystem == null) eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(target);
     }
 }

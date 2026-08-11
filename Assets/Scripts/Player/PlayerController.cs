@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [Header("Weapon Controller")]
     [SerializeField] private WeaponController weaponController;
 
+    [Header("Input Action")]
+    [SerializeField] private PlayerInput playerInput;
+
     [Header("Effetto")]
     [SerializeField] protected HitEffect hitEffect;
 
@@ -138,13 +141,13 @@ public class PlayerController : MonoBehaviour
     private void CalculateMovement()
     {
         //limitazione movimento player
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-3f, 3f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-10f, 1f), Mathf.Clamp(transform.position.y, -7f, 7f), 0);
     }
 
 
     void SetAnimation(string anim, bool loop)
     {
-        if (currentAnim == anim) return;
+        //if (currentAnim == anim) return;
 
         skeletonAnimation.state.SetAnimation(0, anim, loop);
     }

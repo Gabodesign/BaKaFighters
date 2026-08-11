@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34b8f4ee63431947ba081990726c0e3, type: 3}
   m_Name: YellowKozo
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Kozo
-  maxHealth: 10
-  moveSpeed: 5
+  enemyName: Yellow Kozo
+  maxHealth: 5
+  moveSpeed: 1
   scoreValue: 50
   touchDamage: 10
   useTouchDamage: 1
   canMove: 1
   canShoot: 1
   bulletPrefab: {fileID: 1406269182908934030, guid: 0c66748db7b081b4283ce2edc494265f, type: 3}
-  fireRate: 0
   colorDamage: {r: 1, g: 0, b: 0, a: 1}

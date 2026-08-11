@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kozo
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Kozo
-  maxHealth: 10
+  maxHealth: 3
   moveSpeed: 5
   scoreValue: 50
   touchDamage: 10

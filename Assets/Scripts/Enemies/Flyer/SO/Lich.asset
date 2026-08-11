@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Lich
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Lich
-  maxHealth: 10
-  moveSpeed: 5
+  maxHealth: 1
+  moveSpeed: 1
   scoreValue: 50
   touchDamage: 10
   useTouchDamage: 1
   canMove: 1
   canShoot: 0
   bulletPrefab: {fileID: 0}
-  fireRate: 0
   colorDamage: {r: 1, g: 0, b: 0, a: 1}

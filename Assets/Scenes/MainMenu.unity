@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2124,6 +2124,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246032209}
   m_CullTransparentMesh: 1
+--- !u!1 &248711408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+  m_PrefabInstance: {fileID: 987532872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &260823862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2132,6 +2137,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 415215495}
     m_Modifications:
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1611608760}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 2076101067}
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2231,6 +2248,14 @@ PrefabInstance:
     - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_text
       value: Quit Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_fontSize
+      value: 56.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2705,7 +2730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8223,6 +8248,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 415215495}
     m_Modifications:
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 2076101067}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1611608760}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1409537924}
@@ -8318,6 +8355,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Load Game
       objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_fontSize
+      value: 56.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8333,6 +8378,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
   m_PrefabInstance: {fileID: 528020706}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &528020710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+  m_PrefabInstance: {fileID: 528020706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528020708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &561138596
 GameObject:
   m_ObjectHideFlags: 0
@@ -8962,7 +9018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10332,7 +10388,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
   m_PrefabInstance: {fileID: 1556251089}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2087592242}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -10814,7 +10870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10890,7 +10946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11652,7 +11708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11756,7 +11812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 625420165}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1102931529
@@ -12020,7 +12076,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3852007800295442319, guid: d3b1e660af5de2b4d9532506aba13465, type: 3}
   m_PrefabInstance: {fileID: 2131061570}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2054418936}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
@@ -13415,10 +13471,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac5437844e2a8d49b0c0970d321c0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+  firstSelectedPerState:
+  - state: 0
+    firstSelected: {fileID: 625420165}
+  - state: 3
+    firstSelected: {fileID: 248711408}
+  - state: 4
+    firstSelected: {fileID: 2054418936}
+  - state: 5
+    firstSelected: {fileID: 2087592242}
+  eventSystem: {fileID: 1102931528}
   panelMainMenu: {fileID: 1429410096}
   startScreenPanel: {fileID: 32264396}
   mainMenuPanel: {fileID: 415215494}
-  loadgameButton: {fileID: 528020708}
+  newGameButton: {fileID: 625420165}
+  loadGameButton: {fileID: 528020708}
   newGamePopup: {fileID: 1910120752}
   confirmNewGamePopup: {fileID: 1745362252}
   overwriteNewGamePopup: {fileID: 1888410856}
@@ -13554,7 +13621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13659,7 +13726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -14122,7 +14189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -14661,7 +14728,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
   m_PrefabInstance: {fileID: 987532872}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 248711408}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -14680,6 +14747,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 415215495}
     m_Modifications:
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 528020710}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 2123411066}
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -14780,6 +14859,14 @@ PrefabInstance:
       propertyPath: m_text
       value: option
       objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_fontSize
+      value: 56.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14790,6 +14877,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
   m_PrefabInstance: {fileID: 1611608757}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1611608760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+  m_PrefabInstance: {fileID: 1611608757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1627583556
 GameObject:
   m_ObjectHideFlags: 0
@@ -15097,7 +15195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16783,7 +16881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -17273,7 +17371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -17498,7 +17596,6 @@ GameObject:
   - component: {fileID: 1993575441}
   - component: {fileID: 1993575443}
   - component: {fileID: 1993575442}
-  - component: {fileID: 1993575444}
   m_Layer: 5
   m_Name: PanelMain
   m_TagString: Untagged
@@ -17546,7 +17643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -17570,26 +17667,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993575440}
   m_CullTransparentMesh: 1
---- !u!114 &1993575444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993575440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24da80bf1b86e6747a30f42823d5d690, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
-  mainMenuButtons: []
-  optionsButtons: []
-  newGamePopupButtons: []
-  loadGamePopupButtons: []
-  deleteGamePopupButtons: []
-  exitGamePopupButtons: []
-  isLoad: 0
-  eventSystem: {fileID: 0}
 --- !u!1 &2003851332
 GameObject:
   m_ObjectHideFlags: 0
@@ -23302,6 +23379,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048254305}
   m_CullTransparentMesh: 1
+--- !u!1 &2054418936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4518228864880951926, guid: d3b1e660af5de2b4d9532506aba13465, type: 3}
+  m_PrefabInstance: {fileID: 2131061570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2056226243
 GameObject:
   m_ObjectHideFlags: 0
@@ -23909,6 +23991,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 415215495}
     m_Modifications:
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 2123411066}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 528020710}
+    - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1409537924}
@@ -24012,6 +24106,14 @@ PrefabInstance:
       propertyPath: m_text
       value: New game
       objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_fontSize
+      value: 56.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218868415057101274, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24022,6 +24124,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
   m_PrefabInstance: {fileID: 2076101064}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2076101067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+  m_PrefabInstance: {fileID: 2076101064}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625420165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &2079727930
 GameObject:
   m_ObjectHideFlags: 0
@@ -24249,6 +24362,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &2087592242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+  m_PrefabInstance: {fileID: 1556251089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2089720528 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
@@ -24646,6 +24764,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104153400}
   m_CullTransparentMesh: 1
+--- !u!114 &2123411066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+  m_PrefabInstance: {fileID: 260823862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &2131061570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24968,13 +25097,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2336078119663336643, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: MinDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4767636570411265177, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4767636570411265177, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: MinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25011,6 +25160,14 @@ PrefabInstance:
     - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273309226323795361, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980545185447315875, guid: 24fc3b6636f0890458f2fe18c07e99b1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,6 +2,7 @@ using Spine.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(1000)]
 public class WeaponController : MonoBehaviour
 {
     [Header("Armi")]
@@ -11,22 +12,25 @@ public class WeaponController : MonoBehaviour
     public int currentWeaponLevel = 0;
 
     [Header("References")]
-    public Transform armTransform; // L'osso Arm_A1 in Override
-
-
-    [Header("Settings")]
-    public float mouseSmoothSpeed = 15f;
-    public float gamepadSmoothSpeed = 10f;
-
-    // Il tuo offset magico basato sul file Spine
-    private float offset = -167.95f;
-    private float currentAngle;
-
+    public Transform armTransform; // L'osso Arm_A1
     public Transform firePoint;
+    [Header("Settings - Fluidità Puntatore")]
+    public float smoothSpeed = 30f;
+
+    [Header("Settings - Limiti di Rotazione")]
+    [SerializeField] private float offset = -167.95f;
+
+    [Tooltip("Limite inferiore: quanto può scendere l'arma (es. -120, -150 per andare verso il basso)")]
+    [SerializeField] private float minAngle = -150f;
+
+    [Tooltip("Limite superiore: quanto può salire l'arma (es. 40, 60 per andare verso l'alto)")]
+    [SerializeField] private float maxAngle = 40f;
+
     public bool isShooting = false;
 
-    // Variabile per memorizzare la direzione di puntamento corrente
+    private float currentAngle;
     private Vector2 aimInput;
+    private bool isGamepad = false;
 
     private void Awake()
     {
@@ -37,9 +41,9 @@ public class WeaponController : MonoBehaviour
     {
         if (InputManager.Instance != null)
         {
-            // Ci iscriviamo all'evento del puntamento
             InputManager.Instance.OnAim += HandleAimInput;
         }
+        InputSystem.onActionChange += OnActionChange;
     }
 
     private void OnDisable()
@@ -48,6 +52,18 @@ public class WeaponController : MonoBehaviour
         {
             InputManager.Instance.OnAim -= HandleAimInput;
         }
+        InputSystem.onActionChange -= OnActionChange;
+    }
+
+    private void OnActionChange(object obj, InputActionChange change)
+    {
+        if (change == InputActionChange.ActionPerformed && obj is InputAction action)
+        {
+            if (action.activeControl != null)
+            {
+                isGamepad = action.activeControl.device is Gamepad;
+            }
+        }
     }
 
     private void HandleAimInput(Vector2 input)
@@ -55,57 +71,64 @@ public class WeaponController : MonoBehaviour
         aimInput = input;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        if (InputManager.Instance == null) return;
+        if (armTransform == null || Camera.main == null) return;
 
         float targetAngle = 0f;
 
-        // Controlliamo lo schema di controllo corrente direttamente dall'InputManager
-        string currentScheme = InputManager.Instance.controls.controlSchemes[0].name;
-        // Nota: Se la stringa sopra ti dà problemi, puoi usare il controllo sulla periferica attiva:
-        bool isGamepad = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
-
         if (isGamepad)
         {
-            if (aimInput.sqrMagnitude > 0.1f)
+            if (aimInput.sqrMagnitude > 0.08f)
             {
-                targetAngle = Mathf.Atan2(aimInput.y, aimInput.x) * Mathf.Rad2Deg;
-                targetAngle = Mathf.Clamp(targetAngle, -40f, 40f);
+                float rawGamepadAngle = Mathf.Atan2(aimInput.y, aimInput.x) * Mathf.Rad2Deg;
+
+                // Applicazione dei limiti prima dell'offset
+                float clampedGamepadAngle = Mathf.Clamp(rawGamepadAngle, minAngle, maxAngle);
+                targetAngle = clampedGamepadAngle + offset;
             }
-            else
-            {
-                targetAngle = 0f;
-            }
+            else return;
         }
         else
         {
-            // Con il mouse, aimInput contiene la posizione dello schermo (Screen Position) XY
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(aimInput.x, aimInput.y, 10f));
-            Vector2 direction = mouseWorldPos - armTransform.position;
+            // 1. Convertiamo il mouse nello spazio Mondo
+            Vector3 mouseScreenPos = new Vector3(aimInput.x, aimInput.y, Mathf.Abs(Camera.main.transform.position.z - armTransform.position.z));
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 
-            targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            targetAngle = Mathf.Clamp(targetAngle, -40f, 40f);
+            // 2. Vettore direzione dall'osso al mouse
+            Vector2 dir = mouseWorldPos - armTransform.position;
+
+            // 3. Calcolo dell'angolo puro della mira
+            float rawAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            // 4. CLAMP: Limitiamo l'angolo puro tra minAngle e maxAngle
+            float clampedAngle = Mathf.Clamp(rawAngle, minAngle, maxAngle);
+
+            // 5. Sommiamo l'offset di Spine SOLO alla fine
+            targetAngle = clampedAngle + offset;
         }
 
-        // Applichiamo il calcolo dell'angolo e l'interpolazione fluida
-        float finalTarget = targetAngle + offset;
-        float lerpSpeed = isGamepad ? gamepadSmoothSpeed : mouseSmoothSpeed;
+        // Gestione personaggio girato a sinistra
+        if (transform.lossyScale.x < 0)
+        {
+            targetAngle = 180f - targetAngle;
+        }
 
-        currentAngle = Mathf.LerpAngle(currentAngle, finalTarget, Time.deltaTime * lerpSpeed);
+        // Interpolazione fluida della rotazione
+        if (smoothSpeed > 0)
+        {
+            currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, Time.deltaTime * smoothSpeed);
+        }
+        else
+        {
+            currentAngle = targetAngle;
+        }
 
-        armTransform.localRotation = Quaternion.Euler(0, 0, currentAngle);
+        armTransform.localEulerAngles = new Vector3(0, 0, currentAngle);
     }
 
-
-    public void ShotPressed()
-    {
-        isShooting = true;
-    }
-    public void ShotReleased()
-    {
-        isShooting = false;
-    }
+    public void ShotPressed() => isShooting = true;
+    public void ShotReleased() => isShooting = false;
 
     public void UpgradeWeapon()
     {
@@ -113,10 +136,6 @@ public class WeaponController : MonoBehaviour
         {
             currentWeaponLevel++;
             Debug.Log($"Weapon upgraded to level {currentWeaponLevel}");
-        }
-        else
-        {
-            Debug.Log("Weapon is already at max level.");
         }
     }
 }

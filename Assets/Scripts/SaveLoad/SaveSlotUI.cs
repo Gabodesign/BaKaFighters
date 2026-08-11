@@ -11,6 +11,7 @@ public class SaveSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dateText;
 
     [SerializeField] private Button button;
+    public Button MainButton => button;
 
     public void Setup(int index, SaveData data, MenuManager.MainMenuSlotMode mode, MenuManager menuManager)
     {

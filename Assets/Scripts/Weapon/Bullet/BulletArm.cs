@@ -1,11 +1,14 @@
 using System;
-using UnityEditor.EditorTools;
 using UnityEngine;
 public class BulletArm : MonoBehaviour
 {
     private WeaponController weaponController;
     
     private float nextFireTime;
+
+    [Header("Audio Optimization")]
+    [SerializeField] private float minAudioInterval = 0.04f; // Tempo minimo tra un suono e l'altro (40ms)
+    private float lastAudioTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Awake()
     {
@@ -33,7 +36,7 @@ public class BulletArm : MonoBehaviour
         int count = Mathf.Max(1, stats.projectilesPerShot);
         float spread = stats.spreadAngle;
 
-        if (AudioManager.instance != null)
+        if (AudioManager.instance != null && Time.time - lastAudioTime >= minAudioInterval)
         {
             AudioManager.instance.PlaySFX(AudioManager.instance.bullet);
         }
