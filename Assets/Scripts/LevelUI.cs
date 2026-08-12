@@ -159,9 +159,9 @@ public class LevelUI : MonoBehaviour
 
         int minutes = (int)(totalTime / 60f) % 60;
         int seconds = (int)(totalTime % 60f);
-        int milliseconds = (int)(totalTime * 1000f) % 1000;
+        int centiseconds = (int)(totalTime * 100f) % 100;
 
-        timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2");
+        timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + centiseconds.ToString("D2");
     }
 
 

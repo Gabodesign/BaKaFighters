@@ -392,6 +392,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DeleteSave",
+                    "type": "Button",
+                    "id": "6c1d4770-cc6c-4718-9de9-e0dd07fa42ca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -684,7 +693,7 @@
                 {
                     "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
-                    "path": "<Keyboard>/backspace",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -843,6 +852,28 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b811135-3903-4dd8-92be-bb52d5ce1cdb",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "DeleteSave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc5aba74-5575-40f5-8242-a173af536272",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "DeleteSave",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

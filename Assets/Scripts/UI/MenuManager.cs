@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [HideInInspector]
-    public enum MenuState { Main, SaveLoad, NewGamePopup, LoadGamePopup, Options, Quit }
+    public enum MenuState { Main, SaveLoad, NewGamePopup, LoadGamePopup, DeleteSavePopup, Options, Quit }
     public enum MainMenuSlotMode { NewGame, LoadGame }
     private MainMenuSlotMode currentSlotMode;
 
@@ -58,6 +58,13 @@ public class MenuManager : MonoBehaviour
     [Header("titoli popup conferma NEW/LOAD game")]
     [SerializeField] private TextMeshProUGUI textNewGamePopUp;
     [SerializeField] private TextMeshProUGUI textLoadGamePopUp;
+
+    [Header("Delete Slot")]
+    [SerializeField] private GameObject deleteSlotPopup;
+    [SerializeField] private TextMeshProUGUI textDeleteSlotPopUp;
+    [SerializeField] private Button confirmDeleteSlotButton;
+
+    private int slotToDeleteIndex = -1; // Memorizza quale slot (0, 1 o 2) è stato selezionato per l'eliminazione
 
     [Header("Fade")]
     public Image fadeImage;                        
@@ -114,7 +121,9 @@ public class MenuManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.OnCanceled += CloseSaveLoad;
-            Debug.Log("Sottoscritto a OnCanceled");
+            
+            InputManager.Instance.OnDeleteSave += HandleDeleteSaveInput;
+            
         }
     }
 
@@ -123,6 +132,7 @@ public class MenuManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.OnCanceled -= CloseSaveLoad;
+            InputManager.Instance.OnDeleteSave -= HandleDeleteSaveInput;
         }
     }
 
@@ -228,6 +238,35 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+
+    private void HandleDeleteSaveInput()
+    {
+        // Ha senso solo se siamo nel pannello SaveLoad
+        if (!saveLoadPanel.activeSelf) return;
+
+
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+        if (selected == null) return;
+
+        SaveSlotUI slotUI = selected.GetComponent<SaveSlotUI>();
+        if (slotUI == null) return;
+
+        RequestDeleteSlot(slotUI.SlotIndex);
+    }
+
+    public void RequestDeleteSlot(int slotIndex)
+    {
+        bool hasData = GameManager.Instance.saveSlots[slotIndex] != null;
+        if (!hasData) return; // niente da cancellare
+
+        slotToDeleteIndex = slotIndex;
+        if (textDeleteSlotPopUp != null)
+            textDeleteSlotPopUp.text = $"Vuoi eliminare il salvataggio dello Slot {slotIndex + 1}?\nQuesta azione è irreversibile.";
+
+        SetState(MenuState.DeleteSavePopup);
+        SelectFirstButton(confirmDeleteSlotButton.gameObject);
+    }
+
     // Collega questo metodo all'eventuale tasto "ELIMINA" o "CESTINO" dello slot
     public void ConfirmDeleteSlot(int slotIndex)
     {
@@ -235,7 +274,25 @@ public class MenuManager : MonoBehaviour
         UpdateLoadButtonVisibility();
         // Qui puoi rinfrescare graficamente lo slot a schermo per mostrare "Vuoto"
         if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode);
+        slotToDeleteIndex = -1;
+        SetState(MenuState.SaveLoad);
+        currentSlotMode = MainMenuSlotMode.NewGame;
     }
+
+    public void CancelDeleteSlot()
+    {
+        int slotToReselect = slotToDeleteIndex;
+        slotToDeleteIndex = -1;
+        SetState(MenuState.SaveLoad);
+
+        // Riseleziona lo slot su cui eri, stesso pattern usato per gli altri popup
+        if (saveSlotsPanel != null && slotToReselect >= 0)
+        {
+            Button slotButton = saveSlotsPanel.GetSlotButton(slotToReselect);
+            if (slotButton != null) SelectFirstButton(slotButton.gameObject);
+        }
+    }
+
 
     public void StartNewGameOnSelectedSlot()
     {
@@ -317,18 +374,6 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    public void CloseOptions()
-    {
-        SetState(MenuState.Main);
-        audioSettingsPanel.SetActive(true);
-        videoSettingsPanel.SetActive(false);
-        comandsSettingsPanel.SetActive(false);
-        resultsSettingsPanel.SetActive(false);
-        toggleAudio.isOn = true;
-        toggleVideo.isOn = false;
-        toggleComands.isOn = false;
-        toggleResults.isOn = false;
-    }
     
 
 
@@ -354,6 +399,7 @@ public class MenuManager : MonoBehaviour
         saveLoadPanel.SetActive(state == MenuState.SaveLoad);
         newGamePopup.SetActive(state == MenuState.NewGamePopup);
         loadGamePopup.SetActive(state == MenuState.LoadGamePopup);
+        deleteSlotPopup.SetActive(state == MenuState.DeleteSavePopup);
         optionsPanel.SetActive(state == MenuState.Options);
         quitPanel.SetActive(state == MenuState.Quit);
 

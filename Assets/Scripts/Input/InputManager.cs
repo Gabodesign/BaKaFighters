@@ -35,11 +35,9 @@ public class InputManager : MonoBehaviour
 
         controls.Player.Pause.performed += ctx => OnPause?.Invoke();
 
-        //controls.UI.Cancel.performed += ctx => OnCanceled?.Invoke();
-        controls.UI.Cancel.performed += ctx => {
-            Debug.Log("Cancel action fired!");
-            OnCanceled?.Invoke();
-        };
+        controls.UI.Cancel.performed += ctx => OnCanceled?.Invoke();
+        controls.UI.DeleteSave.performed += ctx => OnDeleteSave?.Invoke();
+
     }
 
     private void OnDisable()
@@ -57,4 +55,5 @@ public class InputManager : MonoBehaviour
     public event System.Action OnFireCanceled;
     public event System.Action OnPause;
     public event System.Action OnCanceled;
+    public event System.Action OnDeleteSave;
 }

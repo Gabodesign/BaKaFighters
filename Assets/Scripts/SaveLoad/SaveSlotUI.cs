@@ -12,9 +12,11 @@ public class SaveSlotUI : MonoBehaviour
 
     [SerializeField] private Button button;
     public Button MainButton => button;
+    public int SlotIndex { get; private set; }
 
     public void Setup(int index, SaveData data, MenuManager.MainMenuSlotMode mode, MenuManager menuManager)
     {
+        SlotIndex = index;
         bool hasData = data != null;
 
         if (hasData)
