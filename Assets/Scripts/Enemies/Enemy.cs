@@ -9,6 +9,11 @@ public abstract class Enemy : MonoBehaviour
     protected HitEffect hitDamage;
     protected IEnemyMovement movement;
     [SerializeField] public bool isNormalized = true;
+    private Transform playerTransform;
+    private Rigidbody2D rb;
+    public Transform PlayerTransform => playerTransform;
+    public Rigidbody2D Rb => rb;
+    public float DistanceToPlayer => (transform.position - playerTransform.position).sqrMagnitude;
     public bool CanShoot
     {
         get { return data != null && data.canShoot; }
@@ -36,6 +41,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         // Il componente lo salviamo sul MonoBehaviour, non nel Data
         hitDamage = GetComponent<HitEffect>();
         if(data != null && data.canMove)
@@ -49,6 +55,8 @@ public abstract class Enemy : MonoBehaviour
     {
         // Inizializziamo la vita corrente del singolo nemico con la massima del data
         currentHealth = data.maxHealth;
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = playerObject.transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,6 +78,10 @@ public abstract class Enemy : MonoBehaviour
             if (player != null)
             {
                 player.TakeDamage(data.touchDamage);
+                if(movement is KamikazeMovement)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

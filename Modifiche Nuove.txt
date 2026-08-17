@@ -362,13 +362,13 @@ oscillazione verticale usando una funzione sinusoidale (Mathf.Sin)
 La formula è tipo: posY = startY + amplitude * Mathf.Sin(Time.time * frequency)
 Gioca con amplitude (quanto va su/giù) e frequency (quanto veloce oscilla) nell'Inspector fino a trovare il movimento che ti piace.
 
-Kamikaze:
+Kamikaze: FATTO
 
 Il nemico parte con movimento normale
 Quando il player entra in un certo raggio (es. 15 unità), si "attiva"
 Una volta attivato, calcola la direzione verso il player e va dritto a tutta velocità
 Se tocca il player (o qualsiasi cosa), esplode (fa danno in area e si distrugge)
-Hint per l'esplosione in area: Guarda Physics2D.OverlapCircleAll() per trovare tutti i collider in un raggio.
+Hint per l'esplosione in area: Guarda Physics2D.OverlapCircleAll() per trovare tutti i collider in un raggio. DA GUARDARE IN UN SECONDO MOMENTO PER OSTACOLI.
 
 PRIORITÀ — ORDINE CONSIGLIATO:
 
@@ -378,14 +378,14 @@ PRIMA SETTIMANA (fondamentali):
 
 Fixa i 4 bug critici che ti ho segnalato (EnemyShoot using, Projectile2D direction, Game Over, clamping player)FATTO!
 ScriptableObject per nemici (anche solo per testare il concetto) FATTO!
-Sistema attivazione a distanza QUASI FATTO
+Sistema attivazione a distanza FATTO !
 SECONDA SETTIMANA (gameplay):
 
-4. Nemico Zig-Zag funzionante
+4. Nemico Zig-Zag funzionante FATTO!
 
-5. Nemico Kamikaze funzionante
+5. Nemico Kamikaze funzionante FATTO!
 
-6. Sistema upgrade arma base (almeno Livello 1 -> Livello 2)
+6. Sistema upgrade arma base (almeno Livello 1 -> Livello 2) FATTO! IN LAVORAZIONE UI
 
 TERZA SETTIMANA (struttura livello):
 

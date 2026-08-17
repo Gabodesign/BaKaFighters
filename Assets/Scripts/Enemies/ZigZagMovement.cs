@@ -3,8 +3,8 @@ using UnityEngine;
 public class ZigZagMovement : MonoBehaviour, IEnemyMovement 
 {
     private Enemy enemy;
-    public float amplitude = 5f; 
-    public float frequency = 10f;
+    [SerializeField] private float amplitude = 5f;
+    [SerializeField] private float frequency = 10f;
 
     private void Awake()
     {
