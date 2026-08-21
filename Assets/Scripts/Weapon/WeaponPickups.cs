@@ -12,9 +12,9 @@ public class WeaponPickups : MonoBehaviour
             WeaponController weaponController = other.GetComponent<WeaponController>();
             if (weaponController != null)
             {
-                weaponController.UpgradeWeapon();   
-                weaponUI.UpdateWeaponUI(weaponController.currentWeaponLevel, weaponController.weaponsData);
-                Destroy(gameObject); 
+                weaponController.UpgradeWeapon();
+                weaponUI.UpdateWeaponUI(weaponController.WeaponEquip, weaponController.currentWeaponLevel, weaponController.weaponsData);
+                Destroy(gameObject);
             }
         }
     }

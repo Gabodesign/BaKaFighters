@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,8 +8,31 @@ public class InputManager : MonoBehaviour
 
     public static InputManager Instance;
     public PlayerControls controls;
-    private void Awake()
+
+    public enum TestInputScheme { All, KeyboardMouseOnly, GamepadOnly }
+
+    [Header("Debug - Test Input Scheme")]
+    [SerializeField] private TestInputScheme testScheme = TestInputScheme.All;
+
+    private void ApplyBindingMask()
     {
+        switch (testScheme)
+        {
+            case TestInputScheme.KeyboardMouseOnly:
+                controls.bindingMask = InputBinding.MaskByGroup("Keyboard&Mouse");
+                break;
+            case TestInputScheme.GamepadOnly:
+                controls.bindingMask = InputBinding.MaskByGroup("Gamepad");
+                break;
+            default:
+                controls.bindingMask = null; // nessuna restrizione, tutto attivo
+                break;
+        }
+    }
+
+private void Awake()
+    {
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -24,6 +48,8 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        ApplyBindingMask();
+
         controls.Player.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
         controls.Player.Move.canceled += ctx => OnMove?.Invoke(Vector2.zero);
 
@@ -57,3 +83,4 @@ public class InputManager : MonoBehaviour
     public event System.Action OnCanceled;
     public event System.Action OnDeleteSave;
 }
+

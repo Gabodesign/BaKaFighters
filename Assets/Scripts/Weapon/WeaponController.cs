@@ -21,16 +21,18 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private float offset = -167.95f;
 
     [Tooltip("Limite inferiore: quanto può scendere l'arma (es. -120, -150 per andare verso il basso)")]
-    [SerializeField] private float minAngle = -150f;
+    [SerializeField] private float minAngle = -130f;
 
     [Tooltip("Limite superiore: quanto può salire l'arma (es. 40, 60 per andare verso l'alto)")]
-    [SerializeField] private float maxAngle = 40f;
+    [SerializeField] private float maxAngle = 20f;
 
     public bool isShooting = false;
 
     private float currentAngle;
     private Vector2 aimInput;
     private bool isGamepad = false;
+   
+    public WeaponType WeaponEquip => weaponEquip;
 
     private void Awake()
     {
