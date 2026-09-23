@@ -11101,6 +11101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7bc75dc312b0941a67644e26f1200e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  testScheme: 1
 --- !u!4 &808854947
 Transform:
   m_ObjectHideFlags: 0

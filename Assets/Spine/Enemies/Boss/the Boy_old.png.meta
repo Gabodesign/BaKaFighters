@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: 2867d2a7fd26232458a27164b8d09e4b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8312589651310273206
+    second: the Boy_old_0
+  - first:
+      213: 5102308929923589459
+    second: the Boy_old_1
+  - first:
+      213: -4935258373395030604
+    second: the Boy_old_2
+  - first:
+      213: 5334022818181721989
+    second: the Boy_old_3
+  - first:
+      213: -2380048961405860754
+    second: the Boy_old_4
+  - first:
+      213: -8374172329563676062
+    second: the Boy_old_5
+  - first:
+      213: 8296866132010292965
+    second: the Boy_old_6
+  - first:
+      213: -4481862732902519746
+    second: the Boy_old_7
+  - first:
+      213: 5833598935238786868
+    second: the Boy_old_8
+  - first:
+      213: 9019578602584487977
+    second: the Boy_old_9
+  - first:
+      213: 2192037723745288233
+    second: the Boy_old_10
+  - first:
+      213: 888016675934343308
+    second: the Boy_old_11
+  - first:
+      213: -7560255385203530740
+    second: the Boy_old_12
+  - first:
+      213: -8294954764812069481
+    second: the Boy_old_13
+  - first:
+      213: 3113254949857482274
+    second: the Boy_old_14
+  - first:
+      213: 3513126115163863212
+    second: the Boy_old_15
+  - first:
+      213: -5768664875151994532
+    second: the Boy_old_16
+  - first:
+      213: -3399079739394735228
+    second: the Boy_old_17
+  - first:
+      213: -9194160878169829808
+    second: the Boy_old_18
+  - first:
+      213: -5068960494612767512
+    second: the Boy_old_19
+  - first:
+      213: -7210582168564091458
+    second: the Boy_old_20
+  - first:
+      213: 9173837715116172266
+    second: the Boy_old_21
+  - first:
+      213: 7858204138296840026
+    second: the Boy_old_22
+  - first:
+      213: 3432955708395102599
+    second: the Boy_old_23
+  - first:
+      213: -5803844347730723335
+    second: the Boy_old_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: the Boy_old_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 418
+        width: 291
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2efe1fe304c5370800000000000000
+      internalID: 8312589651310273206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 418
+        width: 262
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 355266640fa0fc640800000000000000
+      internalID: 5102308929923589459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_2
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 318
+        width: 317
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bd540358a0728bb0800000000000000
+      internalID: -4935258373395030604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_3
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 317
+        width: 235
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58fac850e71460a40800000000000000
+      internalID: 5334022818181721989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_4
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 556
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64cd53641e58fed0800000000000000
+      internalID: -2380048961405860754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_5
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 545
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 262a37072a6f8cb80800000000000000
+      internalID: -8374172329563676062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_6
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 517
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e65173d9c3642370800000000000000
+      internalID: 8296866132010292965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_7
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 506
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ca84127993dc1c0800000000000000
+      internalID: -4481862732902519746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_8
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 486
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43f3109e25b15f050800000000000000
+      internalID: 5833598935238786868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 313
+        height: 417
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92833c683fafb2d70800000000000000
+      internalID: 9019578602584487977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_10
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 323
+        width: 119
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920081222beab6e10800000000000000
+      internalID: 2192037723745288233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_11
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 1
+        width: 167
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8090bb367ed25c00800000000000000
+      internalID: 888016675934343308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_12
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 323
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04a5b978c3941790800000000000000
+      internalID: -7560255385203530740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_13
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 318
+        width: 202
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7955177079662ec80800000000000000
+      internalID: -8294954764812069481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_14
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 312
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2265b75d1e0843b20800000000000000
+      internalID: 3113254949857482274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_15
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 319
+        width: 103
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca87d71a69121c030800000000000000
+      internalID: 3513126115163863212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_16
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 1
+        width: 317
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51da481cd591ffa0800000000000000
+      internalID: -5768664875151994532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_17
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1
+        width: 300
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48346227cfa04d0d0800000000000000
+      internalID: -3399079739394735228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_18
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 204
+        width: 140
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ec4e0e467c76080800000000000000
+      internalID: -9194160878169829808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_19
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 103
+        width: 149
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec1e12694f67a9b0800000000000000
+      internalID: -5068960494612767512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_20
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 216
+        width: 103
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb5b8f298bddeeb90800000000000000
+      internalID: -7210582168564091458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_21
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 161
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae3a49cfbc4005f70800000000000000
+      internalID: 9173837715116172266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_22
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 1
+        width: 228
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f00bb7703fd0d60800000000000000
+      internalID: 7858204138296840026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_23
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 128
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7812a88370f44af20800000000000000
+      internalID: 3432955708395102599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the Boy_old_24
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1
+        width: 153
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdf9d9d05a947fa0800000000000000
+      internalID: -5803844347730723335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      the Boy_old_0: 8312589651310273206
+      the Boy_old_1: 5102308929923589459
+      the Boy_old_10: 2192037723745288233
+      the Boy_old_11: 888016675934343308
+      the Boy_old_12: -7560255385203530740
+      the Boy_old_13: -8294954764812069481
+      the Boy_old_14: 3113254949857482274
+      the Boy_old_15: 3513126115163863212
+      the Boy_old_16: -5768664875151994532
+      the Boy_old_17: -3399079739394735228
+      the Boy_old_18: -9194160878169829808
+      the Boy_old_19: -5068960494612767512
+      the Boy_old_2: -4935258373395030604
+      the Boy_old_20: -7210582168564091458
+      the Boy_old_21: 9173837715116172266
+      the Boy_old_22: 7858204138296840026
+      the Boy_old_23: 3432955708395102599
+      the Boy_old_24: -5803844347730723335
+      the Boy_old_3: 5334022818181721989
+      the Boy_old_4: -2380048961405860754
+      the Boy_old_5: -8374172329563676062
+      the Boy_old_6: 8296866132010292965
+      the Boy_old_7: -4481862732902519746
+      the Boy_old_8: 5833598935238786868
+      the Boy_old_9: 9019578602584487977
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

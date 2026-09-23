@@ -1,0 +1,118 @@
+
+the Boy_old.png
+size: 1541, 650
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Boy avambraccio
+  rotate: false
+  xy: 1387, 548
+  size: 151, 100
+  orig: 151, 100
+  offset: 0, 0
+  index: -1
+Boy braccio
+  rotate: true
+  xy: 315, 242
+  size: 84, 117
+  orig: 84, 125
+  offset: 0, 8
+  index: -1
+Boy corpo
+  rotate: true
+  xy: 2, 2
+  size: 229, 289
+  orig: 229, 289
+  offset: 0, 0
+  index: -1
+Cannone
+  rotate: false
+  xy: 1387, 435
+  size: 147, 111
+  orig: 147, 113
+  offset: 0, 0
+  index: -1
+Capsula Dietro
+  rotate: false
+  xy: 482, 333
+  size: 315, 315
+  orig: 315, 315
+  offset: 0, 0
+  index: -1
+Capsula davanti
+  rotate: false
+  xy: 555, 16
+  size: 315, 315
+  orig: 315, 315
+  offset: 0, 0
+  index: -1
+Capsula metallo
+  rotate: false
+  xy: 315, 328
+  size: 165, 320
+  orig: 165, 320
+  offset: 0, 0
+  index: -1
+Crack 1
+  rotate: true
+  xy: 1159, 29
+  size: 308, 277
+  orig: 308, 278
+  offset: 0, 0
+  index: -1
+Crack 2
+  rotate: true
+  xy: 872, 18
+  size: 314, 285
+  orig: 314, 286
+  offset: 0, 0
+  index: -1
+Crack 3
+  rotate: true
+  xy: 799, 334
+  size: 314, 300
+  orig: 314, 301
+  offset: 0, 1
+  index: -1
+Head
+  rotate: true
+  xy: 2, 233
+  size: 415, 311
+  orig: 415, 313
+  offset: 0, 2
+  index: -1
+Ingranaggio 1
+  rotate: false
+  xy: 1438, 332
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
+Ingranaggio 3
+  rotate: false
+  xy: 434, 301
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+Jaw
+  rotate: true
+  xy: 293, 11
+  size: 220, 260
+  orig: 220, 275
+  offset: 0, 0
+  index: -1
+Lume
+  rotate: false
+  xy: 1101, 339
+  size: 284, 309
+  orig: 284, 309
+  offset: 0, 0
+  index: -1
+ingranaggio 2
+  rotate: true
+  xy: 1438, 230
+  size: 100, 101
+  orig: 100, 101
+  offset: 0, 0
+  index: -1
