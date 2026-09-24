@@ -237,7 +237,7 @@ Fixa Projectile2D.cs per usare il metodo Launch() invece di Vector3.right FATTO
 Sostituisci Destroy(gameObject) nel PlayerController con logica Game Over UI FATTA / FATTA LOGICA
 Logica Pausa FATTA
 Aggiungi clamping player ai bordi dello schermo FATTO
-IMPORTANTE (completa il Livello 1): IN COMPLETAMENTO
+IMPORTANTE (completa il Livello 1): FATTO
 
 Boss fight con fasi e pattern bullet DA FARE
 Sistema spawn ondate nemici (wave manager) DA FARE
@@ -248,7 +248,7 @@ POLISH (solo se avanza tempo):
 
 Animazioni DOTween sulle barre HP/Shield/Ki FATTO
 Screen shake con Cinemachine su hit FATTO
-Pickup armi/power-up (hai già BonusEnergy.prefab!) DA FARE
+Pickup armi/power-up (hai già BonusEnergy.prefab!) FATTO
 Sistema vite/continue FATTO(forse rivedere o da sistemare meglio)
 =============================================================================================================================================
 
@@ -355,7 +355,7 @@ Se ti blocchi su questo, scrivimi che ti do qualche indicazione in più. Ma prim
 
 Ottimo che avete già delle bozze! Vi do la direzione concettuale:
 
-Zig-Zag:
+Zig-Zag: FATTO
 
 Movimento base orizzontale (come Kozo attuale)
 oscillazione verticale usando una funzione sinusoidale (Mathf.Sin)
