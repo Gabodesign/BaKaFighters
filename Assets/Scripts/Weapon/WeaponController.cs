@@ -140,4 +140,11 @@ public class WeaponController : MonoBehaviour
             Debug.Log($"Weapon upgraded to level {currentWeaponLevel}");
         }
     }
+
+    public void SetWeapon(WeaponType type, int level)
+    {
+        weaponEquip = type;
+        currentWeaponLevel = level;
+        Debug.Log($"Arma ripristinata: {weaponEquip} al livello {currentWeaponLevel}");
+    }
 }

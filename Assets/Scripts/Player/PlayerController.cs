@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             UIController.Instance.UpdateHealthSlider(health, maxHealth);
         }
-        GameManager.Instance.SaveGame(GameManager.Instance.currentSlot);
     }
 
     // Update is called once per frame

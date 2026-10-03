@@ -20,5 +20,6 @@ MonoBehaviour:
   useTouchDamage: 1
   canMove: 1
   canShoot: 0
+  KiPoint: 1
   bulletPrefab: {fileID: 0}
   colorDamage: {r: 1, g: 0, b: 0, a: 1}

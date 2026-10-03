@@ -71,4 +71,13 @@ public class AudioManager : MonoBehaviour
         if (clip == null || SFXSource == null) return;
         SFXSource.PlayOneShot(clip);
     }
+
+    public void RestartMusic()
+    {
+        if (musicSource.clip != null)
+        {
+            musicSource.Stop();
+            musicSource.Play();
+        }
+    }
 }

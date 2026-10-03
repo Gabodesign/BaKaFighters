@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class LevelUI : MonoBehaviour
 {
     // Istanza locale valida solo ed esclusivamente per questa scena corrente
@@ -18,21 +18,44 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private GameObject panelGameover;
     [Header("Menu Pausa")]
     [SerializeField] public GameObject panelPausa;
+    [Header("Level")]
+    [SerializeField] private GameObject level;
+    [Header("Button Save/Load")]
+    [SerializeField] public Button saveButton;
+    [SerializeField] public Button loadButton;
+
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
+    private float crono;
+  
     [Header("Lives")]
     [SerializeField] private TMP_Text livesText;
-    private float timer;
+
+    public GameObject Level => level;
+    public float Crono => crono;
+
     private void Awake()
     {
         // Impostiamo l'istanza per la scena attuale
         Instance = this;
+        crono = Time.timeSinceLevelLoad;
     }
 
     private void Start()
     {
         if (panelGameover != null) panelGameover.SetActive(false);
         if (panelPausa != null) panelPausa.SetActive(false);
+        if (saveButton != null)
+        {
+            saveButton.onClick.RemoveAllListeners();
+            saveButton.onClick.AddListener(() => GameManager.Instance.SaveGamePausa());
+        }
+
+        if (loadButton != null)
+        {
+            loadButton.onClick.RemoveAllListeners();
+            loadButton.onClick.AddListener(() => GameManager.Instance.LoadGamePausa());
+        }
 
         // Chiediamo al GameManager il punteggio attuale per scriverlo all'avvio
         if (GameManager.Instance != null)
@@ -45,7 +68,6 @@ public class LevelUI : MonoBehaviour
         {
             StartCoroutine(FadeToTransparent());
         }
-
 
     }
     private void OnEnable()
@@ -155,25 +177,33 @@ public class LevelUI : MonoBehaviour
 
     public void IncreaseTime()
     {
-        float totalTime = Time.timeSinceLevelLoad;
+        crono += Time.deltaTime;
 
-        int minutes = (int)(totalTime / 60f) % 60;
-        int seconds = (int)(totalTime % 60f);
-        int centiseconds = (int)(totalTime * 100f) % 100;
+        int minutes = (int)(crono / 60f) % 60;
+        int seconds = (int)(crono % 60f);
+        int centiseconds = (int)(crono * 100f) % 100;
 
         timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + centiseconds.ToString("D2");
     }
-
+    public void ResetTime()
+    {
+        crono = 0f;
+    }
+    public void RestoreTime(float time)
+    {
+        crono = time;
+    }
 
     public void ShowPausa()
     {
-        if (panelPausa == null) return;
 
+        if (panelPausa == null) return;
         // Controlliamo se il pannello della pausa è attualmente ATTIVO nella scena
         bool isPaused = panelPausa.activeSelf;
 
         if (!isPaused)
         {
+            InputManager.Instance.EnableUI();
             // SE NON ERA IN PAUSA: Congeliamo il gioco e attiviamo il menu
             AudioManager.instance.PlaySFX(AudioManager.instance.pause);
             Time.timeScale = 0f;
@@ -181,6 +211,7 @@ public class LevelUI : MonoBehaviour
         }
         else
         {
+            InputManager.Instance.EnableGameplay();
             // SE ERA GIÀ IN PAUSA: Facciamo ripartire il tempo e nascondiamo il menu
             AudioManager.instance.PlaySFX(AudioManager.instance.unpause);
             Time.timeScale = 1f;

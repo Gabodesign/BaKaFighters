@@ -11,6 +11,7 @@ public class EnemyData : ScriptableObject
     public bool useTouchDamage; 
     public bool canMove;
     public bool canShoot;
+    public int KiPoint;
     public GameObject bulletPrefab;
     public Color colorDamage = Color.red;
 }

@@ -24,6 +24,11 @@ public class WeaponUI : MonoBehaviour
             initialized = true;
         }
 
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.WeaponLevel = levelWeapon;
+            GameManager.Instance.WeaponType = weaponType;
+        }
         // pip[0] è già acceso di default (livello base), niente fade
         // Solo dal livello 1 in su facciamo il fade-in
         if (levelWeapon >= 1 && levelWeapon < levelPips.Length)
@@ -60,5 +65,28 @@ public class WeaponUI : MonoBehaviour
         Color c = image.color;
         c.a = alpha;
         image.color = c;
+    }
+
+    public void RestoreWeaponUI(WeaponType weaponType, int levelWeapon, WeaponData[] weaponData)
+    {
+        if (iconWeapon == null) return;
+
+        // Forziamo il reset completo ignorando lo stato precedente
+        currentWeaponType = weaponType;
+        initialized = false;
+
+        // Aggiorna icona
+        iconWeapon.sprite = weaponData[(int)weaponType].icon;
+
+        // Reset tutti i pip
+        ResetPips();
+
+        // Riaccendi i pip fino al livello salvato
+        for (int i = 1; i <= levelWeapon && i < levelPips.Length; i++)
+        {
+            SetAlpha(levelPips[i], 1f); // ✅ Niente fade, li accendiamo subito
+        }
+
+        initialized = true;
     }
 }

@@ -21,10 +21,10 @@ public class SaveSlotUI : MonoBehaviour
 
         if (hasData)
         {
-            if (levelNameText != null) levelNameText.text = data.levelName;
-            if (livesText != null) livesText.text = $"Lives: {data.playerLives}";
-            if (scoreText != null) scoreText.text = $"Score: {data.score}";
-            if (dateText != null) dateText.text = data.saveDate;
+            if (levelNameText != null) levelNameText.text = data.LevelName;
+            if (livesText != null) livesText.text = $"Lives: {data.PlayerLives}";
+            if (scoreText != null) scoreText.text = $"Score: {data.Score}";
+            if (dateText != null) dateText.text = data.SaveDate;
         }
 
         if (mode == MenuManager.MainMenuSlotMode.NewGame)
