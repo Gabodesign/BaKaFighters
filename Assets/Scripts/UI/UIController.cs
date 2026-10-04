@@ -13,7 +13,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider ki;
     [SerializeField] private TextMeshProUGUI scoreText;
 
-
+    public float HealthValue => health.value;
+    public float ShieldValue => shield.value;
+    public float KiValue => ki.value;
 
     private void Awake()                             
     {
@@ -57,20 +59,5 @@ public class UIController : MonoBehaviour
 
         ki.DOKill();
         ki.DOValue(current, 0.2f).SetEase(Ease.OutQuad);
-    }
-
-    public float GetHealth()
-    {
-        return health.value;
-    }
-
-    public float GetShield()
-    {
-        return shield.value;
-    }
-
-    public float GetKi()
-    {
-        return ki.value;
     }
 }

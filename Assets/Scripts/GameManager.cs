@@ -104,8 +104,10 @@ public class GameManager : MonoBehaviour
             InputManager.Instance.EnableGameplay();
         score = 0; // Resettiamo il punteggio per la nuova partita
         playerLives = 3;
+        weaponLevel = 0;
+        weaponType = WeaponType.Bullet;
 
-        if(AudioManager.instance != null)
+        if (AudioManager.instance != null)
             AudioManager.instance.RestartMusic();
 
         // Se c'è un LevelUI con il fade, usiamo la sua coroutine, altrimenti carichiamo direttamente
@@ -191,9 +193,9 @@ public class GameManager : MonoBehaviour
         //recuperiamo la posizione del livello
         Vector2 levelPos = new Vector2(13.46f, 0.32f); // settiamo di default la posizione del livello se è null
 
-        health = UIController.Instance != null ? UIController.Instance.GetHealth() : 0f;
-        shield = UIController.Instance != null ? UIController.Instance.GetShield() : 0f;
-        ki = UIController.Instance != null ? UIController.Instance.GetKi() : 0f;
+        health = UIController.Instance != null ? UIController.Instance.HealthValue: 0f;
+        shield = UIController.Instance != null ? UIController.Instance.ShieldValue : 0f;
+        ki = UIController.Instance != null ? UIController.Instance.KiValue : 0f;
 
         float currentTimer = LevelUI.Instance != null ? LevelUI.Instance.Crono : 0f;
 

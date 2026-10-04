@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class KamikazeMovement : MonoBehaviour,IEnemyMovement
+public class KamikazeMovement : MonoBehaviour, IEnemyMovement
 {
     private Enemy enemy;
-    [SerializeField] private float detectionRadius = 12f;
 
     private void Awake()
     {

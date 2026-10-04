@@ -23,6 +23,9 @@ public class LevelUI : MonoBehaviour
     [Header("Button Save/Load")]
     [SerializeField] public Button saveButton;
     [SerializeField] public Button loadButton;
+    [Header("Button Retry/Main Menu del Game Over")]
+    [SerializeField] public Button retryButtonGO;
+    [SerializeField] public Button mainMenuButtonGO;
 
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
@@ -55,6 +58,18 @@ public class LevelUI : MonoBehaviour
         {
             loadButton.onClick.RemoveAllListeners();
             loadButton.onClick.AddListener(() => GameManager.Instance.LoadGamePausa());
+        }
+
+        if(retryButtonGO != null)
+        {
+            retryButtonGO.onClick.RemoveAllListeners();
+            retryButtonGO.onClick.AddListener(() => GameManager.Instance.RestartLevel());
+        }
+
+        if(mainMenuButtonGO != null)
+        {
+            mainMenuButtonGO.onClick.RemoveAllListeners();
+            mainMenuButtonGO.onClick.AddListener(() => GameManager.Instance.ReturnMainMenu());
         }
 
         // Chiediamo al GameManager il punteggio attuale per scriverlo all'avvio
@@ -104,6 +119,8 @@ public class LevelUI : MonoBehaviour
         Time.timeScale = 0f;
         if (panelGameover != null)
             panelGameover.SetActive(true);
+        if(InputManager.Instance != null)
+            InputManager.Instance.EnableUI();
     }
 
     // Gestione dei pulsanti della UI che rimandano al GameManager

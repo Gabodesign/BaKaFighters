@@ -69,7 +69,6 @@ public class MenuManager : MonoBehaviour
     [Header("Fade")]
     public Image fadeImage;                        
     public float fadeDuration = 0.3f;
-    private bool isTransitioning;
 
     [Header("Save Slots Panel")]
     [SerializeField] private SaveSlotsPanel saveSlotsPanel;
@@ -218,7 +217,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    // Collega questo metodo al tasto "SÌ" del PopUp di Caricamento/Conferma
+    // Metodo Collegato al tasto "SÌ" del PopUp di Caricamento/Conferma
     public void ConfirmLoadGame()
     {
         if (selectedSlotIndex >= 0)
@@ -440,7 +439,6 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator LoadSceneWithFade(string sceneName)
     {
-        isTransitioning = true;                 // Segniamo che è in corso una transizione.
 
         if (fadeImage == null)
         {
