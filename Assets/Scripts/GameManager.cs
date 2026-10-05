@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
     public void TakeLife()
     {
         playerLives--;
+        score = 0;
+        weaponLevel = 0;
+        weaponType = WeaponType.Bullet;
         // Se nella scena è presente un'interfaccia grafica, la aggiorniamo
         // da sistemare poi con i checkpoint, per ora resettiamo il livello
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
