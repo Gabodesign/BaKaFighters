@@ -69,7 +69,8 @@ public abstract class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             // Nota: Assicurati che Projectile2D esista e abbia .damage
-            TakeDamage(collision.gameObject.GetComponent<Projectile2D>().damage);
+            if (collision.gameObject.TryGetComponent(out Projectile2D projectile))
+                TakeDamage(projectile.damage);
         }
 
         if (collision.gameObject.CompareTag("Player") && data.useTouchDamage)
@@ -99,6 +100,7 @@ public abstract class Enemy : MonoBehaviour
         {
             // Accedi a scoreValue tramite "data"
             GameManager.Instance.AddPoint(data.scoreValue);
+            if (TryGetComponent(out SaveableObject saveable)) saveable.MarkDestroyed();
             Destroy(gameObject);
         }
     }

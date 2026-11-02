@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class LevelUI : MonoBehaviour
 {
@@ -23,9 +24,8 @@ public class LevelUI : MonoBehaviour
     [Header("Button Save/Load")]
     [SerializeField] public Button saveButton;
     [SerializeField] public Button loadButton;
-    [Header("Button Retry/Main Menu del Game Over")]
-    [SerializeField] public Button retryButtonGO;
-    [SerializeField] public Button mainMenuButtonGO;
+    [Header("Carica da pausa (opzionale: pannello slot)")]
+    [SerializeField] private SaveSlotsPanel pauseLoadPanel;
 
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
@@ -41,7 +41,14 @@ public class LevelUI : MonoBehaviour
     {
         // Impostiamo l'istanza per la scena attuale
         Instance = this;
-        crono = Time.timeSinceLevelLoad;
+        // Il timer riparte da quello che decide il GameManager (0 per nuova partita/riprova, il valore salvato se carichiamo)
+        crono = GameManager.Instance != null ? GameManager.Instance.StartingTimer : 0f;
+
+        // Se stiamo caricando una partita, il livello riparte dalla posizione salvata (prima di tutti gli Start)
+        if (GameManager.Instance != null && GameManager.Instance.TryGetLoadedState(out SaveData loaded) && level != null)
+        {
+            level.transform.position = loaded.PosLevel;
+        }
     }
 
     private void Start()
@@ -57,20 +64,11 @@ public class LevelUI : MonoBehaviour
         if (loadButton != null)
         {
             loadButton.onClick.RemoveAllListeners();
-            loadButton.onClick.AddListener(() => GameManager.Instance.LoadGamePausa());
+            loadButton.onClick.AddListener(OpenLoadFromPausa);
         }
-
-        if(retryButtonGO != null)
-        {
-            retryButtonGO.onClick.RemoveAllListeners();
-            retryButtonGO.onClick.AddListener(() => GameManager.Instance.RestartLevel());
-        }
-
-        if(mainMenuButtonGO != null)
-        {
-            mainMenuButtonGO.onClick.RemoveAllListeners();
-            mainMenuButtonGO.onClick.AddListener(() => GameManager.Instance.ReturnMainMenu());
-        }
+        // Riprova e Torna al menu del Game Over sono collegati dall'Inspector (OnClickRestart / OnClickMainMenu):
+        // un solo modo per pulsante, altrimenti l'azione verrebbe eseguita due volte.
+        if (pauseLoadPanel != null) pauseLoadPanel.gameObject.SetActive(false);
 
         // Chiediamo al GameManager il punteggio attuale per scriverlo all'avvio
         if (GameManager.Instance != null)
@@ -92,6 +90,8 @@ public class LevelUI : MonoBehaviour
         {
             InputManager.Instance.OnPause -= ShowPausa; // Pulizia preventiva
             InputManager.Instance.OnPause += ShowPausa; // Iscrizione sicura al 100%
+            InputManager.Instance.OnCanceled -= HandleCancel;
+            InputManager.Instance.OnCanceled += HandleCancel;
         }
     }
 
@@ -100,6 +100,7 @@ public class LevelUI : MonoBehaviour
         if (InputManager.Instance != null && InputManager.Instance.controls != null)
         {
             InputManager.Instance.OnPause -= ShowPausa;
+            InputManager.Instance.OnCanceled -= HandleCancel;
         }
     }
     public void UpdateScoreUI(int currentScore)
@@ -119,7 +120,7 @@ public class LevelUI : MonoBehaviour
         Time.timeScale = 0f;
         if (panelGameover != null)
             panelGameover.SetActive(true);
-        if(InputManager.Instance != null)
+        if (InputManager.Instance != null)
             InputManager.Instance.EnableUI();
     }
 
@@ -127,23 +128,19 @@ public class LevelUI : MonoBehaviour
     public void OnClickRestart()
     {
         if (GameManager.Instance != null)
-        {
-            GameManager.Instance.playerLives = 3;
             GameManager.Instance.RestartLevel();
-        }
     }
 
     public void OnClickMainMenu()
     {
-        if (GameManager.Instance != null){
-            GameManager.Instance.playerLives = 3;
+        if (GameManager.Instance != null)
             GameManager.Instance.ReturnMainMenu();
-        }
     }
+
 
     // --- COROUTINE DEL FADE ---
 
-    
+
     private IEnumerator FadeToTransparent()
     {
         if (canvasGroup == null) yield break;
@@ -211,10 +208,16 @@ public class LevelUI : MonoBehaviour
         crono = time;
     }
 
+    private int lastPauseToggleFrame = -1;
+
+
     public void ShowPausa()
     {
-
         if (panelPausa == null) return;
+        // Esc è sia "Pause" (mappa Player) sia "Cancel" (mappa UI): evitiamo che lo stesso tasto apra e chiuda nello stesso frame
+        if (lastPauseToggleFrame == Time.frameCount) return;
+        lastPauseToggleFrame = Time.frameCount;
+
         // Controlliamo se il pannello della pausa è attualmente ATTIVO nella scena
         bool isPaused = panelPausa.activeSelf;
 
@@ -228,12 +231,48 @@ public class LevelUI : MonoBehaviour
         }
         else
         {
-            InputManager.Instance.EnableGameplay();
             // SE ERA GIÀ IN PAUSA: Facciamo ripartire il tempo e nascondiamo il menu
             AudioManager.instance.PlaySFX(AudioManager.instance.unpause);
-            Time.timeScale = 1f;
-            panelPausa.SetActive(false);
+            ClosePausa();
         }
+    }
+
+    /// <summary>Chiude il menu di pausa e fa ripartire il gioco.</summary>
+    public void ClosePausa()
+    {
+        lastPauseToggleFrame = Time.frameCount;
+        if (pauseLoadPanel != null) pauseLoadPanel.gameObject.SetActive(false);
+        if (panelPausa != null) panelPausa.SetActive(false);
+        Time.timeScale = 1f;
+        if (InputManager.Instance != null)
+            InputManager.Instance.EnableGameplay();
+    }
+
+    // Esc (Cancel della mappa UI): prima chiude la scelta dello slot, poi la pausa
+    private void HandleCancel()
+    {
+        if (panelPausa == null || !panelPausa.activeSelf) return;
+
+        if (pauseLoadPanel != null && pauseLoadPanel.gameObject.activeSelf)
+        {
+            pauseLoadPanel.gameObject.SetActive(false);
+            if (loadButton != null && EventSystem.current != null)
+                EventSystem.current.SetSelectedGameObject(loadButton.gameObject);
+            return;
+        }
+        ShowPausa();
+    }
+
+    // Carica dalla pausa: se c'è il pannello slot si sceglie il salvataggio, altrimenti si ricarica lo slot in uso
+    private void OpenLoadFromPausa()
+    {
+        if (pauseLoadPanel == null)
+        {
+            GameManager.Instance.LoadGamePausa();
+            return;
+        }
+        pauseLoadPanel.gameObject.SetActive(true);
+        pauseLoadPanel.Populate(MenuManager.MainMenuSlotMode.LoadGame, slot => GameManager.Instance.LoadGame(slot));
     }
 
 }

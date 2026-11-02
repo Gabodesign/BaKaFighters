@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SaveSlotsPanel : MonoBehaviour
@@ -9,7 +11,7 @@ public class SaveSlotsPanel : MonoBehaviour
     [SerializeField] public Transform container;
     [SerializeField] public MenuManager menuManager;
 
-    public void Populate(MenuManager.MainMenuSlotMode mode)
+    public void Populate(MenuManager.MainMenuSlotMode mode, System.Action<int> onSlotSelected)
     {
         foreach (Transform child in container)
             Destroy(child.gameObject);
@@ -26,7 +28,7 @@ public class SaveSlotsPanel : MonoBehaviour
             GameObject slotGO = Instantiate(prefabToUse, container);
 
             var slotUI = slotGO.GetComponent<SaveSlotUI>();
-            slotUI.Setup(i, data, mode, menuManager);
+            slotUI.Setup(i, data, mode, onSlotSelected);
             newSlots.Add(slotUI);
         }
 
@@ -39,10 +41,20 @@ public class SaveSlotsPanel : MonoBehaviour
         {
             if (slotUI != null && slotUI.MainButton != null && slotUI.MainButton.interactable)
             {
-                menuManager.SelectFirstButton(slotUI.MainButton.gameObject);
+                if (menuManager != null) menuManager.SelectFirstButton(slotUI.MainButton.gameObject);
+                else StartCoroutine(SelectNextFrame(slotUI.MainButton.gameObject));
                 return;
             }
         }
+    }
+
+    // Il pannello usato in pausa non ha un MenuManager: seleziona il pulsante da solo
+    private IEnumerator SelectNextFrame(GameObject target)
+    {
+        yield return null;
+        if (target == null || EventSystem.current == null) yield break;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(target);
     }
 
     public Button GetSlotButton(int index)

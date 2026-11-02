@@ -14,6 +14,7 @@ public class WeaponPickups : MonoBehaviour
             {
                 weaponController.UpgradeWeapon();
                 weaponUI.UpdateWeaponUI(weaponController.WeaponEquip, weaponController.currentWeaponLevel, weaponController.weaponsData);
+                if(TryGetComponent(out SaveableObject saveable)) saveable.MarkDestroyed();
                 Destroy(gameObject);
             }
         }

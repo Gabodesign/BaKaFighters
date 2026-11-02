@@ -87,23 +87,23 @@ public class MenuManager : MonoBehaviour
 
         // Disattiviamo tutti i pannelli secondari
         if (newGamePopup != null) newGamePopup.SetActive(false);
-        if (loadGamePopup != null) loadGamePopup.SetActive(false); 
+        if (loadGamePopup != null) loadGamePopup.SetActive(false);
         if (saveLoadPanel != null) saveLoadPanel.SetActive(false);
         if (optionsPanel != null) optionsPanel.SetActive(false);
         if (quitPanel != null) quitPanel.SetActive(false);
 
         if (fadeImage != null)
         {
-            Color colore = fadeImage.color;  
-            colore.a = 0f;                   
-            fadeImage.color = colore;        
+            Color colore = fadeImage.color;
+            colore.a = 0f;
+            fadeImage.color = colore;
 
-            fadeImage.raycastTarget = false;  
-            fadeImage.gameObject.SetActive(true); 
+            fadeImage.raycastTarget = false;
+            fadeImage.gameObject.SetActive(true);
         }
     }
 
-    
+
 
     private void Update()
     {
@@ -120,11 +120,12 @@ public class MenuManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.OnCanceled += CloseSaveLoad;
-            
+
             InputManager.Instance.OnDeleteSave += HandleDeleteSaveInput;
-            
+
         }
     }
+
 
     private void OnDisable()
     {
@@ -161,7 +162,7 @@ public class MenuManager : MonoBehaviour
     {
         currentSlotMode = MainMenuSlotMode.NewGame;
         if (titlepage != null) titlepage.text = "NUOVA PARTITA - SELEZIONA SLOT";
-        if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode);
+        if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode, OnSelectSlot);
         OpenSaveLoad();
     }
 
@@ -170,7 +171,7 @@ public class MenuManager : MonoBehaviour
     {
         currentSlotMode = MainMenuSlotMode.LoadGame;
         if (titlepage != null) titlepage.text = "SELEZIONA PARTITA DA CARICARE";
-        if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode);
+        if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode, OnSelectSlot);
         OpenSaveLoad();
     }
 
@@ -225,8 +226,7 @@ public class MenuManager : MonoBehaviour
 
             if (currentSlotMode == MainMenuSlotMode.NewGame)
             {
-                // Se stiamo creando una Nuova Partita su uno slot occupato, cancelliamo i vecchi dati
-                GameManager.Instance.DeleteGame(selectedSlotIndex);
+                // StartNewGame sovrascrive lo slot, anche se era occupato
                 StartNewGameOnSelectedSlot();
             }
             else if (currentSlotMode == MainMenuSlotMode.LoadGame)
@@ -266,16 +266,26 @@ public class MenuManager : MonoBehaviour
         SelectFirstButton(confirmDeleteSlotButton.gameObject);
     }
 
-    // Collega questo metodo all'eventuale tasto "ELIMINA" o "CESTINO" dello slot
-    public void ConfirmDeleteSlot(int slotIndex)
+    // Collegato al pulsante di conferma del popup: elimina lo slot memorizzato da RequestDeleteSlot
+    public void ConfirmDeleteSelectedSlot()
     {
-        GameManager.Instance.DeleteGame(slotIndex);
-        UpdateLoadButtonVisibility();
-        // Qui puoi rinfrescare graficamente lo slot a schermo per mostrare "Vuoto"
-        if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode);
+        if (slotToDeleteIndex < 0) return;
+
+        int deletedSlot = slotToDeleteIndex;
         slotToDeleteIndex = -1;
+        GameManager.Instance.DeleteGame(deletedSlot);
+        UpdateLoadButtonVisibility();
+
+        // Senza più salvataggi la modalità Carica non ha niente da mostrare: si torna al menu principale
+        if (currentSlotMode == MainMenuSlotMode.LoadGame && !GameManager.Instance.HasAnySaveFile())
+        {
+            SetState(MenuState.Main);
+            return;
+        }
+
+        // La modalità (Nuova/Carica) resta quella in cui eravamo entrati
+        if (saveSlotsPanel != null) saveSlotsPanel.Populate(currentSlotMode, OnSelectSlot);
         SetState(MenuState.SaveLoad);
-        currentSlotMode = MainMenuSlotMode.NewGame;
     }
 
     public void CancelDeleteSlot()
@@ -295,12 +305,10 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGameOnSelectedSlot()
     {
-        GameManager.Instance.currentSlot = selectedSlotIndex;
-        GameManager.Instance.SaveGame(selectedSlotIndex);
-        // Resettiamo eventuali dati temporanei e carichiamo il primo livello
-        StartCoroutine(LoadSceneWithFade("TestLevel"));
+        // Il GameManager azzera lo stato della partita, riattiva i comandi e registra lo slot sul livello di gioco
+        GameManager.Instance.StartNewGame(selectedSlotIndex);
+        StartCoroutine(LoadSceneWithFade(GameManager.FirstLevelScene));
     }
-
 
 
 
@@ -372,10 +380,6 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(SelectDefaultToggle());
     }
 
-
-    
-
-
     public void OpenQuit()
     {
         SetState(MenuState.Quit);
@@ -423,7 +427,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnLevelScene()
     {
-        StartCoroutine(LoadSceneWithFade("TestLevel"));
+        StartCoroutine(LoadSceneWithFade(GameManager.FirstLevelScene));
     }
 
     private IEnumerator SelectDefaultToggle()

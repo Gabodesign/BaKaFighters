@@ -14,7 +14,7 @@ public class SaveSlotUI : MonoBehaviour
     public Button MainButton => button;
     public int SlotIndex { get; private set; }
 
-    public void Setup(int index, SaveData data, MenuManager.MainMenuSlotMode mode, MenuManager menuManager)
+    public void Setup(int index, SaveData data, MenuManager.MainMenuSlotMode mode, System.Action<int> onSelected)
     {
         SlotIndex = index;
         bool hasData = data != null;
@@ -37,6 +37,6 @@ public class SaveSlotUI : MonoBehaviour
         }
 
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => menuManager.OnSelectSlot(index));
+        button.onClick.AddListener(() => onSelected?.Invoke(index));
     }
 }

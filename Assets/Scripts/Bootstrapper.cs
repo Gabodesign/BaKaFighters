@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class PersistenManager
+public static class Bootstrapper 
 {
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     static void Initialize()
@@ -10,7 +10,6 @@ public static class PersistenManager
         {
             GameObject instance = Object.Instantiate(persistentManager);
             instance.name = "GameManager";
-            Object.DontDestroyOnLoad(instance);
         }
         else
         {

@@ -24,6 +24,7 @@ public class HealthPickups : MonoBehaviour
                 // REMOVED: Cancellata la riga della UI da qui! Ci pensa già il Player.
 
                 consumato = true;
+                if (TryGetComponent(out SaveableObject saveable)) saveable.MarkDestroyed();
                 Destroy(gameObject);
             }
         }
