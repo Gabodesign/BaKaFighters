@@ -81,6 +81,8 @@ public abstract class Enemy : MonoBehaviour
                 player.TakeDamage(data.touchDamage);
                 if(movement is KamikazeMovement)
                 {
+
+                    if (TryGetComponent(out SaveableObject saveable)) saveable.MarkDestroyed();
                     Destroy(gameObject);
                 }
             }

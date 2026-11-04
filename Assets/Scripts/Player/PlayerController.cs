@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Effetto")]
     [SerializeField] protected HitEffect hitEffect;
-
+    private bool isDead;
     private BulletArm bulletArm;
     private Rigidbody2D rb;
 
@@ -72,10 +72,24 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
         currentAnim = flyAnimations[0];
-        // Forza la UI ad allinearsi SUBITO alla vera vita del giocatore (100) appena parte il livello
+        // Se stiamo caricando una partita usiamo i dati salvati al posto dei valori iniziali
+        if (GameManager.Instance != null && GameManager.Instance.TryGetLoadedState(out SaveData loaded))
+        {
+            transform.position = loaded.PosPlayer;
+            health = loaded.Health;
+            shield = loaded.Shield;
+            ki = loaded.Ki;
+        }
+
         if (UIController.Instance != null)
         {
-            UIController.Instance.UpdateHealthSlider(health, maxHealth);
+            UIController.Instance.UpdateHealthSlider(health, maxHealth, true);
+            UIController.Instance.UpdateShieldSlider(shield, maxShield, true);
+            UIController.Instance.UpdateKiSlider(ki, maxKi, true);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerController: UIController non trovato, le barre non vengono aggiornate.");
         }
     }
 
@@ -174,6 +188,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if(isDead) return;
         health -= damage;
 
         if(UIController.Instance != null)
@@ -183,6 +198,7 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
+            isDead = true;
             GameManager.Instance.ProcessPlayerDeath();
         }
 

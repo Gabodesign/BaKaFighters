@@ -2,18 +2,23 @@ using UnityEngine;
 
 public static class Bootstrapper 
 {
+    private static readonly string[] managerPrefabs = { "GameManager", "InputManager", "AudioManager" };
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     static void Initialize()
     {
-        GameObject persistentManager = Resources.Load<GameObject>("GameManager");
-        if (persistentManager != null)
+        foreach (string prefabName in managerPrefabs)
         {
-            GameObject instance = Object.Instantiate(persistentManager);
-            instance.name = "GameManager";
-        }
-        else
-        {
-            Debug.LogError("GameManager prefab not found in Resources folder.");
+            GameObject prefab = Resources.Load<GameObject>(prefabName);
+            if (prefab != null)
+            {
+                GameObject instance = Object.Instantiate(prefab);
+                instance.name = prefabName;
+            }
+            else
+            {
+                Debug.LogError($"{prefabName} prefab not found in Resources folder.");
+            }
         }
     }
 }

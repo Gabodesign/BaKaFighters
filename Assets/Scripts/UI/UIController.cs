@@ -29,35 +29,33 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void UpdateHealthSlider(float current, float max)
+    public void UpdateHealthSlider(float current, float max, bool instant = false)
     {
-        if (health == null) return;
-
-        // Questo ci dirà nella console se la funzione viene chiamata troppe volte o con valori errati
-        Debug.Log($"UI: Cambio vita richiesto. Valore Corrente Slider: {health.value} -> Obiettivo: {current}");
-
-        health.maxValue = max;
-        health.DOKill();
-        health.DOValue(current, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
+        SetSlider(health, current, max, instant);
     }
 
-    public void UpdateShieldSlider(float current, float max)
+    public void UpdateShieldSlider(float current, float max, bool instant = false)
     {
-        if (shield == null) return;
-
-        shield.maxValue = max;
-
-        shield.DOKill();
-        shield.DOValue(current, 0.2f).SetEase(Ease.OutQuad);
+        SetSlider(shield, current, max, instant);
     }
 
-    public void UpdateKiSlider(float current, float max)
+    public void UpdateKiSlider(float current, float max, bool instant = false)
     {
-        if (ki == null) return;
+        SetSlider(ki, current, max, instant);
+    }
 
-        ki.maxValue = max;
+    private void SetSlider(Slider slider, float current, float max, bool instant)
+    {
+        if (slider == null) return;
 
-        ki.DOKill();
-        ki.DOValue(current, 0.2f).SetEase(Ease.OutQuad);
+        slider.DOKill();
+        slider.maxValue = max;
+
+        if (instant)
+        {
+            slider.value = current;
+            return;
+        }
+        slider.DOValue(current, 0.2f).SetEase(Ease.OutQuad).SetUpdate(true);
     }
 }

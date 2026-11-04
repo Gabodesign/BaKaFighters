@@ -17,6 +17,7 @@ public class LevelUI : MonoBehaviour
 
     [Header("GameOver UI")]
     [SerializeField] private GameObject panelGameover;
+    [SerializeField] private Button gameOverFirstButton;
     [Header("Menu Pausa")]
     [SerializeField] public GameObject panelPausa;
     [Header("Level")]
@@ -122,6 +123,22 @@ public class LevelUI : MonoBehaviour
             panelGameover.SetActive(true);
         if (InputManager.Instance != null)
             InputManager.Instance.EnableUI();
+        if (gameOverFirstButton != null)
+        {
+            StartCoroutine(SelectFirstGameOverButton());
+        }
+    }
+
+    private IEnumerator SelectFirstGameOverButton()
+    {
+        yield return null;
+        if (EventSystem.current == null) yield break;
+
+        Button first = gameOverFirstButton != null ? gameOverFirstButton : panelGameover.GetComponentInChildren<Button>();
+        if (first == null) yield break;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(first.gameObject);
     }
 
     // Gestione dei pulsanti della UI che rimandano al GameManager
