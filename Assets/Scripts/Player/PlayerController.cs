@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.TryGetLoadedState(out SaveData loaded))
         {
             transform.position = loaded.PosPlayer;
-            health = loaded.Health;
+            health = loaded.FullHealthOnLoad ? maxHealth : loaded.Health; ;
             shield = loaded.Shield;
             ki = loaded.Ki;
         }

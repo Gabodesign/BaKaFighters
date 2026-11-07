@@ -35,7 +35,8 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private string attackAnimName = "";
     [SerializeField] private int spineTrackIndex = 0;
     [SerializeField] private float attackAnimMix = 0.1f;           
-    [SerializeField] private bool attackAnimLoop = false;          
+    [SerializeField] private bool attackAnimLoop = false;
+    
     private void Awake()
     {
         if (firePoint == null) firePoint = transform;
@@ -54,7 +55,11 @@ public class EnemyShoot : MonoBehaviour
             spine.AnimationState.TimeScale = 1f;                                     // Velocità normale
         }
     }
-    
+
+    public void SetAim(AimMode mode)
+    {
+        aim = mode;
+    }
 
     // Update is called once per frame
     void Update()

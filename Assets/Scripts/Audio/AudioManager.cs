@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip cancel;
     public AudioClip pause;
     public AudioClip unpause;
+    public AudioClip gameOver;
+    public AudioClip warning;
+    public AudioClip waveComplete;
     public AudioClip bullet;
     public AudioClip hit;
 

@@ -26,6 +26,16 @@ public class GameManager : MonoBehaviour
     private int weaponLevel = 0;
     private float timer;
     private HashSet<string> destroyedIds = new HashSet<string>();
+    private SaveData checkpoint;
+    private int wavesCompleted;
+
+    public bool HasCheckpoint => checkpoint != null;
+    /// <summary>Ondate già completate in questa partita (le imposta il WaveManager).</summary>
+    public int WavesCompleted
+    {
+        get => wavesCompleted;
+        set => wavesCompleted = value;
+    }
     private SaveData pendingLoad;
     public float StartingTimer => timer;
     public int WeaponLevel
@@ -71,9 +81,12 @@ public class GameManager : MonoBehaviour
         weaponLevel = 0;
         timer = 0f;
         pendingLoad = null;
+        checkpoint = null;
+        wavesCompleted = 0;
         destroyedIds.Clear();
         Time.timeScale = 1f;
     }
+
 
     public void StartNewGame(int slotIndex)
     {
@@ -119,6 +132,13 @@ public class GameManager : MonoBehaviour
     public void TakeLife()
     {
         playerLives--;
+        // Con un checkpoint si riparte da lì, senza azzerare il resto
+        if (checkpoint != null)
+        {
+            RespawnFromCheckpoint();
+            return;
+        }
+
         score = 0;
         weaponLevel = 0;
         weaponType = WeaponType.Bullet;
@@ -241,6 +261,21 @@ public class GameManager : MonoBehaviour
     /// <param name="slotIndex"></param>
     public void SaveGame(int slotIndex)
     {
+        SaveData saveData = CaptureState();
+        saveData.SlotIndex = slotIndex;
+
+        WriteSlot(saveData);
+
+        if (LevelUI.Instance != null)
+        {
+            LevelUI.Instance.ClosePausa();
+        }
+
+        Debug.Log($"Gioco salvato con successo nello Slot {slotIndex}");
+    }
+
+    private SaveData CaptureState()
+    {
         // La fonte vera di vita, scudo e ki è il PlayerController: gli slider sono animati e possono essere a metà strada.
         PlayerController playerController = FindAnyObjectByType<PlayerController>();
         Vector2 playerPos = playerController != null ? (Vector2)playerController.transform.position : Vector2.zero;
@@ -257,7 +292,6 @@ public class GameManager : MonoBehaviour
 
         SaveData saveData = new SaveData
         {
-            SlotIndex = slotIndex,
             LevelName = SceneManager.GetActiveScene().name,
             Score = score,
             Timer = currentTimer,
@@ -273,15 +307,37 @@ public class GameManager : MonoBehaviour
             Ki = ki,
             DestroyedIds = destroyedIds != null ? new List<string>(destroyedIds) : new List<string>()
         };
+        return saveData;
+    }
+    public void SaveCheckpoint()
+    {
+        checkpoint = CaptureState();
+        Debug.Log($"Checkpoint salvato: ondate {checkpoint.WavesCompleted}, score {checkpoint.Score}, " +
+                  $"distrutti {checkpoint.DestroyedIds.Count}, livello {checkpoint.PosLevel}");
+    }
 
-        WriteSlot(saveData);
+    private void RespawnFromCheckpoint()
+    {
+        score = checkpoint.Score;
+        timer = checkpoint.Timer;
+        // Morire fa perdere i potenziamenti dell'arma: si riparte con quella base
+        weaponType = WeaponType.Bullet;
+        weaponLevel = 0;
+        wavesCompleted = checkpoint.WavesCompleted;
+        destroyedIds = new HashSet<string>(checkpoint.DestroyedIds ?? new List<string>());
 
-        if (LevelUI.Instance != null)
-        {
-            LevelUI.Instance.ClosePausa();
-        }
+        // Lavoriamo su una copia: il checkpoint originale resta intatto per una seconda morte
+        pendingLoad = JsonUtility.FromJson<SaveData>(JsonUtility.ToJson(checkpoint));
+        pendingLoad.Weapon = weaponType;
+        pendingLoad.WeaponLevel = weaponLevel;
+        pendingLoad.FullHealthOnLoad = true; // si riparte con la vita piena, non con quella che avevi al checkpoint
 
-        Debug.Log($"Gioco salvato con successo nello Slot {slotIndex}");
+        Time.timeScale = 1f;
+        if (InputManager.Instance != null)
+            InputManager.Instance.EnableGameplay();
+
+        SceneManager.sceneLoaded += OnSceneLoadedRestoreWeapon;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SaveGamePausa()
@@ -431,6 +487,7 @@ public class SaveData
     public float Health;
     public float Shield;
     public float Ki;
-
+    public bool FullHealthOnLoad;
+    public int WavesCompleted;
     public List<string> DestroyedIds = new List<string>();
 }
