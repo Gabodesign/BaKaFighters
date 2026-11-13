@@ -6415,12 +6415,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f44e7f0d4d0e348aa05026bd676158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  enemiesPrefab:
+  enemiesPrefabs:
   - {fileID: 5358381935245597308, guid: 9cabe632732a68044b668200d2be0c4a, type: 3}
   - {fileID: 782416603516763062, guid: 0f71df754990fc648a27682262fa8284, type: 3}
   - {fileID: 2587654235803017888, guid: 3c2da4d98984d86418ece886b08286d3, type: 3}
+  - {fileID: 4789495837562154370, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
   - {fileID: 1014347588851995778, guid: edccd3b1f12cf3643952e037c46316e1, type: 3}
   waveUI: {fileID: 898895802}
+  enemiesParent: {fileID: 870637420}
+  spawnZ: 10
+  waveCompleteDuration: 2.5
+  continueDuration: 3
 --- !u!4 &303510210
 Transform:
   m_ObjectHideFlags: 0
@@ -8645,6 +8650,7 @@ MonoBehaviour:
   panelGameover: {fileID: 833551500}
   gameOverFirstButton: {fileID: 2075263255}
   panelPausa: {fileID: 1274344424}
+  pauseFirstButton: {fileID: 0}
   level: {fileID: 1511843556}
   saveButton: {fileID: 1672595654}
   loadButton: {fileID: 154069578}
@@ -11914,7 +11920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13455,6 +13461,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862552306}
   m_CullTransparentMesh: 1
+--- !u!1 &870637419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870637420}
+  m_Layer: 0
+  m_Name: WaveEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &870637420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870637419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1595707868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &875172803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14017,12 +14054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b392b14e80fe243ba5e4e7252e3b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveUI
-  warningObject: {fileID: 0}
-  waveCompleteObject: {fileID: 0}
-  continueObject: {fileID: 0}
+  warningObject: {fileID: 1085364353}
+  waveCompleteObject: {fileID: 233962676}
+  continueObject: {fileID: 1979829119}
   flashInterval: 0.25
-  waveCounterText: {fileID: 0}
-  enemyCounterText: {fileID: 0}
+  waveCounterText: {fileID: 680308773}
+  enemyCounterText: {fileID: 140409531}
 --- !u!1 &906709578
 GameObject:
   m_ObjectHideFlags: 0
@@ -20452,6 +20489,7 @@ Transform:
   - {fileID: 1796222913}
   - {fileID: 1593663470}
   - {fileID: 2135855563}
+  - {fileID: 870637420}
   m_Father: {fileID: 1511843557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1619737869 stripped
@@ -31401,33 +31439,32 @@ MonoBehaviour:
   waveIndex: 0
   rounds:
   - startDelay: 1
+    spawnInterval: 0.5
+    enemyCount: 10
+    enemyPrefabs:
+    - {fileID: 782416603516763062, guid: 0f71df754990fc648a27682262fa8284, type: 3}
+    - {fileID: 2587654235803017888, guid: 3c2da4d98984d86418ece886b08286d3, type: 3}
     spawns:
-    - spawnPoint: {fileID: 340922017}
-      spawnDelay: 0.1
-    - spawnPoint: {fileID: 1625878063}
-      spawnDelay: 0.15
-    - spawnPoint: {fileID: 690950970}
-      spawnDelay: 0.2
-    - spawnPoint: {fileID: 1905161129}
-      spawnDelay: 0.5
-  - startDelay: 0
+    - {fileID: 340922018}
+    - {fileID: 1625878064}
+    - {fileID: 690950971}
+    - {fileID: 1905161130}
+  - startDelay: 1
+    spawnInterval: 0.5
+    enemyCount: 20
+    enemyPrefabs:
+    - {fileID: 5358381935245597308, guid: 9cabe632732a68044b668200d2be0c4a, type: 3}
+    - {fileID: 1014347588851995778, guid: edccd3b1f12cf3643952e037c46316e1, type: 3}
+    - {fileID: 4789495837562154370, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
     spawns:
-    - spawnPoint: {fileID: 725374533}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 2038710184}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 1585502636}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 524532959}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 365487184}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 425189011}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 1222716538}
-      spawnDelay: 0
-    - spawnPoint: {fileID: 2023638004}
-      spawnDelay: 0
+    - {fileID: 725374534}
+    - {fileID: 2038710185}
+    - {fileID: 1585502637}
+    - {fileID: 524532960}
+    - {fileID: 365487185}
+    - {fileID: 425189012}
+    - {fileID: 1222716539}
+    - {fileID: 2023638005}
 --- !u!50 &2088989021
 Rigidbody2D:
   serializedVersion: 5

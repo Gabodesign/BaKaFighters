@@ -20,6 +20,7 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private Button gameOverFirstButton;
     [Header("Menu Pausa")]
     [SerializeField] public GameObject panelPausa;
+    [SerializeField] private Button pauseFirstButton;
     [Header("Level")]
     [SerializeField] private GameObject level;
     [Header("Button Save/Load")]
@@ -34,7 +35,8 @@ public class LevelUI : MonoBehaviour
   
     [Header("Lives")]
     [SerializeField] private TMP_Text livesText;
-
+    private GameObject lastSelected;
+    private int lastPauseToggleFrame = -1;
     public GameObject Level => level;
     public float Crono => crono;
 
@@ -104,6 +106,27 @@ public class LevelUI : MonoBehaviour
             InputManager.Instance.OnCanceled -= HandleCancel;
         }
     }
+
+    private void Update()
+    {
+        bool pauseOpen = panelPausa != null && panelPausa.activeInHierarchy;
+        bool gameOverOpen = panelGameover != null && panelGameover.activeInHierarchy;
+        if (!pauseOpen && !gameOverOpen) return;
+
+        EventSystem es = EventSystem.current;
+        if (es == null) return;
+
+        GameObject current = es.currentSelectedGameObject;
+        if (current != null && current.activeInHierarchy)
+        {
+            lastSelected = current;
+            return;
+        }
+
+        // Focus perso: si torna all'ultima voce usata
+        if (lastSelected != null && lastSelected.activeInHierarchy)
+            es.SetSelectedGameObject(lastSelected);
+    }
     public void UpdateScoreUI(int currentScore)
     {
         if (scoreText != null)
@@ -125,20 +148,21 @@ public class LevelUI : MonoBehaviour
             InputManager.Instance.EnableUI();
         if (gameOverFirstButton != null)
         {
-            StartCoroutine(SelectFirstGameOverButton());
+            StartCoroutine(SelectFirstButtonIn(panelGameover, gameOverFirstButton));
         }
     }
 
-    private IEnumerator SelectFirstGameOverButton()
+    private IEnumerator SelectFirstButtonIn(GameObject panel, Button preferred)
     {
         yield return null;
         if (EventSystem.current == null) yield break;
 
-        Button first = gameOverFirstButton != null ? gameOverFirstButton : panelGameover.GetComponentInChildren<Button>();
+        Button first = preferred != null ? preferred : panel.GetComponentInChildren<Button>();
         if (first == null) yield break;
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(first.gameObject);
+        lastSelected = first.gameObject;
     }
 
     // Gestione dei pulsanti della UI che rimandano al GameManager
@@ -225,7 +249,7 @@ public class LevelUI : MonoBehaviour
         crono = time;
     }
 
-    private int lastPauseToggleFrame = -1;
+    
 
 
     public void ShowPausa()
@@ -245,6 +269,7 @@ public class LevelUI : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.instance.pause);
             Time.timeScale = 0f;
             panelPausa.SetActive(true);
+            StartCoroutine(SelectFirstButtonIn(panelPausa, pauseFirstButton));
         }
         else
         {

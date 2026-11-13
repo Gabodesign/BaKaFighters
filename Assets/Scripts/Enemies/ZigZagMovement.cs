@@ -18,10 +18,17 @@ public class ZigZagMovement : MonoBehaviour, IEnemyMovement
 
         if (enemy != null)
         {
-            if(enemy.dir == Enemy.DIRECTION.Forward)
-                transform.position += new Vector3(-1, zigZag * enemy.MoveSpeed, 0) * Time.deltaTime;
+            // Avanza nella direzione scelta e oscilla sull'asse perpendicolare
+            Vector3 move = enemy.dir switch
+            {
+                Enemy.DIRECTION.Forward => new Vector3(-1, zigZag * enemy.MoveSpeed, 0),
+                Enemy.DIRECTION.Backward => new Vector3(1, zigZag * enemy.MoveSpeed, 0),
+                Enemy.DIRECTION.Top => new Vector3(zigZag * enemy.MoveSpeed, 1, 0),
+                _ => new Vector3(zigZag * enemy.MoveSpeed, -1, 0)
+            };
+            transform.position += move * Time.deltaTime;
 
-        }//Debug.Log("ZigZagMovement: Moving in a zig-zag pattern.");
+        }
     }
     
 }

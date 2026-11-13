@@ -18,15 +18,19 @@ public class Deathfly : Enemy
 
     void SelectDirection(DIRECTION direction)
     {
-
-
         switch (direction)
         {
             case DIRECTION.Forward:
                 moveDirection = new Vector2(-1f, 0f);
                 break;
-            default:
-                moveDirection = Vector2.zero;
+            case DIRECTION.Backward:
+                moveDirection = new Vector2(1f, 0f);
+                break;
+            case DIRECTION.Top:
+                moveDirection = new Vector2(0f, 1f);
+                break;
+            case DIRECTION.Bottom:
+                moveDirection = new Vector2(0f, -1f);
                 break;
         }
 
@@ -44,5 +48,5 @@ public class Deathfly : Enemy
             Vector3 delta = (Vector3)(moveDirection * MoveSpeed * Time.deltaTime);
             transform.Translate(delta, Space.World);
         }
-    }    
+    }
 }
