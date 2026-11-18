@@ -26,8 +26,6 @@ public class LevelUI : MonoBehaviour
     [Header("Button Save/Load")]
     [SerializeField] public Button saveButton;
     [SerializeField] public Button loadButton;
-    [Header("Carica da pausa (opzionale: pannello slot)")]
-    [SerializeField] private SaveSlotsPanel pauseLoadPanel;
 
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
@@ -71,7 +69,7 @@ public class LevelUI : MonoBehaviour
         }
         // Riprova e Torna al menu del Game Over sono collegati dall'Inspector (OnClickRestart / OnClickMainMenu):
         // un solo modo per pulsante, altrimenti l'azione verrebbe eseguita due volte.
-        if (pauseLoadPanel != null) pauseLoadPanel.gameObject.SetActive(false);
+        
 
         // Chiediamo al GameManager il punteggio attuale per scriverlo all'avvio
         if (GameManager.Instance != null)
@@ -283,7 +281,6 @@ public class LevelUI : MonoBehaviour
     public void ClosePausa()
     {
         lastPauseToggleFrame = Time.frameCount;
-        if (pauseLoadPanel != null) pauseLoadPanel.gameObject.SetActive(false);
         if (panelPausa != null) panelPausa.SetActive(false);
         Time.timeScale = 1f;
         if (InputManager.Instance != null)
@@ -294,27 +291,13 @@ public class LevelUI : MonoBehaviour
     private void HandleCancel()
     {
         if (panelPausa == null || !panelPausa.activeSelf) return;
-
-        if (pauseLoadPanel != null && pauseLoadPanel.gameObject.activeSelf)
-        {
-            pauseLoadPanel.gameObject.SetActive(false);
-            if (loadButton != null && EventSystem.current != null)
-                EventSystem.current.SetSelectedGameObject(loadButton.gameObject);
-            return;
-        }
         ShowPausa();
     }
 
     // Carica dalla pausa: se c'è il pannello slot si sceglie il salvataggio, altrimenti si ricarica lo slot in uso
     private void OpenLoadFromPausa()
     {
-        if (pauseLoadPanel == null)
-        {
-            GameManager.Instance.LoadGamePausa();
-            return;
-        }
-        pauseLoadPanel.gameObject.SetActive(true);
-        pauseLoadPanel.Populate(MenuManager.MainMenuSlotMode.LoadGame, slot => GameManager.Instance.LoadGame(slot));
+        GameManager.Instance.LoadGamePausa();
+        return;
     }
-
 }

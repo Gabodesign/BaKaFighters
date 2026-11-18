@@ -938,10 +938,10 @@ PrefabInstance:
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 435723662}
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadGame
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 950974271271851663, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -974,6 +974,10 @@ PrefabInstance:
     - target: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_Name
       value: LoadButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_Pivot.x
@@ -1041,7 +1045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -269.46
+      value: -234.72998
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6836,7 +6840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077284329227925166, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: attackAnimName
-      value: Shot_Down
+      value: Shot
       objectReference: {fileID: 0}
     - target: {fileID: 4786670855473094624, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8650,11 +8654,10 @@ MonoBehaviour:
   panelGameover: {fileID: 833551500}
   gameOverFirstButton: {fileID: 2075263255}
   panelPausa: {fileID: 1274344424}
-  pauseFirstButton: {fileID: 0}
+  pauseFirstButton: {fileID: 852710268}
   level: {fileID: 1511843556}
   saveButton: {fileID: 1672595654}
   loadButton: {fileID: 154069578}
-  pauseLoadPanel: {fileID: 0}
   timerText: {fileID: 1857811756}
   livesText: {fileID: 290646555}
 --- !u!4 &435723664
@@ -11109,8 +11112,6 @@ Transform:
   - {fileID: 524532959}
   - {fileID: 365487184}
   - {fileID: 425189011}
-  - {fileID: 1222716538}
-  - {fileID: 2023638004}
   m_Father: {fileID: 2088989018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715133579
@@ -12708,7 +12709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077284329227925166, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: attackAnimName
-      value: Shot_Down
+      value: Shot
       objectReference: {fileID: 0}
     - target: {fileID: 4786670855473094624, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13270,7 +13271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -61.08
+      value: -130.54
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17434,54 +17435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   id: e170e479-3605-4d96-b3bb-397194a48b30
---- !u!1 &1222716537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1222716538}
-  - component: {fileID: 1222716539}
-  m_Layer: 0
-  m_Name: SpawnPointEnemy (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1222716538
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222716537}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.24, y: -8.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698067634}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1222716539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222716537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73aca0da3dfb78c4ca8c02f474093d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WaveSpawnPoint
-  overrideDirection: 1
-  direction: 2
-  overrideAim: 1
-  aim: 5
 --- !u!1 &1234785221
 GameObject:
   m_ObjectHideFlags: 0
@@ -19839,7 +19792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca261f694557314eb1cf5315ccdec1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Parallax
-  speed: 1
+  speed: 2
   scrolling: 1
 --- !u!1 &1513120795
 GameObject:
@@ -21125,6 +21078,10 @@ PrefabInstance:
     - target: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_Name
       value: SaveButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166260504184903192, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_Pivot.x
@@ -28203,7 +28160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077284329227925166, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: attackAnimName
-      value: Shot_Up
+      value: Shot
       objectReference: {fileID: 0}
     - target: {fileID: 4786670855473094624, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29711,7 +29668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfc1b1ec49fdb1478413b2165f248fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveTrigger
-  waveIndex: 0
+  waveIndex: 1
   rounds: []
 --- !u!50 &1920870603
 Rigidbody2D:
@@ -30133,7 +30090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130.54001
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -30611,7 +30568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -338.91998
+      value: -269.46
       objectReference: {fileID: 0}
     - target: {fileID: 5194834376537966804, guid: ee6c85271070cbf4c924deb4cc4807fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -30671,54 +30628,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3464754338196455178, guid: c5bcc9d4cc237e34893b0af8a1425d14, type: 3}
   m_PrefabInstance: {fileID: 1447018503}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2023638003
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2023638004}
-  - component: {fileID: 2023638005}
-  m_Layer: 0
-  m_Name: SpawnPointEnemy (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2023638004
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023638003}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.64, y: 8.94, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698067634}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2023638005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023638003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73aca0da3dfb78c4ca8c02f474093d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WaveSpawnPoint
-  overrideDirection: 1
-  direction: 3
-  overrideAim: 1
-  aim: 4
 --- !u!1001 &2024971881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31463,8 +31372,8 @@ MonoBehaviour:
     - {fileID: 524532960}
     - {fileID: 365487185}
     - {fileID: 425189012}
-    - {fileID: 1222716539}
-    - {fileID: 2023638005}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!50 &2088989021
 Rigidbody2D:
   serializedVersion: 5
@@ -32362,7 +32271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077284329227925166, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: attackAnimName
-      value: Shot_Up
+      value: Shot
       objectReference: {fileID: 0}
     - target: {fileID: 4786670855473094624, guid: 51efe933352d0c34c9aa0a02e8fbc4bd, type: 3}
       propertyPath: m_LocalPosition.x
