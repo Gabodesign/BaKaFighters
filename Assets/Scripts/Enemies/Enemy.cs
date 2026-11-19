@@ -47,7 +47,6 @@ public abstract class Enemy : MonoBehaviour
         if(data != null && data.canMove)
         {
             movement = GetComponent<IEnemyMovement>();
-            Debug.Log("Enemy movement component: " + movement);
         }
     }
 
@@ -63,6 +62,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DestroyEnemy"))
         {
+            if (TryGetComponent(out WaveEnemy waveEnemy)) waveEnemy.MarkEscape();
             Destroy(gameObject);
         }
 

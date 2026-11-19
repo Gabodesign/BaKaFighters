@@ -12,7 +12,14 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float spawnZ = 10f;
     [SerializeField] private float waveCompleteDuration = 2.5f;
     [SerializeField] private float continueDuration = 3f;
+
+    [SerializeField] private float respawnDelay = 1f;
     private WaveState state = WaveState.Scrolling;
+
+    // Stato dell'ondata in corso
+    private WaveRound currentRound;
+    private int killedCount;
+    private int totalCount;
     public WaveState State => state;
     private int aliveEnemies;
     private void Awake()
@@ -112,12 +119,13 @@ public class WaveManager : MonoBehaviour
 
         // Quanti nemici: il valore scelto, oppure uno per punto se è 0
         int toSpawn = round.enemyCount > 0 ? round.enemyCount : round.spawns.Count;
-        int enemiesTotal = toSpawn;
-        int killed = 0;
+        currentRound = round;
+        totalCount = toSpawn;
+        killedCount = 0;
         aliveEnemies = 0;
         if (waveUI != null)
         {
-            waveUI.SetEnemies(0, enemiesTotal);
+            waveUI.SetEnemies(0, totalCount);
             waveUI.ShowEnemies();
         }
 
@@ -129,21 +137,64 @@ public class WaveManager : MonoBehaviour
             // I punti si riutilizzano a rotazione se i nemici sono più dei punti
             WaveSpawnPoint point = round.spawns[i % round.spawns.Count];
             GameObject enemy = SpawnEnemy(point, round.enemyPrefabs);
-            if (enemy == null) { enemiesTotal--; continue; }
-
-            aliveEnemies++;
-            WaveEnemy tracker = enemy.AddComponent<WaveEnemy>();
-            tracker.Destroyed += _ =>
+            if (enemy == null)
             {
-                aliveEnemies--;
-                killed++;
-                if (waveUI != null) waveUI.SetEnemies(killed, enemiesTotal);
-            };
+                totalCount--;
+                if (waveUI != null) waveUI.SetEnemies(killedCount, totalCount);
+                continue;
+            }
+
+            TrackEnemy(enemy, point);
         }
 
-        // Si aspetta che non resti nessun nemico (uccisi o usciti dallo schermo)
+        // Si aspetta che non resti nessun nemico: i nemici usciti dalla zona ricompaiono, quindi contano come ancora vivi
         yield return new WaitUntil(() => aliveEnemies <= 0);
     }
+
+    // Segue il nemico: se muore conta come ucciso, se tocca un DestroyEnemy ricompare dallo stesso punto
+    private void TrackEnemy(GameObject enemy, WaveSpawnPoint point)
+    {
+        aliveEnemies++;
+        WaveEnemy tracker = enemy.AddComponent<WaveEnemy>();
+        tracker.Destroyed += wave =>
+        {
+            aliveEnemies--;
+
+            if (wave.Escaped)
+            {
+                // Uscito dalla zona: non è un'uccisione, né per il contatore né per il punteggio
+                StartCoroutine(RespawnRoutine(point));
+                return;
+            }
+
+            killedCount++;
+            if (waveUI != null) waveUI.SetEnemies(killedCount, totalCount);
+        };
+    }
+
+    private IEnumerator RespawnRoutine(WaveSpawnPoint point)
+    {
+        // Mentre aspetta il nemico conta come ancora vivo, così l'ondata non finisce
+        aliveEnemies++;
+        yield return new WaitForSeconds(respawnDelay);
+        aliveEnemies--;
+
+        GameObject enemy = SpawnEnemy(point, currentRound.enemyPrefabs);
+        if (enemy == null)
+        {
+            totalCount--;
+            if (waveUI != null) waveUI.SetEnemies(killedCount, totalCount);
+            yield break;
+        }
+
+        TrackEnemy(enemy, point);
+    }
+
+
+
+
+
+
     // Metodo per spawnare un nemico in un punto di spawn specifico
     private GameObject SpawnEnemy(WaveSpawnPoint point, GameObject[] roundPrefabs)
     {
@@ -164,8 +215,25 @@ public class WaveManager : MonoBehaviour
         pos.z = spawnZ;
         GameObject enemy = Instantiate(prefab, pos, point.transform.rotation, enemiesParent);
         point.ApplyTo(enemy);
+        SetEnemyLayer(enemy);
         return enemy;
     }
+
+    //impostiamo li layer dei nemici 
+    private void SetEnemyLayer(GameObject enemy)
+    {
+        int layer = LayerMask.NameToLayer("Enemies");
+        if(layer < 0)
+        {
+            Debug.LogWarning("WaveManager: il layer 'Enemies' non esiste, non posso impostarlo ai nemici.");
+            return;
+        }
+        foreach(Transform transform in enemy.GetComponentInChildren<Transform>(true))
+        {
+            transform.gameObject.layer = layer;
+        }
+    }
+
 
     //prendiamo random i nemici dalla lista.
     private GameObject PickRandomEnemy(GameObject[] roundPrefabs)
